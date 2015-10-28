@@ -64,6 +64,10 @@ setSysConfig("news.scope", $news_scope);
 setSysConfig("news.detail.showpath", 1);
 setSysConfig("news.limit", 10);
 
+setSysConfig("seopage.title","seo page title"); 
+setSysConfig("seopage.keyword","seo page keyword"); 
+setSysConfig("seopage.description", "seo page description");
+
 /*
  * controll: 0
  * action: 1 

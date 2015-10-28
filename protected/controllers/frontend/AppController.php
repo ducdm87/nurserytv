@@ -21,12 +21,8 @@ class AppController extends FrontEndController {
     }
 
     public function actionDisplay() {
-
-        $data = array();
-        $this->setPageTitle('Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
-        $this->metaDesc = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-        $this->metaKey = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-
+      
+        $data = array();       
         $data['videos_viewed'] = $this->media->getMedias(4, 0, array('f.status=1'), array('f.viewed DESC'));
         $data['videos_update'] = $this->getVideoUpdates();
         $data['playlists'] = $this->getPlayLists();

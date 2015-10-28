@@ -11103,3 +11103,600 @@ Stack trace:
 REQUEST_URI=/images/avatar/50x50
 HTTP_REFERER=http://dev.nurserytv.com/backend/articles
 ---
+2015/10/28 10:15:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.play_id' in 'on clause'. The SQL statement executed was: SELECT `f`.*, `c`.`id` AS `cid`, `c`.`title` AS `ctitle`, `c`.`alias` AS `calias`, `t`.`name` AS `tname`, `t`.`id` AS `tid`, `idx`.`tag_id`, `cidx`.`cat_id`, `p`.`id` AS `pid`, `p`.`name` AS `pname`
+FROM `tbl_videos` `f`
+LEFT JOIN `tbl_playlist` `p` ON p.id=f.play_id
+LEFT JOIN `tbl_tag_index` `idx` ON f.id=idx.video_id
+LEFT JOIN `tbl_tags` `t` ON t.id=idx.tag_id
+LEFT JOIN `tbl_category_index` `cidx` ON f.id=cidx.pindex
+LEFT JOIN `tbl_categories` `c` ON c.id=cidx.cat_id
+GROUP BY `f`.`id`
+ORDER BY `f`.`viewed` DESC LIMIT 4.
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\models\frontend\Media.php (68)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php (30)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php (38)
+2015/10/28 10:15:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.play_id' in 'on clause'. The SQL statement executed was: SELECT `f`.*, `c`.`id` AS `cid`, `c`.`title` AS `ctitle`, `c`.`alias` AS `calias`, `t`.`name` AS `tname`, `t`.`id` AS `tid`, `idx`.`tag_id`, `cidx`.`cat_id`, `p`.`id` AS `pid`, `p`.`name` AS `pname`
+FROM `tbl_videos` `f`
+LEFT JOIN `tbl_playlist` `p` ON p.id=f.play_id
+LEFT JOIN `tbl_tag_index` `idx` ON f.id=idx.video_id
+LEFT JOIN `tbl_tags` `t` ON t.id=idx.tag_id
+LEFT JOIN `tbl_category_index` `cidx` ON f.id=cidx.pindex
+LEFT JOIN `tbl_categories` `c` ON c.id=cidx.cat_id
+GROUP BY `f`.`id`
+ORDER BY `f`.`viewed` DESC LIMIT 4' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\models\frontend\Media.php(68): CDbCommand->queryAll()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php(30): Media->getMedias(4, 0, Array, Array)
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): AppController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): CController->run('display')
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('app/display')
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#11 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#15 {main}
+REQUEST_URI=/
+---
+2015/10/28 10:18:57 [error] [php] Undefined index: play_id (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php:326)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): ArticlesController->renderInternal()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): ArticlesController->renderFile()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php(26): ArticlesController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): ArticlesController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): ArticlesController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): ArticlesController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): ArticlesController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/tin-tuc/
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (326)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (106)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php (26)
+2015/10/28 10:20:14 [error] [php] Undefined index: play_id (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php:326)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): ArticlesController->renderInternal()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): ArticlesController->renderFile()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php(26): ArticlesController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): ArticlesController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): ArticlesController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): ArticlesController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): ArticlesController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/tin-tuc/
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (326)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (106)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php (26)
+2015/10/28 10:20:29 [error] [php] Undefined index: play_id (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php:326)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): ArticlesController->renderInternal()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): ArticlesController->renderFile()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php(26): ArticlesController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): ArticlesController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): ArticlesController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): ArticlesController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): ArticlesController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/tin-tuc/
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (326)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (106)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php (26)
+2015/10/28 10:22:43 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nurserytv.tbl_posts' doesn't exist. The SQL statement executed was: SELECT * FROM tbl_posts WHERE status = 1 ORDER BY cdate DESC LIMIT 4 .
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (369)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (115)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php (26)
+2015/10/28 10:22:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nurserytv.tbl_posts' doesn't exist. The SQL statement executed was: SELECT * FROM tbl_posts WHERE status = 1 ORDER BY cdate DESC LIMIT 4 ' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php(369): CDbCommand->queryAll()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php(115): buildHtml::showPost()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(126): require('D:\\wamp\\www\\bhm...')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\\wamp\\www\\bhm...', Array, true)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): CBaseController->renderFile('D:\\wamp\\www\\bhm...', Array, true)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\ArticlesController.php(26): CController->render('default', Array)
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): ArticlesController->actionDisplay()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): CController->run('')
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('articles')
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#15 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#16 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#17 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#18 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#19 {main}
+REQUEST_URI=/tin-tuc/
+---
+2015/10/28 10:22:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:22:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:23:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:23:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:24:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:24:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:26:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:26:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:27:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:27:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:27:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:27:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/
+---
+2015/10/28 10:27:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:27:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:28:17 [error] [php] Undefined index: videos (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app\default.php:138)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(869): AppController->renderFile()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(782): AppController->renderPartial()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php(30): AppController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): AppController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): AppController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): AppController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): AppController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app\default.php (138)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php (30)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php (38)
+2015/10/28 10:28:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:28:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:29:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:29:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/tin-tuc/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html
+---
+2015/10/28 10:29:41 [error] [php] Undefined index: fecth_link (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\playlist\detail.php:14)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(869): PlaylistController->renderFile()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(782): PlaylistController->renderPartial()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php(73): PlaylistController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): PlaylistController->actionDetail()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): PlaylistController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): PlaylistController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): PlaylistController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\playlist\detail.php (14)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php (73)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php (38)
+2015/10/28 10:30:28 [error] [php] Undefined index: v (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\playlist\detail.php:17)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(869): PlaylistController->renderFile()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(782): PlaylistController->renderPartial()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php(73): PlaylistController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): PlaylistController->actionDetail()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): PlaylistController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): PlaylistController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): PlaylistController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\playlist\detail.php (17)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php (73)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php (38)
+2015/10/28 10:32:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:32:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:34:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:35:19 [error] [php] Missing argument 3 for fnCreateUrlNewsDetail(), called in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php on line 433 and defined (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\functions.php:67)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(126): require()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): PlaylistController->renderInternal()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): PlaylistController->renderFile()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php(73): PlaylistController->render()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): PlaylistController->actionDetail()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): PlaylistController->runAction()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): PlaylistController->runActionWithFilters()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): PlaylistController->run()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#12 unknown(0): WebApplicationEndBehavior->runEnd()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#15 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\functions.php (67)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (433)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (115)
+2015/10/28 10:35:42 [error] [php] Missing argument 3 for fnCreateUrlNewsDetail(), called in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php on line 433 and defined (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\functions.php:67)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(126): require()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CBaseController.php(95): PlaylistController->renderInternal()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(784): PlaylistController->renderFile()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\PlaylistController.php(73): PlaylistController->render()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): PlaylistController->actionDetail()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): PlaylistController->runAction()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): PlaylistController->runActionWithFilters()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): PlaylistController->run()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#12 unknown(0): WebApplicationEndBehavior->runEnd()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#15 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\functions.php (67)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\buildHtml.php (433)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app_template.php (115)
+2015/10/28 10:35:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:35:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/xem-video?pid=0&pslug=&vid=44&vslug=messi-va-nhung-pha-di-bong-than-thanh
+---
+2015/10/28 10:36:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/playlist
+---
+2015/10/28 10:36:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/images/27/10/2015/images.jpg".' in D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController('uploads/images/...')
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CApplication->run()
+#3 [internal function]: WebApplicationEndBehavior->runEnd('frontend')
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CComponent->__call('runEnd', Array)
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd('frontend')
+#7 {main}
+REQUEST_URI=/uploads/images/27/10/2015/images.jpg
+HTTP_REFERER=http://dev.nurserytv.com/playlist
+---
+2015/10/28 10:36:46 [error] [php] Undefined index: videos (D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app\default.php:138)
+Stack trace:
+#0 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(869): AppController->renderFile()
+#1 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(782): AppController->renderPartial()
+#2 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php(30): AppController->render()
+#3 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\actions\CInlineAction.php(49): AppController->actionDisplay()
+#4 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(286): AppController->runAction()
+#6 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CController.php(265): AppController->runActionWithFilters()
+#7 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(282): AppController->run()
+#8 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php(38): CWebApplication->run()
+#11 unknown(0): WebApplicationEndBehavior->runEnd()
+#12 D:\wamp\www\bhmedia\vinhphp\nurserytv\framework\base\CComponent.php(261): call_user_func_array()
+#13 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->__call()
+#14 D:\wamp\www\bhmedia\vinhphp\nurserytv\index.php(20): CWebApplication->runEnd()
+REQUEST_URI=/
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\views\frontend\app\default.php (138)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\controllers\frontend\AppController.php (30)
+in D:\wamp\www\bhmedia\vinhphp\nurserytv\protected\components\WebApplicationEndBehavior.php (38)

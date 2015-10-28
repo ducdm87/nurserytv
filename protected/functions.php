@@ -64,8 +64,8 @@ function getListObjectID($type = "news", $format = "string", $sperator = ",") {
     return $sys_config[$key];
 }
 
-function fnCreateUrlNewsDetail($cid, $alias, $catid, $cat_alias) {
-    return Yii::app()->createUrl("news/detail", array("cid" => $cid, "alias" => $alias, "cat_alias" => $cat_alias));
+function fnCreateUrlNewsDetail($cid, $alias, $catid = "", $cat_alias = "") {
+    return Yii::app()->createUrl("articles/detail", array("id" => $cid, "alias" => $alias));
 }
 
 function fnShowPagenation($link, $total, $limit, $currentPage) {

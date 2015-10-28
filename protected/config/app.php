@@ -17,8 +17,14 @@ $settings = array(
             'rules' => array(
                 // home page
                 '/' => array('app/display'),
+                '' => array('app/'),
+                
+                'tin-tuc' => array('articles/', 'urlSuffix'=>'/'),                 
+                'tin-tuc/<alias:[\d\w-]+>/trang-<page:[0-9]+>' => array('articles/category', 'urlSuffix'=>'/'),
+                'tin-tuc/<alias:[\d\w-]+>' => array('articles/category', 'urlSuffix'=>'/'),
+                'tin-tuc/<id:[0-9]+>-<alias:.*>' => array('articles/detail','urlSuffix'=>'.html'),
+                
                 'xem-video/' => array('playlist/detail'),
-                'tin-tuc/' => array('news/detail'),
             ),
         ),
         

@@ -14,7 +14,7 @@
                             $urlQ = parse_url($items['video']['fecth_link'], PHP_URL_QUERY);
                             parse_str($urlQ, $query);
                             ?>
-                            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<?php echo $query['v'] ?>?rel=0&amp;autoplay=1" allowfullscreen=""></iframe>
+                            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/?rel=0&amp;autoplay=1" allowfullscreen=""></iframe>
                         </div>
                         <div class="entry-caption">
                             <a href=""><h4><?php echo $items['video']['title'] ?></h4></a>

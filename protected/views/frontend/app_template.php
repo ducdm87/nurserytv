@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-        <meta name="description" content="<?php echo $this->metaDesc; ?>" />
-        <meta name="keywords" content="<?php echo $this->metaKey; ?>" />
+        <title><?php echo getSysConfig("seopage.title"); ?></title>
+        <meta name="description" content="<?php echo getSysConfig("seopage.description"); ?>" />
+        <meta name="keywords" content="<?php echo getSysConfig("seopage.keyword"); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/css/bootstrap.css" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/css/color.css" />
