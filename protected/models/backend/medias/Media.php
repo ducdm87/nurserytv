@@ -11,10 +11,6 @@ class Media extends CFormModel {
     private $table = "{{videos}}";
     private $table_episode = "{{episode}}";
     private $table_categories = "{{categories}}";
-    private $table_tags = "{{tags}}";
-    private $table_category_index = "{{category_index}}";
-    private $tag_index = "{{tag_index}}";
-    private $playlist = "{{playlist}}";
     private $command;
     private $connection;
 
@@ -35,41 +31,28 @@ class Media extends CFormModel {
     }
 
     public function getCountTotal() {
-        $query = $this->command->select('*')
+        $query = $this->command->select('COUNT(*)')
                 ->from($this->table)
                 ->queryAll();
         return (int) count($query);
     }
 
     public function addMedia($data) {
-
         $transaction = $this->connection->beginTransaction();
         try {
-            $this->command->insert($this->table, $data['video']);
-            $fid = $this->connection->getLastInsertID();
-            if (isset($data['tags']) && $data['tags']) {
-                $data_tag = array();
-                foreach ($data['tags'] as $tag) {
-                    $data_tag['tag_id'] = $tag;
-                    $data_tag['video_id'] = $fid;
-                    $this->command->insert($this->tag_index, $data_tag);
-                }
+            $this->command->insert($this->table, $data['film']);
+
+            $film_id = $this->connection->getLastInsertID();
+
+            if (isset($data['episode']) && $data['episode']) {
+                $data['episode']['film_id'] = $film_id;
+                $this->command->insert($this->table_episode, $data['episode']);
             }
-            if (isset($data['categories']) && $data['categories']) {
-                $data_categori = array();
-                foreach ($data['categories'] as $cate) {
-                    $data_categori['cat_id'] = $cate;
-                    $data_categori['index'] = $fid;
-                    $data_categori['type'] = 0;
-                    $this->command->insert($this->table_category_index, $data_categori);
-                }
-            }
-            $transaction->commit();
+            return $transaction->commit();
         } catch (Exception $e) {
             Yii::log('Eror!: ' + $e->getMessage());
-             $transaction->rollBack();
+            return $transaction->rollBack();
         }
-        return $fid;
     }
 
     public function getMedias($limit = 10, $offset = 0, $where = array()) {
@@ -79,17 +62,20 @@ class Media extends CFormModel {
         }
 
         if ($where && is_array($where)) {
-            $this->command->where($where);
+            foreach ($where as $key => $value) {
+                if (!is_array($value)) {
+                    $this->command->where($key, $value);
+                } else {
+                    foreach ($value as $k => $v) {
+                        $this->command->where($k, $v);
+                    }
+                }
+            }
         }
 
-        $results = $this->command->select('f.*,c.id as cid,c.title as ctitle,c.alias as calias,t.name,t.id as tid,idx.tag_id,cidx.cat_id,p.id as pid,p.name as pname,p.alias as palias')
+        $results = $this->command->select('f.*,c.title as name')
                 ->from("$this->table  f")
-                ->leftJoin("$this->playlist p", "p.id=f.play_id")
-                ->leftJoin("$this->tag_index idx", "f.id=idx.video_id")
-                ->leftJoin("$this->table_tags t", "t.id=idx.tag_id")
-                ->leftJoin("$this->table_category_index cidx", "f.id=cidx.pindex")
-                ->leftJoin("$this->table_categories c", "c.id=cidx.pindex")
-                ->group('f.id')
+                ->leftJoin("$this->table_categories  c", 'f.catID=c.id')
                 ->queryAll();
 
         return $results;
@@ -98,26 +84,12 @@ class Media extends CFormModel {
     public function deleteRecord($id) {
         $transaction = $this->connection->beginTransaction();
         try {
-            $query_tag = "SELECT * FROM " . $this->tag_index . " WHERE video_id =" . $id . "";
-            $conmmand_tag = Yii::app()->db->createCommand($query_tag);
-            $check_tags = $conmmand_tag->queryAll();
-
-            if ($check_tags) {
-                foreach ($check_tags as $tag) {
-                    $this->command->delete($this->tag_index, 'id=:id', array('id' => $tag['id']));
-                }
+            $query = "SELECT * FROM " . $this->table_episode . " WHERE film_id =" . $id . "";
+            $conmmand = Yii::app()->db->createCommand($query);
+            $check_episode = $conmmand->queryRow();
+            if ($check_episode) {
+                $this->command->delete($this->table_episode, 'episode_id=:ep_id', array('ep_id' => $check_episode['episode_id']));
             }
-
-            $query_cate = "SELECT * FROM " . $this->table_category_index . " WHERE pindex =" . $id . " AND type=0";
-            $conmmand_cate = Yii::app()->db->createCommand($query_cate);
-            $check_cate = $conmmand_cate->queryAll();
-            if ($check_cate) {
-                foreach ($check_cate as $cate) {
-                    $this->command->delete($this->table_category_index, 'id=:id', array('id' => $cate['id']));
-                }
-            }
-
-
             $this->command->delete($this->table, 'id=:id', array('id' => $id));
             return $transaction->commit();
         } catch (Exception $e) {
@@ -130,42 +102,15 @@ class Media extends CFormModel {
     public function updateMedia($data) {
         $transaction = $this->connection->beginTransaction();
         try {
-
-            $this->command->update($this->table, $data['video'], 'id=:id', array('id' => $data['video']['id']));
-            if (isset($data['tags']) && $data['tags']) {
-                foreach ($data['tags'] as $tag) {
-                    $data_tags = array('tag_id' => $tag, 'video_id' => $data['video']['id']);
-                    $query = "SELECT * FROM " . $this->tag_index . " WHERE tag_id =" . $tag . "";
-                    $conmmand = Yii::app()->db->createCommand($query);
-                    $check_tags = $conmmand->queryAll();
-                    if ($check_tags) {
-                        foreach ($check_tags as $t) {
-                            $this->command->update($this->tag_index, $data_tags, 'id=:id', array('id' => $t['id']));
-                        }
-                    } else {
-                        $this->command->insert($this->tag_index, $data_tags);
-                    }
+            if (isset($data['episode']) && $data['episode']) {
+                $query = "SELECT * FROM " . $this->table_episode . " WHERE film_id =" . $data['film']['id'] . "";
+                $conmmand = Yii::app()->db->createCommand($query);
+                $check_episode = $conmmand->queryRow();
+                if ($check_episode) {
+                    $this->command->update($this->table_episode, $data['episode'], 'episode_id=:ep_id', array('ep_id' => $check_episode['episode_id']));
                 }
             }
-
-
-            if (isset($data['categories']) && $data['categories']) {
-                foreach ($data['categories'] as $cate) {
-                    $data_cates = array('cat_id' => $cate, 'pindex' => $data['video']['id'], 'type' => 0);
-                    $query_cate = "SELECT * FROM " . $this->tag_index . " WHERE tag_id =" . $tag . "";
-                    $conmmand_cate = Yii::app()->db->createCommand($query_cate);
-                    $check_cates = $conmmand_cate->queryAll();
-                    if ($check_cates) {
-                        foreach ($check_tags as $c) {
-                            $this->command->update($this->table_category_index, $data_cates, 'id=:id', array('id' => $c['id']));
-                        }
-                    } else {
-                        $this->command->insert($this->tag_index, $data_cates);
-                    }
-                }
-            }
-
-
+            $this->command->update($this->table, $data['film'], 'id=:id', array('id' => $data['film']['id']));
             return $transaction->commit();
         } catch (Exception $e) {
             Yii::log('Eror!: ' + $e->getMessage());
@@ -174,47 +119,14 @@ class Media extends CFormModel {
     }
 
     public function getMediaById($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE id =" . $id . "";
-        $conmmand = Yii::app()->db->createCommand($query);
-        $result = $conmmand->queryRow();
-        return $result;
-    }
 
-    public function getVideoAndByTag($fid) {
-        $results = $this->command->select('idx.video_id,idx.tag_id,t.*')
-                ->from("$this->tag_index  idx")
-                ->join("$this->table_tags t", "t.id=idx.tag_id")
-                ->where("idx.video_id=$fid")
-                ->queryAll();
+        $results = $this->command->select('f.*,ep.*')
+                ->from("$this->table  f")
+                ->leftJoin("$this->table_episode  ep", 'ep.film_id=f.id')
+                ->where("f.id=$id")
+                ->queryRow();
+        //var_dump($results);die;
         return $results;
-    }
-
-    public function deleteTagIndexByVideo($fid) {
-        $transaction = $this->connection->beginTransaction();
-        try {
-            $this->command->delete($this->tag_index, 'video_id=:vid', array('vid' => $fid));
-            $transaction->commit();
-            return TRUE;
-        } catch (Exception $e) {
-            Yii::log('Eror!: ' + $e->getMessage());
-            $transaction->rollback();
-            return false;
-        }
-    }
-
-    public function getVideoAndByCategories($fid) {
-        $results = $this->command->select('idx.pindex,idx.cat_id,c.*')
-                ->from("$this->table_category_index  idx")
-                ->join("$this->table_categories c", "c.id=idx.cat_id")
-                ->where("idx.pindex=$fid")
-                ->queryAll();
-        return $results;
-    }
-
-    private function set_userdata($data) {
-        $session = Yii::app()->session;
-        $session['insertID'] = $data;
-        return $session;
     }
 
 }

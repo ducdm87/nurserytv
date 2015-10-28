@@ -29,24 +29,16 @@ define('AM_NHAC', 4);
 $news_scope = "";
 if (ENABLE_MULTISITE == 1) {
     $domain = $_SERVER['HTTP_HOST'];
-    switch ($domain) {
-        case "nurserytv.dev";
-        case "nurserytv.dev";
-        case "nurserytv.com";
-        case "192.168.1.12:83";    
+    switch ($domain) {        
+        case "dev.nurserytv.com";
+        case "192.168.1.12:83";
+        default : 
             $config_frontend = "app.php";
             $news_scope = 'app';
             $_GET['scope'] = 'app';
             $_REQUEST['scope'] = 'app';
             break;
-        default :
-        case "xang.vietbao.vn";
-        case "giaxang.vietbao.vn";
-            $config_frontend = "giaxang.php";
-            $news_scope = 'giaxang';
-            $_GET['scope'] = 'giaxang';
-            $_REQUEST['scope'] = 'giaxang';
-            break;
+       
     }
 }
 

@@ -12,7 +12,7 @@
 
             <!-- Sidebar -->
             <?php echo $this->renderPartial('/block/sidebar'); ?>
-            <div class="col-md-12"><?php YError::showMessage(); ?></div>
+            <div class="col-md-12"><?php YiiMessage::showMessage(); ?></div>
             <div id="page-wrapper">
                 <?php $this->showToolbar(); ?>
                 <?php echo $content; ?>

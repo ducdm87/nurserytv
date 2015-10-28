@@ -4,11 +4,11 @@
         <thead> 
             <tr>
                 <th width="2%" class="title"> #	</th>
-                <th width="3%" class="title"> <input type="checkbox" onclick="checkAll(<?php echo count($items); ?>);" value="" name="toggle"> </th>
-                <th class="title"> <a>Name</a></th>
+                <th width="3%" class="title"> <input type="checkbox" onclick="checkAll(<?php echo count($items); ?>);" value="" name="toggle"> </th>                
+                <th class="title"> <a>Title</a></th>
                 <th class="title" width="3%"> <a>Status</a></th>
-                <th class="title" width="3%"> <a>Feature</a></th>
-                <th class="title" width="20%"> <a>Category</a></th>
+                <th class="title" width="3%"> <a>Feature</a></th>                
+                <th class="title" width="25%"> <a>Category</a></th>
                 <th class="title" width="15%"> <a>Created</a></th>
                 <th class="title"  width="3%"> <a>ID</a></th>
             </tr>
@@ -17,12 +17,12 @@
             <?php
             $k = 0;
             foreach ($items as $i => $item) {
-                $link_edit = $this->createUrl('videos/edit?cid=' . $item['id']);   
-                $link_edit_cat = $this->createUrl('categories/edit?cid=' . $item['catID']);   
+                $link_edit = $this->createUrl('articles/edit?cid=' . $item['id']);   
                 $item['slug'] = $item['id']."-".$item['alias'];
                 $params = urlencode(json_encode( array("id"=>$item['slug']) ));
                  
-                $link_view = "/goto.php?control=videos&action=detail&params=$params";
+                $link_view = "/goto.php?control=articles&action=detail&params=$params";
+                $link_edit_cat = $this->createUrl('categories/edit?cid=' . $item['catID']);   
                 ?>
                 <tr class="row1">
                     <td><?php echo ($i + 1); ?></td>

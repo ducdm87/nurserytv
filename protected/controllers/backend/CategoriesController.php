@@ -7,75 +7,136 @@
  */
 
 class CategoriesController extends BackEndController {
-
-    var $primary = 'id';
+ 
     var $tablename = "{{categories}}";
-    private $service_model;
+    var $tbl_menu = '{{categories}}';
+    var $primary = 'id';
+    var $item = null;
+    
+    private $model;
 
     function init() {
         parent::init();
-        yii::import('application.models.backend.category.*');
-        $this->service_model = Category::getInstance();
+
+        $this->model = Categories::getInstance();
     }
 
     public function actionDisplay() {
-        $lists = $this->service_model->getCategories(10, 0);
-        $item = array();
-        if (isset($_GET['id']) && $_GET['id']) {
-            $item = $this->actionEdit($_GET['id']);
-        }
-        $this->render('default', array("lists" => $lists, 'item' => $item));
-    }
-
-    public function actionAdd() {
-        if (isset($_POST) && $_POST) {
-            $data = array(
-                'id' => (Request::getVar('id', '')) ? Request::getVar('id', '') : false,
-                'title' => Request::getVar('name', ''),
-                'alias' => Request::getVar('alias', ''),
-                'status' => Request::getVar('status', ''),
-                'description' => Request::getVar('description', ''),
-                'metakey' => Request::getVar('metakey', ''),
-                'metadesc' => Request::getVar('metadesc', ''),
-                'type' => (Request::getVar('type', '')) ? Request::getVar('type', '') : 0,
-                'cdate' => date('Y:m:d H:i:s', time()),
-                'mdate' => isset($_POST['id']) ? date('Y:m:d H:i:s', time()) : false
-            );
-            if (isset($data['id']) && $data['id']) {
-                if (!$this->service_model->updateCategory($data)) {
-                    YError::raseWarning("Update bean has success!.");
-                } else {
-                    YError::raseNotice("Error! Update fail!.");
-                }
-            } else {// $_POST['id'] null add new 
-                if ($this->service_model->addCategory($data)) {
-                    YError::raseWarning("Create bean has success!.");
-                } else {
-                    YError::raseNotice("Error! Created fail!.");
-                }
+        
+        $task = Request::getVar('task', "");
+        if ($task != "") {
+            $cids = Request::getVar('cid');            
+            for ($i = 0; $i < count($cids); $i++) {
+                $cid = $cids[$i];
+                if ($task == "publish")
+                    $this->changeStatus ($cid, 1);
+                else if ($task == "hidden")
+                    $this->changeStatus ($cid, 2);
+                elseif($task == "unpublish") $this->changeStatus ($cid, 0);
+                else if($task == "feature.on") $this->changeFeature ($cid, 1);
+                else if($task == "feature.off") $this->changeFeature ($cid, 0);
             }
-
-            $this->redirect($this->createUrl("/categories"));
+            YiiMessage::raseSuccess("Successfully saved changes category(s)");
         }
+        
+        
+        $this->addIconToolbar("Creat", $this->createUrl("/categories/new"), "new");
+        $this->addIconToolbar("Edit", $this->createUrl("/categories/edit"), "edit", 1, 1, "Please select a item from the list to edit");        
+        $this->addIconToolbar("Publish", $this->createUrl("/categories/publish"), "publish");
+        $this->addIconToolbar("Unpublish", $this->createUrl("/categories/unpublish"), "unpublish");
+        $this->addIconToolbar("Delete", $this->createUrl("/categories/remove"), "trash", 1, 1, "Please select a item from the list to Remove");        
+        $this->addBarTitle("Categories <small>[manager]</small>", "user");   
+        
+        $items = $this->model->getItems();
+        
+        $this->render('default', array("items" => $items));
+    }
+ 
+
+    public function actionEdit() {
+        $cid = Request::getVar('cid', "");        
+        setSysConfig("sidebar.display", 0);
+        
+        $this->addIconToolbar("Save", $this->createUrl("/categories/save"), "save");
+        $this->addIconToolbar("Apply", $this->createUrl("/categories/apply"), "apply");
+        $this->addBarTitle("Category <small>[Edit]</small>", "user");
+        $this->addIconToolbar("Close", $this->createUrl("/categories/cancel"), "cancel");
+        $this->pageTitle = "Edit category";           
+        
+        $obj = YiiCategory::getInstance();        
+        $item = $obj->loadItem($cid, "*", false); 
+        $lists = $this->model->getListEdit($item);
+        
+        $this->render('edit', array("item" => $item, "lists"=>$lists));
     }
 
-    public function actionEdit($id) {
-        // if (isset($_POST['id']) && $_POST['id']) {
-        $item = $this->service_model->getCategoryById($id);
-        return $item;
-        // }
+    function actionApply() {
+        $cid = $this->store();
+        $this->redirect($this->createUrl('categories/edit') . "?cid=" . $cid);
     }
-
-    public function actionDelete($id = false) {
-
-        if ($this->service_model->deleteRecord($id)) {
-
-            YError::raseWarning("Delete bean has success!.");
-        } else {
-
-            YError::raseNotice("Error! Delete fail!.");
+    
+    function actionSave() {
+        $cid = $this->store();
+        $this->redirect($this->createUrl('categories/'));
+    }
+    
+    function actionCancel()
+    {
+        $this->redirect($this->createUrl('categories/'));
+    }
+    
+    public function store() {
+        global $mainframe;
+        
+        $cid = Request::getVar("id", 0); 
+        
+        $obj_category = YiiCategory::getInstance();        
+        $obj_category = $obj_category->loadItem($cid, "*", false); 
+         
+        $obj_category->bind($_POST);           
+        $obj_category->store(); 
+ 
+        YiiMessage::raseSuccess("Successfully save Category");
+        return $obj_category->id;
+    }
+    
+    
+     function actionPublish()
+    {
+        $cids = Request::getVar("cid", 0);        
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){
+                $this->changeStatus($cids[$i], 1);
+            }
         }
-        $this->redirect($this->createUrl("/categories"));
+        YiiMessage::raseSuccess("Successfully publish Cateegory(s)");
+        $this->redirect($this->createUrl('categories/'));
     }
-
+    
+    function actionUnpublish()
+    {
+        $cids = Request::getVar("cid", 0);        
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){                
+                $this->changeStatus($cids[$i], 0);
+            }
+        }
+        YiiMessage::raseSuccess("Successfully unpublish Cateegory(s)");
+        $this->redirect($this->createUrl('categories/'));
+    }
+    
+    function changeStatus($cid, $value)
+    {
+        $obj = YiiCategory::getInstance();        
+        $obj = $obj->loadItem($cid, "*", false); 
+        $obj->status = $value;
+        $obj->store();
+    }
+    function changeFeature($cid, $value)
+    {
+        $obj = YiiCategory::getInstance();        
+        $obj = $obj->loadItem($cid, "*", false); 
+        $obj->feature = $value;
+        $obj->store();
+    }
 }

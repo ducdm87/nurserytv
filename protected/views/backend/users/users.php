@@ -19,7 +19,7 @@
             <?php
             $k = 0;
             foreach ($list_user as $i => $item) {
-                $link_edit = $this->createUrl("/user/edit")."?cid[]=" . $item['id'];
+                $link_edit = $this->createUrl("/users/edit")."?cid[]=" . $item['id'];
                 ?>
                 <tr class="row1">
                     <td><?php echo ($i + 1); ?></td>
@@ -32,7 +32,7 @@
                     <td><?php echo $item['username'] ?></td>
                     <td>v</td>
                     <td><?php echo buildHtml::status($i, $item['status']); ?></td>
-                    <td><?php echo $arr_group[$item['groupID']][1]; ?></td>
+                    <td><?php echo $arr_group[$item['groupID']]['name']; ?></td>
                     <td><?php echo $item['email'] ?></td>
                     <td><?php echo $item['lastvisit'] ?></td>
                     <td><?php echo $item['id'] ?></td>

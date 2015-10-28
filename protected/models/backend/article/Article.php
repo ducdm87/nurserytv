@@ -6,9 +6,10 @@
  * and open the template in the editor.
  */
 
-class Post extends CFormModel {
+class Article extends CFormModel {
 
-    private $table = "{{posts}}";
+    private $table = "{{articles}}";
+    private $table_categories = "{{categories}}";
     private $command;
     private $connection;
 
@@ -23,10 +24,44 @@ class Post extends CFormModel {
         static $instance;
 
         if (!is_object($instance)) {
-            $instance = new Post();
+            $instance = new Article ();
         }
         return $instance;
     }
+    
+    function getItems($limit = 10, $start = 0, $where = array()){
+        $obj_table = YiiArticle::getInstance();
+        $items = $obj_table->getItems(null, $conditions = "", $orderBy ="A.id desc", $limit, $start);
+        return $items;
+    }
+    
+    public function getItem($cid){
+        $obj_table = YiiArticle::getInstance();
+        $result = $obj_table->loadItem($cid);        
+        return $result;
+    }
+    
+    public function getListEdit($mainItem)
+    {
+        $list = array();
+
+        $obj_module = YiiCategory::getInstance();
+        $items = $obj_module->loadItems('id value, title text');
+        $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
+         
+        $items = array();
+        $items[] = array("value"=>0, "text"=>"Unpublish");
+        $items[] = array("value"=>1, "text"=>"Publish");
+        $items[] = array("value"=>-1, "text"=>"Hidden");
+        $list['status'] = buildHtml::select($items, $mainItem->status, "status");
+        
+        $items = array();
+        $items[] = array("value"=>0, "text"=>"Disable");
+        $items[] = array("value"=>1, "text"=>"Enable");        
+        $list['feature'] = buildHtml::select($items, $mainItem->feature, "feature");        
+        return $list;
+    }
+    
 
     public function addPost($data) {
         $transaction = $this->connection->beginTransaction();
@@ -68,8 +103,9 @@ class Post extends CFormModel {
             }
         }
 
-        $results = $this->command->select('p.*')
+        $results = $this->command->select('p.*,c.title as name')
                 ->from("$this->table  p")
+                ->leftJoin("$this->table_categories  c", 'p.catid=c.id')
                 ->queryAll();
 
         return $results;
@@ -93,18 +129,8 @@ class Post extends CFormModel {
             Yii::log('Eror!: ' + $e->getMessage());
 
             return $transaction->rollback();
+            ;
         }
-    }
-
-    /**
-     * 
-     * @return type
-     */
-    public function getCountTotal() {
-        $query = $this->command->select('*')
-                ->from($this->table)
-                ->queryAll();
-        return (int) count($query);
     }
 
 }

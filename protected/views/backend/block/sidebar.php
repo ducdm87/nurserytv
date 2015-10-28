@@ -26,63 +26,53 @@
                         <i class="fa fa-caret-square-o-down"></i> System <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="<?php if ($controll == "system" AND $action == "config") echo "active"; ?>"><a href="<?php echo $this->createUrl('system/config'); ?>">Config</a></li>                    
+                        <?php echo showSideBarMenu("system","config", "Config"); ?>
                         <li><a href="#">Info</a></li>                
                     </ul>
                 </li>
-                <li class="dropdown">
+
+                <li class="dropdown <?php if ($controll == "users" OR $controll == "usergroups") echo "active current"; ?>">
                     <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-film"></i> Media 
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li class="<?php if ($controll == "videos") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('videos/'); ?>">Videos</a>
-                        </li>
-                        <li class="<?php if ($controll == "playlist") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('playlists/'); ?>">Danh sách phát</a>
-                        </li>
-                        <li class="<?php if ($controll == "caetgories") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('categories/'); ?>">Danh mục</a>
-                        </li>
-                        <li class="<?php if ($controll == "tags") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('tags/'); ?>">Tags</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown <?php if ($controll == "posts") echo "active current"; ?>">
-                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Tin Tức
-                        <b class="caret"></b>
+                        <i class="fa fa-caret-square-o-down"></i> Users <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu"> 
-                        <li class="<?php if ($controll == "users" AND $action == "groups") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('posts/'); ?>">Dánh sách tin tức</a>
-                        </li>
-                        <li class="<?php if ($controll == "users" AND $action == "display") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('posts/create'); ?>">Thêm tin tức</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown <?php if ($controll == "users") echo "active current"; ?>">
-                    <a href="<?php echo $this->createUrl('users/'); ?>" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Users
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu"> 
-                        <li class="<?php if ($controll == "users" AND $action == "groups") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('users/groups'); ?>">Groups</a>
-                        </li>
-                        <li class="<?php if ($controll == "users" AND $action == "display") echo "active"; ?>">
-                            <a href="<?php echo $this->createUrl('users/'); ?>">Users</a>
-                        </li>
+                        <?php echo showSideBarMenu("usergroups","", "Groups", "fa-folder"); ?>
+                        <?php echo showSideBarMenu("users","", "Users", "fa-file"); ?>
                     </ul>
                 </li>
 
+                <?php echo showSideBarMenu("menus","menutypes", "Menus", "fa-file"); ?>
+                 
+
+                <li class="dropdown <?php if ($controll == "categories" OR $controll == "articles"  
+                                            OR $controll == "videos" OR $controll == "playlists") echo "active current"; ?>">
+                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                        <i class="fa fa-caret-square-o-down"></i> Applications 
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php echo showSideBarMenu("categories","", "Categories"); ?>
+                        <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
+                        <?php echo showSideBarMenu("playlists","", "playlist Video", "fa-film"); ?>
+                        <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
+                    </ul>
+                </li> 
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                        <i class="fa fa-caret-square-o-down"></i> Extension 
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php echo showSideBarMenu("modules","", "Modules"); ?>
+                    </ul>
+                </li>
 
             </ul>
         <?php } ?>
 
         <ul class="nav navbar-nav navbar-right navbar-user">
+            <li>
+                <a href="/" class="dropdown-toggle" target="_blank"> Time server: <?php echo date("H:i:s d/m/Y"); ?> </a>
+            </li>
             <li>
                 <a href="/" class="dropdown-toggle" target="_blank"> Visit site</a>
             </li>
@@ -114,3 +104,25 @@
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
+
+<?php 
+function showSideBarMenu($_controller, $_action, $title, $_class="fa-folder")
+{
+    $controll = Yii::app()->controller->id;
+    $action = Yii::app()->controller->action->id;
+    $link = Yii::app()->createUrl("$_controller/$_action");  
+    $class = "";
+    $_class = "fa " . $_class;
+    if($_action == "") $_action = "display";
+     
+    if($controll == $_controller AND $action == $_action){
+        $class = "active current";
+        $_class .= " fa-spin";
+    }
+    
+    $html = '<li class="'.$class.'">
+                <a href="'.$link.'"> <i class="'.$_class.'"></i> '.$title.'</a>
+            </li> ';
+    return $html;
+}
+?>
