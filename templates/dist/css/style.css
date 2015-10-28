@@ -1,0 +1,427 @@
+
+
+body{
+
+}
+a:hover{
+    text-decoration: none;
+}
+.top-20{
+    margin-top: 20px;
+}
+
+/*
+======================Search====================*/
+.search {
+    padding: 7px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: left;
+    line-height: 22px;
+}
+.search input {
+    position: absolute;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    height: 28px;
+    line-height: 18px;
+    padding: 0 2px 0 2px;
+    border-radius:1px;
+    padding-left: 15px;
+    font-weight: initial;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.search .btn {
+    height: 28px;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    border-radius:1px;
+    width: 50px;
+}
+.search .btn-primary {
+    color: #fff;
+    background-color: #f945a7;
+    border-color: #f945a7;
+}
+
+/*
+=========APP=====*/
+h2.vega_title span {
+    display: block;
+    text-transform: uppercase;
+    color: #f945a7;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+h2.vega_title {
+    border-bottom: 3px solid #32afbe;
+    margin: 0px 0px 20px 0px;
+    /*    margin-left: 20px;
+        margin-right: 20px;*/
+}
+
+.carousel-control {
+    padding-top:5%;
+    width:5%;
+}
+.carousel-control.right,.carousel-control.left{
+    background-image: none;
+}
+.carousel-control.left{
+    left: -10px;
+}
+.carousel-control.right{
+    right: -10px;
+}
+/*
+===========ENTRY============*/
+.entry-title{
+    background: url(../../../images/app/bg_title.png) repeat-x;
+    height: 50px;
+}
+
+.entry-title-text{
+    background: url(../../../images/app/bg_title_text.png) no-repeat;
+    height: 45px;
+    position: relative;
+    top: 5px;
+}
+.entry-title-text span{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+.entry-content{
+    margin-top: 20px;
+}
+
+.no-padding-left{
+    padding-left: 0px;
+}
+.no-padding{
+    padding: 0px;
+}
+.entry-recomment-item{
+    margin-bottom: 10px;
+}
+.no-padding-right{
+    padding-right: 0px;
+}
+.entry-recomment-item h4,.entry-recomment-item h4 a, h4 a{
+    margin: 0;
+    font-size: 12px;
+    color: #f945a7;
+    font-weight: bold;
+    text-decoration: none;
+}
+.entry-recomment-item h4 a:hover{
+    text-decoration: none;
+}
+.entry-caption{
+    margin-top: 20px;
+}
+.entry-caption a,.entry-caption h4{
+    font-size: 16px;
+    color: #f945a7;
+    font-weight: bold;
+}
+.entry-caption a:hover{
+    text-decoration: none;
+}
+
+.icon-play{
+    background: url(../../../images/app/icon-play.png) no-repeat;
+    height: 112px;
+    width: 108px;
+    position: absolute;
+    top: 90px;
+    left: 190px;
+    display: block;
+}
+
+.sidebar .icon-play{
+    background: url(../../../images/app/icon-play-small.png) no-repeat;
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    top: 66px;
+    left: 120px;
+    display: block;
+}
+.sidebar .hot-video{
+    border: 2px solid #eee;
+}
+.sidebar .hot-video .entry-recomment-item{
+    padding: 10px;
+    margin-bottom: 0px;
+}
+.entry-play-list-all{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 0.6;
+    top:0;
+    display: none;
+}
+.embed-responsive:hover>.entry-play-list-all{
+    display: block;
+}
+.entry-play-list-all span{
+    position: absolute;
+    text-align: center;
+    top: 130px;
+    font-size: 22px;
+    left: 80px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+}
+.entry-play-list{
+    width: 150px;
+    position: absolute;
+    height: 100%;
+    background: #222222;
+    right: 0;
+    top: 0;
+    opacity: 0.8;
+}
+.play-list-text{
+    vertical-align: middle;
+    position: absolute;
+    left: 50px;
+    top: 90px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+.play-list-text i{
+    font-size: 28px;
+}
+
+.entry-user{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    clear: both;
+}
+.entry-desc{
+    margin-top: 20px;
+}
+
+.entry-recomment{
+    margin-left: 30px;
+}
+.entry-like{
+    margin-left: 40px;
+}
+.sidebar .entry-play-list-all{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 0.6;
+    top:0;
+}
+.sidebar .entry-play-list-all span{
+    position: absolute;
+    text-align: center;
+    top: 90px;
+    font-size: 14px;
+    left: 40px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+}
+.sidebar .entry-play-list{
+    width: 150px;
+    position: absolute;
+    height: 100%;
+    background: #222222;
+    right: 0;
+    top: 0;
+    opacity: 0.8;
+}
+.sidebar .play-list-text{
+    vertical-align: middle;
+    position: absolute;
+    left: 50px;
+    top: 60px;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+.sidebar .play-list-text i{
+    font-size: 28px;
+}
+
+.play-list-item .entry-play-list-all span{
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    font-size: 14px;
+    left: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+}
+.play-list-item .play-list-text{
+    vertical-align: middle;
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+.play-list-item .entry-play-list{
+    width: 70px;
+    position: absolute;
+    height: 100%;
+    background: #222222;
+    right: 0;
+    top: 0;
+    opacity: 0.8;
+}
+.play-list-item{
+    margin-bottom: 15px;
+}
+/*
+===========DETAIL VIDEO*/
+
+.detail-video{
+    background-color: #333;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.form-control{
+    border-radius: 0px;
+}
+.btn-warning{
+    background: #ff0000;
+    border-color: #ff0000;
+    border-radius: 0px;
+    width: 60px;
+    float: right;
+}
+/*
+================BG FOOTER==================*/
+footer{
+    margin-top: 40px;
+}
+.bg-footer{
+    background-color: #16a4b5;
+}
+
+.footer-bellow{
+    padding: 15px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.news-items .thumbnail{
+    border-radius:0px;
+    border: 0px;
+    padding: 0px;
+}
+
+.news-items .thumbnail img{
+    height: 100%;
+    width: 100%;
+    display: block;
+
+}
+.news-items .thumbnail .caption a{
+    color: #00cccc;
+    font-weight: bold;
+
+}
+#scollbar ::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#scollbar::-webkit-scrollbar{
+    width: 12px;
+}
+
+
+
+#scollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+
+#scollbar::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+#box ::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+#box ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+#box ::-webkit-scrollbar {
+    width: 12px;
+}
+#box ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+
+
+/*
+===================SEARCH AUTO COMPLTE=========*/
+
+#search-result {
+    position: absolute;
+    top: 40px;
+    background: #ffffff;
+    padding: 10px;
+    z-index: 99999;
+    height: 200px;
+    overflow-y: scroll;
+    margin-left: -80px;
+    width: 320px;
+    display: none;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+#search-result .search-items{
+    margin-bottom: 15px;
+}
+#search-result h4{
+    color: #ffffff;
+    font-size: 12px;
+}
