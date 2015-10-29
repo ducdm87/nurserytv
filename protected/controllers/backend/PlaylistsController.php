@@ -30,8 +30,8 @@ class PlaylistsController extends BackEndController {
                 else if ($task == "hidden")
                     $this->changeStatus ($cid, 2);
                 elseif($task == "unpublish") $this->changeStatus ($cid, 0);
-                else if($task == "feature.on") $this->changeFeature ($cid, 1);
-                else if($task == "feature.off") $this->changeFeature ($cid, 0);
+                else if($task == "feature.on") $this->changeStatus ($cid, 1,"feature");
+                else if($task == "feature.off") $this->changeStatus ($cid, 0,"feature");
             }
             YiiMessage::raseSuccess("Successfully saved changes playlist(s)");
         }
@@ -158,22 +158,12 @@ class PlaylistsController extends BackEndController {
         $this->redirect($this->createUrl('playlists/'));
     }
 
-    function changeStatus($cid, $value)
+    function changeStatus($cid, $value, $field = "status")
     {
         $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
         $obj_table = $obj_table->load($cid); 
         $obj_table->load($cid); 
-        $obj_table->status = $value;
+        $obj_table->$field = $value;
         $obj_table->store();
     }
-    
-    function changeFeature($cid, $value)
-    {
-        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
-        $obj_table = $obj_table->load($cid); 
-        $obj_table->load($cid); 
-        $obj_table->feature = $value;
-        $obj_table->store();
-    }
-
 }

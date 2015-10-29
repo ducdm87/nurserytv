@@ -28,8 +28,10 @@ class VideosController extends BackEndController {
                 else if ($task == "hidden")
                     $this->changeStatus ($cid, 2);
                 elseif($task == "unpublish") $this->changeStatus ($cid, 0);
-                else if($task == "feature.on") $this->changeFeature ($cid, 1);
-                else if($task == "feature.off") $this->changeFeature ($cid, 0);
+                else if($task == "feature.on") $this->changeStatus($cid, 1, "feature");                 
+                else if($task == "feature.off") $this->changeStatus($cid, 0, "feature");
+                else if($task == "hotweek.on") $this->changeStatus($cid, 1, "hotweek");
+                else if($task == "hotweek.off") $this->changeStatus($cid, 0, "hotweek");
             }
             YiiMessage::raseSuccess("Successfully saved changes video(s)");
         }
@@ -140,18 +142,11 @@ class VideosController extends BackEndController {
         $this->redirect($this->createUrl('videos/'));
     }
 
-    function changeStatus($cid, $value)
+    function changeStatus($cid, $value, $field = "status")
     {
         $obj = YiiTables::getInstance(TBL_VIDEOS);   
         $obj->load($cid); 
-        $obj->status = $value;
-        $obj->store();
-    }
-    function changeFeature($cid, $value)
-    {
-        $obj = YiiTables::getInstance(TBL_VIDEOS);   
-        $obj->load($cid); 
-        $obj->feature = $value;
+        $obj->$field = $value;
         $obj->store();
     }
 }

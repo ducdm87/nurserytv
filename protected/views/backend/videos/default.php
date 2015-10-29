@@ -8,6 +8,7 @@
                 <th class="title"> <a>Name</a></th>
                 <th class="title" width="3%"> <a>Status</a></th>
                 <th class="title" width="3%"> <a>Feature</a></th>
+                <th class="title" width="3%"> <a>Hot Week</a></th>
 <!--                <th class="title" width="20%"> <a>Category</a></th>-->
                 <th class="title" width="15%"> <a>Created</a></th>
                 <th class="title"  width="3%"> <a>ID</a></th>
@@ -34,6 +35,7 @@
                     </td>
                     <td><?php echo buildHtml::status($i, $item['status']); ?></td>
                     <td><?php echo buildHtml::changState($i, $item['feature'],"feature."); ?></td>
+                    <td><?php echo buildHtml::changState($i, $item['hotweek'],"hotweek."); ?></td>
 <!--                    <td>
                         <a href="<?php echo $link_edit_cat; ?>"><?php echo $item['cat_title']; ?></a>                           
                     </td>-->
