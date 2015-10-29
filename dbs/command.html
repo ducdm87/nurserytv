@@ -1,0 +1,9 @@
+ALTER TABLE `tbl_playlist` ADD `feature` TINYINT NOT NULL AFTER `status`;
+ALTER TABLE `tbl_playlist` ADD `cdate` DATETIME NOT NULL AFTER `metadesc`, ADD `mdate` DATETIME NOT NULL AFTER `cdate`;
+ALTER TABLE `tbl_category_index` DROP `id`
+ALTER TABLE `tbl_category_index` ADD PRIMARY KEY( `cat_id`, `pindex`);
+
+CREATE TABLE IF NOT EXISTS `tbl_playlist_xref` (
+  `playlistID` int(11) NOT NULL,
+  `videoID` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

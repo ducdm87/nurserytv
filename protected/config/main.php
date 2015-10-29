@@ -4,12 +4,15 @@ define("TBL_MENU", "{{menus}}");
 define("TBL_MENU_ITEM", "{{menu_item}}");
 define("TBL_ARTICLES", "{{articles}}");
 define("TBL_CATEGORIES", "{{categories}}");
+define("TBL_CATEGORIES_XREF", "{{category_index}}");
 define("TBL_EXTENSIONS", "{{extensions}}");
 define("TBL_MODULES", "{{modules}}");
 define("TBL_MODULE_MENUITEM_REF", "{{module_menuitem_ref}}");
 define("TBL_SESSION", "{{session}}");
 define("TBL_USERS", "{{users}}");
 define("TBL_USERS_GROUP", "{{users_group}}");
+define("TBL_PLAYLIST", "{{playlist}}");
+define("TBL_PLAYLIST_XREF", "{{playlist_xref}}");
 define("TBL_VIDEOS", "{{videos}}");
 
 return array(

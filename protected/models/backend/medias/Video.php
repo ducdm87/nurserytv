@@ -55,9 +55,16 @@ class Video extends CFormModel {
     {
         $list = array();
 
-        $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems('id value, title text');
-        $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
+//        $obj_category = YiiCategory::getInstance();
+//        $items = $obj_category->loadItems('id value, title text');
+//        $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
+         
+        $obj_category_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+        $list_value = $obj_category_index->loadColumn("playlistID", "`videoID` = $mainItem->id");
+        
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);    
+        $items = $obj_table->loads('id value, name text');
+        $list['playlist'] = buildHtml::select($items, $list_value, "playlistID[]","","size=7 multiple style=\"width: 100%;\"");
          
         $items = array();
         $items[] = array("value"=>0, "text"=>"Unpublish");

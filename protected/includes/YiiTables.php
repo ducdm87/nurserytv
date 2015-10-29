@@ -155,7 +155,9 @@ class YiiTables{
     }
     
     function store(){
-        $id = $this->{$this->_primary};
+        $id = 0;
+        if(isset($this->{$this->_primary}))
+            $id = $this->{$this->_primary};
         if(isset($this->lft) AND isset($this->rgt) 
                 AND isset($this->_old_parent)  AND isset($this->parentID)){
             $change_ordering = false;
@@ -204,7 +206,8 @@ class YiiTables{
         }
         $insterted = implode(",", $insterted); 
        
-        $id = $this->{$this->_primary};
+        if(isset($this->{$this->_primary}))
+            $id = $this->{$this->_primary};
         
         $query = "";
         if ($id != 0) {
@@ -229,8 +232,9 @@ class YiiTables{
         $query_command->execute();
         if ($id == 0)
             $id = $this->_db->lastInsertID;
-         
-        $this->{$this->_primary} = $id;
+          
+        if(isset($this->{$this->_primary}))
+            $id = $this->{$this->_primary} = $id;        
         
         if(isset($this->lft) AND isset($this->rgt) 
                 AND isset($this->_old_parent)  AND isset($this->parentID)
@@ -268,7 +272,8 @@ class YiiTables{
     function remove($id = null, $condition = "")
     {
         if($id == null OR $id == 0 or $id == ""){
-            $id = $this->{$this->_primary};
+            if(isset($this->{$this->_primary}))
+                $id = $this->{$this->_primary};
         }
         
         if($id != null and $id != 0 and $id != ""){

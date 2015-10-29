@@ -29,109 +29,40 @@ class Playlist extends CFormModel {
         }
         return $instance;
     }
-
-    public function addPlaylist($data) {
-
-        $transaction = $this->connection->beginTransaction();
-        try {
-            $this->command->insert($this->table, $data['playlist']);
-            $fid = $this->connection->getLastInsertID();
-            if (isset($data['categories']) && $data['categories']) {
-                $data_categori = array();
-                foreach ($data['categories'] as $cate) {
-                    $data_category['cat_id'] = $cate;
-                    $data_category['pindex'] = $fid;
-                    $data_category['type'] = 1;
-                    $this->command->insert($this->table_category_index, $data_category);
-                }
-            }
-            return $transaction->commit();
-        } catch (Exception $e) {
-            Yii::log('Eror!: ' + $e->getMessage());
-            $transaction->rollback();
-            return false;
-        }
-    }
-
-    public function updatePlaylist($data) {
-        $transaction = $this->connection->beginTransaction();
-        try {
-            $this->command->update($this->table, $data['playlist'], 'id=:id', array('id' => $data['playlist']['id']));
-            if (isset($data['categories']) && $data['categories']) {
-                foreach ($data['categories'] as $category) {
-                    $data_cates = array('cat_id' => $category, 'pindex' => $data['playlist']['id'],'type'=>1);
-                    $query = "SELECT * FROM " . $this->table_category_index . " WHERE cat_id =" . $category . "";
-                    $conmmand = Yii::app()->db->createCommand($query);
-                    $check_category = $conmmand->queryAll();
-                    if ($check_category) {
-                        foreach ($check_category as $t) {
-                            $this->command->update($this->table_category_index, $data_cates, 'id=:id', array('id' => $t['id']));
-                        }
-                    } else {
-                        $this->command->insert($this->table_category_index, $data_cates);
-                    }
-                }
-            }
-        } catch (Exception $e) {
-            Yii::log('Eror!: ' + $e->getMessage());
-            return $transaction->rollback();
-        }
-        return $transaction->commit();
-    }
-
-    public function getPlaylists($limit = 5, $offset = 0, $where = array(), $order = false, $by = false) {
-
-        if ($limit > 0) {
-            $this->command->limit($limit, $offset);
-        }
-        $results = $this->command->select('p.*,idx.cat_id')
-                ->from("$this->table p")
-                ->leftJoin("$this->table_category_index idx", "p.id=idx.cat_id")
-                ->group('p.id')
-                ->queryAll();
-
+    
+    public function getItems($limit = 5, $offset = 0) {
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);         
+        $results = $obj_table->loads();
         return $results;
     }
 
-    public function countPlaylist() {
-        $query = $this->command->select('*')
-                ->from($this->table)
-                ->queryAll();
-        return (int) count($query);
-    }
-
-    public function getPlaylistById($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE id =" . $id . "";
-        $conmmand = Yii::app()->db->createCommand($query);
-        $result = $conmmand->queryRow();
+    public function getItem($cid) {
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        $result = $obj_table->load($cid);        
         return $result;
     }
 
-    public function getCategoryByPlaylist($pid) {
-        $query = "SELECT * FROM " . $this->table_category_index . " WHERE pindex =" . $pid . " AND type=1";
-        $conmmand = Yii::app()->db->createCommand($query);
-        $result = $conmmand->queryAll();
-        return $result;
-    }
-
-    public function deleteRecord($id) {
-        $transaction = $this->connection->beginTransaction();
-        try {
-
-            $query = "SELECT * FROM " . $this->table_category_index . " WHERE cat_id =" . $id . "";
-            $conmmand = Yii::app()->db->createCommand($query);
-            $check_cate = $conmmand->queryAll();
-            if ($check_cate) {
-                foreach ($check_cate as $cate) {
-                    $this->command->delete($this->table_category_index, 'id=:id', array('id' => $cate['id']));
-                }
-            }
-            $this->command->delete($this->table, 'id=:id', array('id' => $id));
-            return $transaction->commit();
-        } catch (Exception $e) {
-            Yii::log('Eror!: ' + $e->getMessage());
-            return $transaction->rollback();
-        }
+    public function getListEdit($mainItem)
+    {
+        $list = array();
+        $obj_category_index = YiiTables::getInstance(TBL_CATEGORIES_XREF);
+        $list_cat = $obj_category_index->loadColumn("cat_id", "`pindex` = $mainItem->id AND `type` = 2");
+        
+        $obj_module = YiiCategory::getInstance();
+        $items = $obj_module->loadItems('id value, title text', "`scope` = 'playlists'");
+        $list['category'] = buildHtml::select($items, $list_cat, "catID[]","","size=7 multiple");
+         
+        $items = array();
+        $items[] = array("value"=>0, "text"=>"Unpublish");
+        $items[] = array("value"=>1, "text"=>"Publish");
+        $items[] = array("value"=>-1, "text"=>"Hidden");
+        $list['status'] = buildHtml::select($items, $mainItem->status, "status");
+        
+        $items = array();
+        $items[] = array("value"=>0, "text"=>"Disable");
+        $items[] = array("value"=>1, "text"=>"Enable");        
+        $list['feature'] = buildHtml::select($items, $mainItem->feature, "feature");        
+        return $list;
     }
 
 }

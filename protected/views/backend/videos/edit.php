@@ -14,9 +14,9 @@
                     <?php echo buildHtml::renderField("label", "id", $item->id, "ID"); ?>
                     <?php echo buildHtml::renderField("text", "title", $item->title, "Title", "form-control title-generate"); ?>
                     <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
+                    <?php echo buildHtml::renderField("label", "playlist", $list['playlist'], "Playlist"); ?>
                     <?php echo buildHtml::renderField("text", "duration", $item->duration, "Duration"); ?>
-                    <?php echo buildHtml::renderField('textarea',"info", $item->info, "Description"); ?> 
-                    
+                    <?php echo buildHtml::renderField('textarea',"info", $item->info, "Description"); ?>
                 </div>
             </div>
             
@@ -53,7 +53,6 @@
                 <div class="panel-body">
                     <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created",null, "",3,9); ?>
                     <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
-                    <?php echo buildHtml::renderField("label", "category", $list['category'], "Category",null, "",3,9); ?>
                     <?php echo buildHtml::renderField("label", "status", $list['status'], "Status",null, "",3,9); ?>
                     <?php echo buildHtml::renderField("label", "Feature", $list['feature'], "Feature",null, "",3,9); ?>                     
                 </div>
@@ -97,8 +96,8 @@
                     <div class="form-group row">
                         <div class="drapzon">
                             <div class="col-md-6 row container-thumbnail">
-                                <div class="thumbnail" style="height: 200px;">
-                                    <img src="" alt="" id="image_src" style="height:190px;">
+                                <div class="thumbnail" style="height: 100px;">
+                                    <img src="" alt="" id="image_src" style="height:100px;">
                                 </div>
                             </div>
                         </div>

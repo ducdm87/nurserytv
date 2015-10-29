@@ -35,7 +35,7 @@ class ArticlesController extends BackendController {
                 else if($task == "feature.on") $this->changeFeature ($cid, 1);
                 else if($task == "feature.off") $this->changeFeature ($cid, 0);
             }
-            YiiMessage::raseSuccess("Successfully saved changes video(s)");
+            YiiMessage::raseSuccess("Successfully saved changes article(s)");
         }
         
         $this->addIconToolbar("New", $this->createUrl("/articles/new"), "new");

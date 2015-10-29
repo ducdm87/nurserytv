@@ -18,73 +18,162 @@ class PlaylistsController extends BackEndController {
     }
 
     public function actionDisplay() {
-        $lists = array();
-        $lists['playlists'] = $this->getPlaylist();
-        $cate = Category::getInstance();
-        if (isset($_GET['active']) && $_GET['active']) {
-            $playlist = Playlist::getInstance();
-            $updateActive['playlist'] = array('id' => $_GET['id'], 'active' =>($_GET['active']==2)?0:$_GET['active']);
-            $playlist->updatePlaylist($updateActive);
-            $this->redirect($this->createUrl("/playlists"));
-        }
-        if (isset($_GET['id']) && $_GET['id']) {
-            $lists['item'] = $this->playlist->getPlaylistById($_GET['id']);
-            $lists['item']['categories'] = $this->getCategoryByPlaylist($_GET['id']);
-        }
-        $lists['categories'] = $cate->getCategories(0, 0);
-        $this->render('default', $lists);
-    }
-
-    private function getCategoryByPlaylist($id) {
-        $playlist = Playlist::getInstance();
-        return $playlist->getCategoryByPlaylist($id);
-    }
-
-    private function getPlaylist() {
-        $playlist = Playlist::getInstance();
-        return $playlist->getPlaylists(0, 0);
-    }
-
-    public function actionAdd() {
-        if (isset($_POST) && $_POST) {
-            $data['playlist'] = array(
-                'id' => isset($_POST['id']) ? $_POST['id'] : false,
-                'name' => isset($_POST['name']) ? $_POST['name'] : false,
-                'alias' => isset($_POST['alias']) ? $_POST['alias'] : false,
-                'status' => isset($_POST['status']) ? $_POST['status'] : 0,
-                'active' => isset($_POST['active']) ? $_POST['active'] : 0,
-                'metadesc' => isset($_POST['metadesc']) ? $_POST['metadesc'] : '',
-                'metakey' => isset($_POST['metakey']) ? $_POST['metakey'] : '',
-            );
-            if (isset($_POST['categories']) && $_POST['categories']) {
-                $data['categories'] = $_POST['categories'];
+        
+        $task = Request::getVar('task', "");
+        if ($task != "") {
+            $cids = Request::getVar('cid');           
+             
+            for ($i = 0; $i < count($cids); $i++) {
+                $cid = $cids[$i];
+                if ($task == "publish")
+                    $this->changeStatus ($cid, 1);
+                else if ($task == "hidden")
+                    $this->changeStatus ($cid, 2);
+                elseif($task == "unpublish") $this->changeStatus ($cid, 0);
+                else if($task == "feature.on") $this->changeFeature ($cid, 1);
+                else if($task == "feature.off") $this->changeFeature ($cid, 0);
             }
-            if (isset($data['playlist']['id']) && $data['playlist']['id']) {
-                if (!$this->playlist->updatePlaylist($data)) {
-                    YError::raseWarning("Update has bean success!.");
-                } else {
-                    YError::raseNotice("Error! Update fail!.");
-                }
-            } else {
-                if (!$this->playlist->addPlaylist($data)) {
-                    YError::raseWarning("Create bean has success!.");
-                } else {
-                    YError::raseNotice("Error! Created fail!.");
-                }
-            }
-            $this->redirect($this->createUrl("/playlists"));
+            YiiMessage::raseSuccess("Successfully saved changes playlist(s)");
         }
+        
+        $this->addIconToolbar("New", $this->createUrl("/playlists/new"), "new");
+        $this->addIconToolbar("Edit", $this->createUrl("/playlists/edit"), "edit", 1, 1, "Please select a item from the list to edit");        
+        $this->addIconToolbar("Publish", $this->createUrl("/playlists/publish"), "publish");
+        $this->addIconToolbar("Unpublish", $this->createUrl("/playlists/unpublish"), "unpublish");
+        $this->addIconToolbar("Delete", $this->createUrl("/playlists/remove"), "trash", 1, 1, "Please select a item from the list to Remove");        
+        $this->addBarTitle("Playlists <small>[manager]</small>", "user"); 
+        
+        $model = Playlist::getInstance();
+        $items = $model->getItems(0, 0);
+         
+        $data['items'] = $items;
+        $this->render('default', $data); 
     }
 
-    public function actionDelete($id = false) {
-        if ($this->playlist->deleteRecord($id)) {
-
-            YError::raseWarning("Delete bean has success!.");
-        } else {
-
-            YError::raseNotice("Error! Delete fail!.");
+    public function actionNew() {
+        $this->actionEdit();
+    }
+    
+    public function actionEdit($type = false) {
+        
+        $cid = Request::getVar('cid', "");        
+        setSysConfig("sidebar.display", 0);
+        
+        $this->addIconToolbar("Save", $this->createUrl("/playlists/save"), "save");
+        $this->addIconToolbar("Apply", $this->createUrl("/playlists/apply"), "apply");
+        $this->addBarTitle("Playlist <small>[Edit]</small>", "user");
+        $this->addIconToolbar("Close", $this->createUrl("/playlists/cancel"), "cancel");
+        $this->pageTitle = "Edit playlist";     
+        
+        $model = Playlist::getInstance();
+        $item = $model->getItem($cid);
+        
+        $data['item'] = $item;
+        $data['list'] = $model->getListEdit($item);;
+        
+        $this->render('edit', $data);
+    }
+    
+    
+    function actionApply() {
+        $cid = $this->store();
+        $this->redirect($this->createUrl('playlists/edit') . "?cid=" . $cid);
+    }
+    
+    function actionSave() {
+        $cid = $this->store();
+        $this->redirect($this->createUrl('playlists/'));
+    }
+    
+    function actionCancel()
+    {
+        $this->redirect($this->createUrl('playlists/'));
+    }
+    
+    public function store() {
+        global $mainframe;
+        
+        $cid = Request::getVar("id", 0); 
+        
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        $obj_table = $obj_table->load($cid); 
+ 
+        $obj_table->bind($_POST);
+        
+        $obj_table->store();
+         
+        $catIDs = Request::getVar("catID", null); 
+        
+         $obj_xref = YiiTables::getInstance(TBL_CATEGORIES_XREF);
+         $obj_xref->remove(null, "`pindex` = $obj_table->id AND `type` = 2");
+        
+        if($catIDs != null and count($catIDs)>0){
+            foreach($catIDs as $catID){
+                $obj_xref = YiiTables::getInstance(TBL_CATEGORIES_XREF, null, true);
+                $obj_xref->cat_id = $catID;
+                $obj_xref->pindex = $obj_table->id;
+                $obj_xref->type = 2;
+                $obj_xref->store();
+            } 
         }
-        $this->redirect($this->createUrl("/playlists"));
+ 
+        YiiMessage::raseSuccess("Successfully save Playlist");
+        return $obj_table->id;
+    }    
+    
+     function actionPublish()
+    {
+        $cids = Request::getVar("cid", 0);        
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){
+                $this->changeStatus($cids[$i], 1);
+            }
+        }
+        YiiMessage::raseSuccess("Successfully publish Playlist(s)");
+        $this->redirect($this->createUrl('playlist/'));
+    }
+    
+    function actionUnpublish()
+    {
+        $cids = Request::getVar("cid", 0);        
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){                
+                $this->changeStatus($cids[$i], 0);
+            }
+        }
+        YiiMessage::raseSuccess("Successfully unpublish Playlist(s)");
+        $this->redirect($this->createUrl('playlist/'));
+    }
+    
+    function actionRemove()
+    {
+        $cids = Request::getVar("cid", 0);
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){                
+               $obj_table = YiiPlaylist::getInstance();
+               $obj_table->remove($cids[$i]);
+            }
+        }
+        YiiMessage::raseSuccess("Successfully delete Playlist(s)");
+        $this->redirect($this->createUrl('playlists/'));
+    }
+
+    function changeStatus($cid, $value)
+    {
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        $obj_table = $obj_table->load($cid); 
+        $obj_table->load($cid); 
+        $obj_table->status = $value;
+        $obj_table->store();
+    }
+    
+    function changeFeature($cid, $value)
+    {
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        $obj_table = $obj_table->load($cid); 
+        $obj_table->load($cid); 
+        $obj_table->feature = $value;
+        $obj_table->store();
     }
 
 }

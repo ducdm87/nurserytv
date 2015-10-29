@@ -91,15 +91,28 @@ class VideosController extends BackEndController {
         
         $cid = Request::getVar("id", 0); 
         
-        $obj = YiiTables::getInstance(TBL_VIDEOS);        
-        $obj = $obj->load($cid); 
+        $obj_table = YiiTables::getInstance(TBL_VIDEOS);        
+        $obj_table = $obj_table->load($cid); 
         
-        $obj->bind($_POST);           
-       
-        $obj->store();
+        $obj_table->bind($_POST);
+        $obj_table->store();
+        
+        $playlistIDs = Request::getVar("playlistID", null); 
+        
+         $obj_xref = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+         $obj_xref->remove(null, "`videoID` = $obj_table->id");
+        
+        if($playlistIDs != null and count($playlistIDs)>0){
+            foreach($playlistIDs as $playlistID){
+                $obj_xref = YiiTables::getInstance(TBL_PLAYLIST_XREF, null, true);
+                $obj_xref->playlistID = $playlistID;
+                $obj_xref->videoID = $obj_table->id;
+                $obj_xref->store();
+            } 
+        }
  
         YiiMessage::raseSuccess("Successfully save Category");
-        return $obj->id;
+        return $obj_table->id;
     }
     
     

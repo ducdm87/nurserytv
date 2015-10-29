@@ -179,10 +179,11 @@ class buildHtml {
                 if ($text_level1 != "" and $item->level > 0) {
                     $item->text = str_repeat($text_level1, $item->level) . $text_level2 . ucfirst($item->text);
                 }
-                if ($item->value == $seleted)
-                    $html .= "<option value='$item->value' selected='true'>$item->text</option>";
-                else
-                    $html .= "<option value='$item->value'>$item->text</option>";
+                if( ( is_array($seleted) AND in_array($item->value, $seleted)) OR $item->value == $seleted){                    
+                        $html .= "<option value='$item->value' selected='true'>$item->text</option>";
+                }else
+                        $html .= "<option value='$item->value'>$item->text</option>";
+                
             }
             $html .= "</select>";
             return $html;
