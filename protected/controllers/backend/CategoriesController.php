@@ -12,13 +12,10 @@ class CategoriesController extends BackEndController {
     var $tbl_menu = '{{categories}}';
     var $primary = 'id';
     var $item = null;
-    
-    private $model;
 
     function init() {
         parent::init();
-
-        $this->model = Categories::getInstance();
+        yii::import('application.models.backend.category.*');
     }
 
     public function actionDisplay() {
@@ -47,7 +44,8 @@ class CategoriesController extends BackEndController {
         $this->addIconToolbar("Delete", $this->createUrl("/categories/remove"), "trash", 1, 1, "Please select a item from the list to Remove");        
         $this->addBarTitle("Categories <small>[manager]</small>", "user");   
         
-        $items = $this->model->getItems();
+        $model = Categories::getInstance();
+        $items = $model->getItems();
         
         $this->render('default', array("items" => $items));
     }
@@ -64,8 +62,9 @@ class CategoriesController extends BackEndController {
         $this->pageTitle = "Edit category";           
         
         $obj = YiiCategory::getInstance();        
-        $item = $obj->loadItem($cid, "*", false); 
-        $lists = $this->model->getListEdit($item);
+        $item = $obj->loadItem($cid, "*", false);
+        $model = Categories::getInstance();
+        $lists = $model->getListEdit($item);
         
         $this->render('edit', array("item" => $item, "lists"=>$lists));
     }

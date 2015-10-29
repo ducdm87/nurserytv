@@ -8,13 +8,13 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/css/select2.css"/>
+
     <!-- Add custom CSS here -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/css/main.css" rel="stylesheet">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/css/icon.css" rel="stylesheet">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/public/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/public/css/bootstrapValidator.css">
     <!-- JavaScript -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -23,16 +23,15 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/bootstrap.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/jquery.form.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/public/js/bootstrapValidator.js"></script>
-    
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/editors/ckeditor/ckeditor.js"></script>
-    
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/sb-validation.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/ckfinder/ckfinder.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/sb-admin.js"></script>
-    
+
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/sb-media.js"></script>
-    
+
     <!-- Page Specific Plugins -->    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/templates/standard/assets/js/tablesorter/tables.js"></script>
+    
 </head>

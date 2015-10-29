@@ -20,7 +20,7 @@
 
         </div><!-- /#wrapper -->
     </body>
-</html>
+</html> 
 
 <div id="sbox-overlay" style="z-index: 65555; display: none; position: fixed; top: 0px; left: 0px; visibility: visible; opacity: 0.7; width: 100%; height: 100%;" class=""></div>
 <div id="sbox-window" style="display: none; height: 600px; left: 50%;  margin-left: -500px;  margin-top: -300px;     position: fixed;     top: 50%;     width: 1070px;     z-index: 65557;">    

@@ -45,26 +45,29 @@
                  
 
                 <li class="dropdown <?php if ($controll == "categories" OR $controll == "articles"  
-                                            OR $controll == "videos" OR $controll == "playlists") echo "active current"; ?>">
+                                    OR $controll == "videos" OR $controll == "playlists") echo "active current"; ?>">
                     <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
                         <i class="fa fa-caret-square-o-down"></i> Applications 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php echo showSideBarMenu("categories","", "Categories"); ?>
                         <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
-                        <?php echo showSideBarMenu("playlists","", "playlist Video", "fa-film"); ?>
+                        <?php echo showSideBarMenu("playlists","", "Playlist Videos", "fa-film"); ?>
                         <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
                     </ul>
                 </li> 
 
-                <li class="dropdown">
+                <?php echo showSideBarMenu("modules","", "Modules"); ?>
+                <li class="dropdown <?php if($controll == "installer") echo "active current"; ?>">            
                     <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Extension 
+                        <i class="fa fa-caret-square-o-down"></i> Installer 
                         <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <?php echo showSideBarMenu("modules","", "Modules"); ?>
-                    </ul>
+                        <ul class="dropdown-menu">
+                            <?php echo showSideBarMenu("installer","-manager", "Install"); ?>
+                            <?php echo showSideBarMenu("installer","manager", "Manager"); ?>
+                        </ul> 
                 </li>
+                
 
             </ul>
         <?php } ?>
@@ -96,9 +99,9 @@
             <li class="dropdown user-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $mainframe->getUserUsername(); ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>                
+                    <li><a href="<?php echo Yii::app()->createUrl("users/profile"); ?>"><i class="fa fa-user"></i> Profile</a></li>                
                     <li class="divider"></li>
-                    <li><a href="/backend/user/logout"> <i class="fa fa-power-off"></i> Logout</a></li>                
+                    <li><a href="<?php echo Yii::app()->createUrl("users/logout"); ?>"> <i class="fa fa-power-off"></i> Logout</a></li>                
                 </ul>
             </li>
         </ul>
@@ -109,16 +112,27 @@
 function showSideBarMenu($_controller, $_action, $title, $_class="fa-folder")
 {
     $controll = Yii::app()->controller->id;
-    $action = Yii::app()->controller->action->id;
-    $link = Yii::app()->createUrl("$_controller/$_action");  
+    $action = Yii::app()->controller->action->id;    
     $class = "";
     $_class = "fa " . $_class;
+    $link = Yii::app()->createUrl("$_controller/$_action");
     if($_action == "") $_action = "display";
-     
-    if($controll == $_controller AND $action == $_action){
-        $class = "active current";
-        $_class .= " fa-spin";
+    
+    if(strpos($_action, "-") === 0){
+        $_action = trim($_action,"-");
+        if($controll == $_controller AND $action != $_action){
+            $class = "active current";
+            $_class .= " fa-spin";
+        }
+        $link = Yii::app()->createUrl("$_controller/");  
+    }else{
+        if($controll == $_controller AND $action == $_action){
+            $class = "active current";
+            $_class .= " fa-spin";
+        }
     }
+     
+    
     
     $html = '<li class="'.$class.'">
                 <a href="'.$link.'"> <i class="'.$_class.'"></i> '.$title.'</a>

@@ -27,10 +27,10 @@
                 <span><b>More info</b></span>                            
             </div>
             <div class="panel-body">
-                <?php echo buildHtml::renderField("label", "id", $item->id, "ID" ,null, "",3,9); ?>                 
-                 <?php echo buildHtml::renderField("label", "cdate", $item->cdate, "Created",null, "",3,9); ?>
-                 <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
-                 <?php echo buildHtml::renderField("label", "lastvisit", $item->lastvisit, "Last visit",null, "",3,9); ?>
+                <?php echo buildHtml::renderField("label", "id", $item->id, "ID"); ?>                 
+                 <?php echo buildHtml::renderField("label", "cdate", $item->cdate, "Created"); ?>
+                 <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified"); ?>
+                 <?php echo buildHtml::renderField("label", "lastvisit", $item->lastvisit, "Last visit"); ?>
                 <div class="form-group row">
                     <label class="control-label left col-md-3">Status</label>
                     <div class="col-md-9"><?php echo buildHtml::choseStatus("status", $item->status); ?></div>

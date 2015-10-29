@@ -8,15 +8,10 @@
 
 class ArticlesController extends BackendController {
 
-    private $post_model;
-    private $category;
-
     function init() {
         parent::init();
         yii::import('application.models.backend.article.*');
-        $this->post_model = Article::getInstance();
         yii::import('application.models.backend.category.*');
-        $this->category = Category::getInstance();
     }
 
     public function actionDisplay() {
@@ -32,10 +27,10 @@ class ArticlesController extends BackendController {
                 else if ($task == "hidden")
                     $this->changeStatus ($cid, 2);
                 elseif($task == "unpublish") $this->changeStatus ($cid, 0);
-                else if($task == "feature.on") $this->changeStatus ($cid, 1,"feature");
-                else if($task == "feature.off") $this->changeStatus ($cid, 0,"feature");
+                else if($task == "feature.on") $this->changeFeature ($cid, 1);
+                else if($task == "feature.off") $this->changeFeature ($cid, 0);
             }
-            YiiMessage::raseSuccess("Successfully saved changes article(s)");
+            YiiMessage::raseSuccess("Successfully saved changes video(s)");
         }
         
         $this->addIconToolbar("New", $this->createUrl("/articles/new"), "new");
@@ -144,12 +139,21 @@ class ArticlesController extends BackendController {
         $this->redirect($this->createUrl('articles/'));
     }
 
-    function changeStatus($cid, $value, $field = "status")
+    function changeStatus($cid, $value)
     {
         $obj_table = YiiArticle::getInstance();
         $obj_table = $obj_table->loadItem($cid); 
         $obj_table->load($cid); 
-        $obj_table->$field = $value;
+        $obj_table->status = $value;
+        $obj_table->store();
+    }
+    
+    function changeFeature($cid, $value)
+    {
+        $obj_table = YiiArticle::getInstance();
+        $obj_table = $obj_table->loadItem($cid); 
+        $obj_table->load($cid); 
+        $obj_table->feature = $value;
         $obj_table->store();
     }
     

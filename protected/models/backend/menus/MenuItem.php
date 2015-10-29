@@ -11,6 +11,7 @@ class MenuItem extends CFormModel {
     private $table = '{{menu_item}}';
     private $tbl_menu = '{{menus}}';
     private $tbl_menu_xref = '{{module_menuitem_ref}}';
+    private $tbl_ext = '{{extensions}}';
     private $command;
     private $connection;
 
@@ -44,19 +45,10 @@ class MenuItem extends CFormModel {
         $limit = Request::getInt('limit', getSysConfig("pages.limit",15));
         $limitstart = Request::getInt('limitstart', 0);
         
-        $this->command->limit($limit, $limitstart);
-
-        $this->command->select("*");
-        $this->command->from($this->table);
-        $this->command->where($where);
-        $sarch = Request::getVar('filter_search', "");
-        if($sarch != ""){
-            $s = "%$sarch%";
-            $this->command->bindParam(':filter_search', $s );
-        }
-        
         $results = $this->command->select('*')
                 ->from($this->table)
+                ->where($where)
+                ->order("lft ASC")
                 ->queryAll();
 
         return $results;
@@ -101,30 +93,53 @@ class MenuItem extends CFormModel {
     }
     
 
-    function getListEdit($currentLevel = 1, $parentID = -1)
-    {
+    function getListEdit($main_item)
+    { 
         $cid = Request::getVar("cid", 0);
         $menuID = Request::getInt('menu', "");
-        
+         
         $list = array();
         $items[] = array("value" => "-1", "text"=>"-- Select Menu --");
-        $command = Yii::app()->db->createCommand();
-        $results = $command->select('id value, title text')
-                ->from($this->tbl_menu)
-                ->queryAll();
+        $obj_menu = YiiMenu::getInstance();
+        $results = $obj_menu->loadMenus('id value, title text', false);
         $items = array_merge($items, $results);
         $list['menuID'] = buildHtml::select($items, $menuID, "menuID");
         
         $items = array();
-        $items[] = array("value" => "-1", "text"=>"Top");
-        $command = Yii::app()->db->createCommand();
-        $results = $command->select('id value, title text')
-                ->from($this->table)
-                ->queryAll();
+        $items[] = array("value" => "1", "text"=>"Top", "level"=>0);
         
+        $condition = "(`lft` <" . $main_item->lft . " OR `lft` > ". $main_item->rgt .")";
+        $results = $obj_menu->loadItems($menuID, 'id value, title text, level', $condition);
         $items = array_merge($items, $results);      
-        $list['parentID'] = buildHtml::select($items, $parentID, "parentID","","size=10");
+        $list['parentID'] = buildHtml::select($items, $main_item->parentID, "parentID","","size=10", "&nbsp;&nbsp;&nbsp;","-");
         
+        
+        $items = array();
+        $condition = "parentID = ". $main_item->parentID;
+        $results = $obj_menu->loadItems($menuID, 'id value, title text, level', $condition);
+        $items = array_merge($items, $results);
+        $list['ordering'] = buildHtml::select($items, $cid, "ordering","","size=5");
+        
+        // danh sach app
+        $obj_ext = YiiTables::getInstance(TBL_EXTENSIONS);
+        $list['apps'] = $obj_ext->loads("*", "type = 'app'", "ordering ASC");
+          
+         foreach($list['apps'] as $k=> $app){
+             $file_xml = PATH_APPS_FRONT."/".$app['folder']."/".$app['folder'].".xml";
+             if(!file_exists($file_xml)) 
+             {
+                 YiiMessage::raseSuccess("Invalid xml: " . $app['folder']);
+                 break;
+             }
+             $xml = simplexml_load_file($file_xml);
+             $views = array();
+             foreach($xml->views->view as $view){
+                 $views[] = (string) $view->attributes()->name;
+             }
+             $app['views'] = $views;
+             $list['apps'][$k] = $app;
+         }
+         
         return $list;
     }
     
