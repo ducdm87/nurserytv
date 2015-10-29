@@ -23,9 +23,9 @@ class UserIdentity extends CUserIdentity {
 
         if ($mainframe->isBackEnd()) {
 
-            $query = "SELECT u.*,g.lft,g.name groupname "
+            $query = "SELECT u.*,g.lft,g.name groupname, g.backend "
                     . "FROM " . $this->table_group . " g right join " . $this->tablename . " u ON g.id = u.groupID "
-                    . " WHERE username = :username ANd password=:password AND status = 1 ";
+                    . " WHERE username = :username ANd password=:password AND u.status = 1 ";
             $password = md5($this->password);
             $conmmand = Yii::app()->db->createCommand($query);
             $conmmand->bindParam(':username', $this->username);
@@ -33,7 +33,7 @@ class UserIdentity extends CUserIdentity {
             $result = $conmmand->queryRow();
             
             if (!$result) {
-                YError::raseNotice("Invalid your usename or password");
+                YiiMessage::raseWarning("Invalid your usename or password");
                 $this->errorCode = self::ERROR_USERNAME_INVALID;
             } else {
                 $query = "UPDATE " . $this->tablename . " SET lastvisit = now() WHERE id = " . $result['id'];
@@ -43,6 +43,7 @@ class UserIdentity extends CUserIdentity {
             }
 
             $user = Yii::app()->session['userbackend'] = $result;
+
             $mainframe->set("user",$user);
             return !$this->errorCode;
         }else{
