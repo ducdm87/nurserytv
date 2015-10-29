@@ -23,8 +23,9 @@ $settings = array(
                 'tin-tuc/<alias:[\d\w-]+>/trang-<page:[0-9]+>' => array('articles/category', 'urlSuffix'=>'/'),
                 'tin-tuc/<alias:[\d\w-]+>' => array('articles/category', 'urlSuffix'=>'/'),
                 'tin-tuc/<id:[0-9]+>-<alias:.*>' => array('articles/detail','urlSuffix'=>'.html'),
-                
-                'xem-video/' => array('playlist/detail'),
+                'videos/<id:[0-9]+>-<alias:.*>'=> array('playlist/detail'),
+                'video/<id:[0-9]+>-<alias:.*>/<vid:[0-9]+>-<valias:.*>'=> array('playlist/detail', 'urlSuffix'=>'.html'),
+                'video/<id:[0-9]+>-<alias:.*>'=> array('videos/detail','urlSuffix'=>'.html'),
             ),
         ),
         

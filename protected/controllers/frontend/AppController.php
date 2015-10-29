@@ -21,12 +21,20 @@ class AppController extends FrontEndController {
     }
 
     public function actionDisplay() {
-      
-        $data = array();       
-        $data['videos_viewed'] = $this->media->getMedias(4, 0, array('f.status=1'), array('f.viewed DESC'));
-        $data['videos_update'] = $this->getVideoUpdates();
-        $data['playlists'] = $this->getPlayLists();
-        $this->render('default', $data);
+        $model_videos = Video::getInstance();
+        $model_article = Article::getInstance();
+        
+        $data["items_video_hot"] = $model_videos->getItemsHotWeek(4);  
+        $data["videos_update"] = $model_videos->getItemsLastUpdate(4);
+        
+        $data["items_news"] = $model_article->getLastNews(5); 
+       // $data['news'] = $list_category;              
+        
+        setSysConfig("seopage.title","wapsite - trang tổng hợp video, tin tức mới nhất"); 
+        setSysConfig("seopage.keyword","wapsite, tổng hợp video, tin tức mới nhất"); 
+        setSysConfig("seopage.description","wapsite - trang tổng hợp video, tin tức mới nhất"); 
+        
+        $this->render('default', $data);       
     }
 
     private function getVideoUpdates() {
