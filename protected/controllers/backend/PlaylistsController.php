@@ -45,8 +45,10 @@ class PlaylistsController extends BackEndController {
         
         $model = Playlist::getInstance();
         $items = $model->getItems(0, 0);
+        $list = $model->getList();
          
         $data['items'] = $items;
+        $data['list'] = $list;
         $this->render('default', $data); 
     }
 

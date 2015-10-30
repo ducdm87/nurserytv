@@ -11,14 +11,9 @@ class Playlist extends CFormModel {
     private $table = "{{playlist}}";
     private $table_category_index = "{{category_index}}";
     private $table_category = "{{categories}}";
-    private $command;
-    private $connection;
 
     function __construct() {
-        parent::__construct();
-
-        $this->command = Yii::app()->db->createCommand();
-        $this->connection = Yii::app()->db;
+        parent::__construct();        
     }
 
     static function getInstance() {
@@ -31,9 +26,54 @@ class Playlist extends CFormModel {
     }
     
     public function getItems($limit = 5, $offset = 0) {
-        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);         
-        $results = $obj_table->loads();
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        
+        $filter_catID = Request::getVar('filter_catID', 0);
+        $filter_state = Request::getVar('filter_state', -2);
+        
+        $where = array();
+        if($filter_catID != 0){
+            $obj_cat_xref = YiiTables::getInstance(TBL_CATEGORIES_XREF);
+            $list_id = $obj_cat_xref->loadColumn("pindex","cat_id = $filter_catID AND `type` = 2");
+            if($list_id AND count($list_id) > 0){
+                $list_id = implode(",", $list_id);
+                $where[] = " id in(".$list_id.")";
+            }else $where[] = " 1 = 0 ";
+            
+        }
+        
+        
+        if($filter_state == 2 ) $where[] = "feature = 1";
+        else if($filter_state != -2 ) $where[] = "status = $filter_state";
+        $where = implode(" AND ", $where);
+        $results = $obj_table->loads("*",$where);
+                
         return $results;
+    }
+    
+    function getList()
+    {
+        $list = array();
+        
+        $filter_catID = Request::getVar('filter_catID', 0);
+        $filter_state = Request::getVar('filter_state', -2);
+        
+        $obj_module = YiiCategory::getInstance();
+        $items[] = array("value"=>0, "text"=>"- Select category -");
+        $_items = $obj_module->loadItems('id value, title text', "`scope` = 'playlists'");
+        $items = array_merge($items,$_items);
+        $list['filter_catID'] = buildHtml::select($items, $filter_catID, "filter_catID","", "onchange=\"document.adminForm.submit();\"");
+         
+        
+        $items = array();
+        $items[] = array("value"=>-2, "text"=>"- Select state -");
+        $items[] = array("value"=>0, "text"=>"Unpublish");
+        $items[] = array("value"=>1, "text"=>"Publish");
+        $items[] = array("value"=>2, "text"=>"Feature");
+       
+        $list['filter_state'] = buildHtml::select($items, $filter_state, "filter_state", "", "onchange=\"document.adminForm.submit();\"");
+        
+        return $list;
     }
 
     public function getItem($cid) {
@@ -55,7 +95,7 @@ class Playlist extends CFormModel {
         $items = array();
         $items[] = array("value"=>0, "text"=>"Unpublish");
         $items[] = array("value"=>1, "text"=>"Publish");
-        $items[] = array("value"=>-1, "text"=>"Hidden");
+        
         $list['status'] = buildHtml::select($items, $mainItem->status, "status");
         
         $items = array();

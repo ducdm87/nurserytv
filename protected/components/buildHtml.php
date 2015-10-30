@@ -21,7 +21,7 @@ class buildHtml {
             $img_name = "publish_x.png";
         } else if ($status == 1) {
             $title = 'Publish';
-            $task = 'hidden';
+            $task = 'unpublish';
             $img_name = "publish_g.png";
         } else if ($status == 2) {
             $title = 'Hidden';
@@ -34,6 +34,22 @@ class buildHtml {
         ?>
         <span class="editlinktip hasTip"><a onclick="return listItemTask('<?php echo $fldName; ?>', '<?php echo $task; ?>')" href="javascript:void(0);">
                 <img width="16" height="16" border="0" alt="<?php echo $title; ?>" src="/admin/templates/standard/assets/images/icons/<?php echo $img_name; ?>"></a></span>
+        <?php
+        $return = ob_get_contents();
+        ob_end_clean();
+        return $return;
+    }
+    
+    static function showBtnIcon($title, $link, $icon)
+    {
+        $img_name = $icon;
+        ob_start();
+        ?>
+            <span class="editlinktip hasTip">
+                <a href="<?php echo $link; ?>">
+                    <img width="16" height="16" border="0" alt="<?php echo $title; ?>" src="/admin/templates/standard/assets/images/icons/<?php echo $img_name; ?>">
+                </a>
+            </span>
         <?php
         $return = ob_get_contents();
         ob_end_clean();

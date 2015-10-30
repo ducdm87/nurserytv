@@ -47,7 +47,10 @@ class VideosController extends BackEndController {
             
         $model = Video::getInstance();
         $items = $model->getItems(); 
+        $list = $model->getList(); 
+        
         $data["items"] = $items;
+        $data["list"] = $list;
         $this->render('default', $data);
     }
     

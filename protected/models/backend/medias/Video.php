@@ -32,19 +32,66 @@ class Video extends CFormModel {
   
 
     public function getItems($limit = 10, $start = 0, $where = array()) {
-         $field = "A.*, B.title cat_title, B.alias cat_alias";
+        
+        $filter_playlistID = Request::getVar('filter_playlistID', 0);
+        $filter_state = Request::getVar('filter_state', -2);
+        $filter_search = Request::getVar('filter_search', "");
+        
+        $where = array();
+        if($filter_playlistID != 0){
+            $obj_xref = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+            $list_id = $obj_xref->loadColumn("videoID","playlistID = $filter_playlistID");
+            if($list_id AND count($list_id) > 0){
+                $list_id = implode(",", $list_id);
+                $where[] = " id in(".$list_id.")";
+            }else $where[] = " 1 = 0 ";
+        }
+        if($filter_search != ""){
+            $w = array();
+            $w[] = " title like '%".$filter_search."%'";
+            $w[] = " id like '%".$filter_search."%'";
+            $where[] = "(".implode(" OR ", $w).")";
+            
+        }
+ 
+        if($filter_state == 2 ) $where[] = "feature = 1";
+        else if($filter_state != -2 ) $where[] = "status = $filter_state";
+         
+        $field = "*";
         $command = Yii::app()->db->createCommand()->select($field)
-                ->from(TBL_VIDEOS ." A")
-                ->leftJoin(TBL_CATEGORIES ." B", "A.catID = B.id");
+                ->from(TBL_VIDEOS);
         
         $command->order("id desc");
         if($limit != null)$command->limit($limit, $start);
+        if(count($where) > 0){
+            $where = implode(" AND ", $where);
+            $command->where($where);
+        }
         
         $results = $command->queryAll();
         
         return $results;
     }
 
+    function getList()
+    {
+        $list = array();
+         
+        $filter_state = Request::getVar('filter_state', -2);
+        $filter_search = Request::getVar('filter_search', "");
+        
+        $items = array();
+        $items[] = array("value"=>-2, "text"=>"- Select state -");
+        $items[] = array("value"=>0, "text"=>"Unpublish");
+        $items[] = array("value"=>1, "text"=>"Publish");
+        $items[] = array("value"=>2, "text"=>"Feature");
+       
+        $list['filter_state'] = buildHtml::select($items, $filter_state, "filter_state", "filter_state", "onchange=\"document.adminForm.submit();\"");
+        
+        return $list;
+    }
+    
+    
     public function getItem($cid){
         $obj = YiiTables::getInstance(TBL_VIDEOS);        
         $obj->load($cid);

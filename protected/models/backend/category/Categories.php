@@ -32,8 +32,8 @@ class Categories extends CFormModel {
     }
     
     public function getItems() {
-        $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems();
+        $obj_category = YiiCategory::getInstance();
+        $items = $obj_category->loadItems();
         return $items;
     } 
     
