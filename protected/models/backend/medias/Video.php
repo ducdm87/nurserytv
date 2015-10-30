@@ -101,13 +101,16 @@ class Video extends CFormModel {
     public function getListEdit($mainItem)
     {
         $list = array();
+        $cid = Request::getVar('cid', "");  
 
 //        $obj_category = YiiCategory::getInstance();
 //        $items = $obj_category->loadItems('id value, title text');
 //        $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
-         
-        $obj_category_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
-        $list_value = $obj_category_index->loadColumn("playlistID", "`videoID` = $mainItem->id");
+        $list_value = "";
+        if($cid != 0){
+            $obj_category_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+            $list_value = $obj_category_index->loadColumn("playlistID", "`videoID` = $mainItem->id");
+        }
         
         $obj_table = YiiTables::getInstance(TBL_PLAYLIST);    
         $items = $obj_table->loads('id value, name text');

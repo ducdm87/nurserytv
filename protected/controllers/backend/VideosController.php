@@ -152,4 +152,22 @@ class VideosController extends BackEndController {
         $obj->$field = $value;
         $obj->store();
     }
+    
+    function actionRemove()
+    {
+        $cids = Request::getVar("cid", 0);
+        $table = YiiTables::getInstance(TBL_VIDEOS);
+        $table_xref = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+         
+        if(count($cids) >0){
+            for($i=0;$i<count($cids);$i++){
+                $cid = $cids[$i];
+                //check item first
+                $table_xref->remove(null, "videoID = $cid");
+                $table->remove($cid);
+            }
+        }
+        YiiMessage::raseSuccess("Successfully remove Video(s)");
+        $this->redirect($this->createUrl('videos/'));
+    }
 }

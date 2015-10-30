@@ -17,59 +17,58 @@
         if (getSysConfig("sidebar.display", 1) == 1) {
             ?>
             <ul class="nav navbar-nav side-nav">
-                <li class="<?php if ($controll == "" OR $controll == "cpanel") echo "active current"; ?>">
-                    <a href="/backend/"><i class="fa fa-dashboard"></i> Dashboard</a>
-                </li>
+              <li class="<?php if ($controll == "" OR $controll == "cpanel") echo "active "; ?>">
+                  <a href="/backend/"><i class="fa fa-dashboard"></i> Dashboard</a>
+              </li>
 
-                <li class="dropdown <?php if ($controll == "system") echo "active current"; ?>"">
-                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> System <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <?php echo showSideBarMenu("system","config", "Config"); ?>
-                        <li><a href="#">Info</a></li>                
-                    </ul>
-                </li>
+              <li class="dropdown <?php if ($controll == "system") echo "active "; ?>"">
+                  <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                      <i class="fa fa-caret-square-o-down"></i> System <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <?php echo showSideBarMenu("system","config", "Config"); ?>
+                      <li><a href="#">Info</a></li>                
+                  </ul>
+              </li>
 
-                <li class="dropdown <?php if ($controll == "users" OR $controll == "usergroups") echo "active current"; ?>">
-                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Users <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu"> 
-                        <?php echo showSideBarMenu("usergroups","", "Groups", "fa-folder"); ?>
-                        <?php echo showSideBarMenu("users","", "Users", "fa-file"); ?>
-                    </ul>
-                </li>
+              <li class="dropdown <?php if ($controll == "users" OR $controll == "usergroups") echo "active "; ?>">
+                  <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                      <i class="fa fa-caret-square-o-down"></i> Users <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu"> 
+                      <?php echo showSideBarMenu("usergroups","", "Groups", "fa-folder"); ?>
+                      <?php echo showSideBarMenu("users","", "Users", "fa-file"); ?>
+                  </ul>
+              </li>
 
-                <?php echo showSideBarMenu("menus","menutypes", "Menus", "fa-file"); ?>
-                 
+              <?php echo showSideBarMenu("menus","menutypes", "Menus", "fa-file"); ?>
 
-                <li class="dropdown <?php if ($controll == "categories" OR $controll == "articles"  
-                                    OR $controll == "videos" OR $controll == "playlists") echo "active current"; ?>">
-                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Applications 
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <?php echo showSideBarMenu("categories","", "Categories"); ?>
-                        <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
-                        <?php echo showSideBarMenu("playlists","", "Playlist Videos", "fa-film"); ?>
-                        <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
-                    </ul>
-                </li> 
 
-                <?php echo showSideBarMenu("modules","", "Modules"); ?>
-                <li class="dropdown <?php if($controll == "installer") echo "active current"; ?>">            
-                    <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
-                        <i class="fa fa-caret-square-o-down"></i> Installer 
-                        <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <?php echo showSideBarMenu("installer","-manager", "Install"); ?>
-                            <?php echo showSideBarMenu("installer","manager", "Manager"); ?>
-                        </ul> 
-                </li>
-                
+              <li class="dropdown <?php if ($controll == "categories" OR $controll == "articles"  
+                                  OR $controll == "videos" OR $controll == "playlists") echo "active "; ?>">
+                  <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                      <i class="fa fa-caret-square-o-down"></i> Applications 
+                      <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <?php echo showSideBarMenu("categories","", "Categories"); ?>
+                      <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
+                      <?php echo showSideBarMenu("playlists","", "Playlist Videos", "fa-film"); ?>
+                      <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
+                  </ul>
+              </li> 
 
-            </ul>
+              <?php echo showSideBarMenu("modules","", "Modules"); ?>
+              <li class="dropdown <?php if($controll == "installer") echo "active "; ?>">            
+                  <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                      <i class="fa fa-caret-square-o-down"></i> Installer 
+                      <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <?php echo showSideBarMenu("installer","-manager", "Install"); ?>
+                          <?php echo showSideBarMenu("installer","manager", "Manager"); ?>
+                      </ul> 
+              </li>
+          </ul>
+         
         <?php } ?>
 
         <ul class="nav navbar-nav navbar-right navbar-user">

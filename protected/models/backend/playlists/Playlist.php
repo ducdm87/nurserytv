@@ -84,9 +84,13 @@ class Playlist extends CFormModel {
 
     public function getListEdit($mainItem)
     {
+        $cid = Request::getVar('cid', "");
         $list = array();
-        $obj_category_index = YiiTables::getInstance(TBL_CATEGORIES_XREF);
-        $list_cat = $obj_category_index->loadColumn("cat_id", "`pindex` = $mainItem->id AND `type` = 2");
+        $list_cat = "";
+        if($cid != 0){
+            $obj_category_index = YiiTables::getInstance(TBL_CATEGORIES_XREF);
+            $list_cat = $obj_category_index->loadColumn("cat_id", "`pindex` = $mainItem->id AND `type` = 2");
+        }
         
         $obj_module = YiiCategory::getInstance();
         $items = $obj_module->loadItems('id value, title text', "`scope` = 'playlists'");

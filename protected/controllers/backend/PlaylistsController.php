@@ -150,10 +150,14 @@ class PlaylistsController extends BackEndController {
     function actionRemove()
     {
         $cids = Request::getVar("cid", 0);
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        $table_xref = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+        $table_xref2 = YiiTables::getInstance(TBL_CATEGORIES_XREF);
         if(count($cids) >0){
-            for($i=0;$i<count($cids);$i++){                
-               $obj_table = YiiPlaylist::getInstance();
-               $obj_table->remove($cids[$i]);
+            foreach($cids as $cid){  
+                $table_xref->remove(null, "playlistID = $cid");
+                $table_xref2->remove(null, "pindex = $cid AND `type` = 2 ");
+               $obj_table->remove($cid);
             }
         }
         YiiMessage::raseSuccess("Successfully delete Playlist(s)");
