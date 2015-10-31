@@ -27,7 +27,7 @@ class AppController extends FrontEndController {
         $data["items_video_hot"] = $model_videos->getItemsHotWeek(4);  
         $data["videos_update"] = $model_videos->getItemsLastUpdate(4);
         
-        //ddsss
+        //ddsss sua cho nay nhe
         
         $data["items_news"] = $model_article->getLastNews(5); 
        // $data['news'] = $list_category;              
