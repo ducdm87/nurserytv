@@ -516,7 +516,7 @@ class buildHtml {
                                                     <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                                 </span>
                                                 <span class="entry-like">
-                                                    <span><i class="fa fa-heart"></i> <?php echo isset($video['liked']) ? $video['liked'] : 0 ?></span>
+                                                    <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
                                                 </span>
                                             </div>
                                             <?php $index ++; ?>

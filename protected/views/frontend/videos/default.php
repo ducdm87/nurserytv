@@ -11,7 +11,7 @@
                         </div>
                         <div class="entry-content">
                             <?php if (isset($videos) && $videos): ?>
-                                <?php foreach ($videos as $video): ?>
+                                <?php foreach ($videos as $video):  ?>
                                     <div class="entry-recomment-item">
                                         <div class="media">
                                             <div class="media-left">
@@ -28,7 +28,7 @@
                                                             <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                                         </span>
                                                         <span class="entry-like">
-                                                            <span><i class="fa fa-heart"></i> <?php echo isset($video['liked']) ? $video['liked'] : 0 ?></span>
+                                                            <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
                                                         </span>
                                                     </div>
                                                 </div>

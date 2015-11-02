@@ -18,16 +18,19 @@ function showBlockHome($items, $title, $link = null){
                 <div class="entry-content">
                     <div class="col-md-6 no-padding-left padding-mb-2">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <?php
+                            <?php //lay link xem truc tiep cbv
                             if (isset($item['fecth_link']) && $item['fecth_link']) {
                                 $urlQ = parse_url($item['fecth_link'], PHP_URL_QUERY);
                                 parse_str($urlQ, $query);
                                 $origin_link = isset($item['origin_link']) ? $item['origin_link'] : '';
                             }
                             ?>
-                            <a href="<?php echo $item['link']; ?>"><img src="<?php echo $item['image']; ?>" class="img-responsive img-banner"/></a>
-                            <div class="icon-play" rel="<?php echo isset($query['v']) ? $query['v'] : '' ?>" data-link="<?php echo isset($origin_link) ? $origin_link : '' ?>"></div>
-                            <div class="ytplayer"></div>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <img src="<?php echo $item['image']; ?>" class="img-responsive img-banner">
+                                <div class="icon-play" rel="<?php echo isset($query['v']) ? $query['v'] : '' ?>" data-link="<?php echo isset($origin_link) ? $origin_link : '' ?>"></div>
+                                <div class="ytplayer"></div>
+                            </div>
+                            <!--</a>-->  
                         </div>
                         <h4>
                             <a href="<?php echo $item['link']; ?>"><?php echo $item['title'] ?></a>
@@ -51,7 +54,7 @@ function showBlockHome($items, $title, $link = null){
                                                     <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                                 </span>
                                                 <span class="entry-like">
-                                                    <span><i class="fa fa-heart"></i> <?php echo isset($video['liked']) ? $video['liked'] : 0 ?></span>
+                                                    <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
                                                 </span>
                                             </div>
                                         </div>

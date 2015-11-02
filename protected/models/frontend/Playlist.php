@@ -55,6 +55,34 @@ class Playlist extends CFormModel {
         return $result;
     }
     
-    
-    
+    //bg Video playlist cbv
+    function getItems($id)
+    {
+    $command = Yii::app()->db->createCommand();
+
+        $item = $command->select('a.*')
+                ->from(TBL_VIDEOS. " a")                
+                ->leftjoin(TBL_PLAYLIST_XREF . " b", 'a.id = b.videoID')
+                ->where("b.playlistID=$id")
+                ->queryAll();
+//        $item['slug'] = $item['id']."-".$item['alias'];
+//        $item['catslug'] = $item['id']."-".$item['alias'];
+//        $item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
+        return $item;    
+    }
+    function getplayist($catID, $alias = null){
+        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
+        //$obj_video = YiiTables::getInstance(TBL_VIDEOS);
+        if(intval($catID) >0 )
+            $item = $obj_table->loadRow("*", " status = 1 AND `id` = $catID");
+        else
+            $item = $obj_table->loadRow("*", " status = 1 AND `alias` = '$alias'");
+         if($item){
+            $item['link'] = Yii::app()->createUrl("playlist/detail",array("id"=>$item['id'],"alias"=>$item['alias']));
+            //$item['total'] = $obj_video->getTotal(" status = 1 AND `catID` = ".$item['id']);
+         }
+         //var_dump($item); die;
+        return $item;
+    }
+    //E video playlist  cbv
 }

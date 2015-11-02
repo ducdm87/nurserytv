@@ -24,12 +24,12 @@ class AppController extends FrontEndController {
         $model_videos = Video::getInstance();
         $model_article = Article::getInstance();
         
-        $data["items_video_hot"] = $model_videos->getItemsHotWeek(6);  
+        $data["items_video_hot"] = $model_videos->getItemsHotWeek(4);  
         $data["videos_update"] = $model_videos->getItemsLastUpdate(4);
         $data["items_videos"] = $model_videos->getVideos(2);   //CBV
         //$data["categories_videos"] = $model_videos->getNewCategoy(2);   //CBV
         $data["items_news"] = $model_article->getLastNews(5); 
-       // $data['news'] = $list_category;              
+        //var_dump($data["items_video_hot"]) ; die;           
         
         setSysConfig("seopage.title","wapsite - trang tổng hợp video, tin tức mới nhất"); 
         setSysConfig("seopage.keyword","wapsite, tổng hợp video, tin tức mới nhất"); 

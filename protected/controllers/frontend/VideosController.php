@@ -59,8 +59,7 @@ class VideosController extends FrontEndController {
         $this->render('default', $data);
     }
     
-    //chinhBV action detail
-    // chi tiet video
+    //chinhBV action detail begin
      public function actionDetail() {
         $id = Request::getVar('id',null);
         $alias = Request::getVar('alias',null);
@@ -96,10 +95,7 @@ class VideosController extends FrontEndController {
         //var_dump($data); die;
         $this->render('detail', $data);
     }
-    
-     
     //End chinhbv action deltail
-
     public function actionAjaxSearch() {
         $media = new Media();
         $data = array();
