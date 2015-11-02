@@ -45,6 +45,117 @@ class Video extends CFormModel {
         
         return $items;
     }
+
+//ChinhBV begin playlist
+    function getVideos($limit = 2, $listid = ""){
+        global $mainframe, $db;
+        $where = " "; 
+        if($listid != ""){ $where .= " AND id in($listid) "; }
+        
+        $query = "SELECT * FROM " . TBL_CATEGORIES  
+                    ." WHERE feature = 1 AND `scope` ='playlists' "
+                   ." ORDER BY ordering ASC";
+        $query_command = $db->createCommand($query);
+        $items = $query_command->queryAll();
+          
+        
+        $arr_new = array();
+         for($i=0;$i<count($items);$i++){
+             $item = $items[$i];
+             $item['link'] = Yii::app()->createUrl("playlist/detail",array("id"=>$item['id'],"alias"=>$item['alias']));
+             $item['playlist'] = $this->getNewCategoy($item['id'],0, $limit);
+             //var_dump($item['playlist']); die;
+             $arr_new[$item['id']] = $item; 
+         }
+         $items = $arr_new;
+         
+         if($listid != ""){
+             $listid = explode(",", $listid);
+             $arr_new = array();
+             foreach ($listid as $k=>$id){
+                 if(isset($items[$id]))
+                    $arr_new[$id] = $items[$id];
+             }
+             $items = $arr_new;
+         }
+       //var_dump($items); die;
+        return $items; 
+    }
+    
+    
+     function getItems($alias)
+    {
+    $command = Yii::app()->db->createCommand();
+        $where = array();
+        $where[] = " a.status = 1 ";
+        $where[] = " a.alias = '$alias' ";
+        $where[] = " b.status = 1 ";
+        $command->where(implode(" AND ", $where));
+        
+        $item = $command->select('a.*,b.title cat_title, b.alias cat_alias')
+                ->from("$this->table  a")                
+                ->leftjoin("$this->table_categories  b", 'a.catID=b.id')
+                ->queryRow();
+        $item['slug'] = $item['id']."-".$item['alias'];
+        $item['catslug'] = $item['catID']."-".$item['cat_alias'];
+        $item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
+        $item['catlink'] = Yii::app()->createUrl("videos/category", array("alias"=>$item['cat_alias']));
+        return $item;
+    }
+    
+    function getCategory($catID, $alias = null){
+        $obj_table = YiiTables::getInstance(TBL_CATEGORIES);
+        $obj_video = YiiTables::getInstance(TBL_VIDEOS);
+        
+        if(intval($catID) >0 )
+            $item = $obj_table->loadRow("*", " status = 1 AND `id` = $catID");
+        else
+            $item = $obj_table->loadRow("*", " status = 1 AND `alias` = '$alias'");
+         
+         if($item){
+            $item['link'] = Yii::app()->createUrl("videos/category",array("alias"=>$item['alias']));
+            $item['total'] = $obj_video->getTotal(" status = 1 AND `catID` = ".$item['id']);
+         }
+         
+        return $item;
+    }
+    
+    function getNewCategoy($catID, $start = 0, $limit = 100)
+    {
+        global $mainframe, $db;
+        $list_ids = getListObjectID("videos");
+
+        $where = array();
+        $where[] = "A.status = 1";
+        
+        $where[] = "B.cat_id = $catID ";
+        if($list_ids != false and $list_ids != ""){
+        	$where[] = "A.id not in($list_ids)";
+        }
+        $where = implode(" AND ",$where);
+        
+        $command = Yii::app()->db->createCommand();
+        $command->select("A.*")
+                ->from(TBL_PLAYLIST . " A")
+                ->leftJoin(TBL_CATEGORIES_XREF . " B", "A.id = B.pindex")
+                ->where($where)
+                ->order("A.cdate DESC")
+                ->limit($limit, $start)
+                ;
+        $items = $command->queryAll();
+        
+        if(count($items)){
+            $obj_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+            foreach($items as &$item){
+                $item['link'] = Yii::app()->createUrl("playlist/detail", array("id" => $item['id'], "alias" => $item['alias']));
+                $item['count'] = $obj_index->getTotal("playlistID = ". $item['id']);
+                addObjectID($item['id'], "videos");
+            }
+        }
+        //var_dump($items);
+        return $items;
+    } 
+//END ChinhBV playlist
     
     function getItemsLastUpdate($limit = 5){ 
         global $mainframe, $db;
@@ -62,7 +173,7 @@ class Video extends CFormModel {
     }
 
     public function getItem($cid){
-        $obj = YiiTables::getInstance(TBL_VIDEOS);        
+        $obj = YiiTables::getInstance(TBL_VIDEOS);
         $obj->load($cid);
         return $obj;
     }

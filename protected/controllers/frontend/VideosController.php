@@ -58,6 +58,47 @@ class VideosController extends FrontEndController {
         $data['video_new'] = $this->getVideoHots();
         $this->render('default', $data);
     }
+    
+    //chinhBV action detail
+    // chi tiet video
+     public function actionDetail() {
+        $id = Request::getVar('id',null);
+        $alias = Request::getVar('alias',null);
+
+        $model =  Video::getInstance();
+        if($id == null OR $id == ""){
+            if($alias != null and $alias != ""){
+                $obj_item = $model->getItemByAlias($alias);
+            }else{
+                header("Location: /");
+            }
+        }else{
+            $obj_item = $model->getItem($id);
+        }
+        //var_dump($obj_item); die;
+        $items = $model->getItems($obj_item->alias);
+        $items2 = $model->getItems($obj_item->alias);
+        $obj_category = $model->getCategory($obj_item->catID);
+       // var_dump($items) ; die;
+        $data['item'] = $obj_item;
+        $data['items'] = $items;
+        $data['items2'] = $items2;
+        $data['category'] = $obj_category;
+        //var_dump($data['item']) ; die;
+        $page_title = $obj_item->title;        
+        $page_keyword = $obj_item->metakey != ""?$obj_item->metakey:$page_title;
+        $page_description = $obj_item->metadesc != ""?$obj_item->metadesc:$page_title;
+        
+        setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+        setSysConfig("seopage.keyword",$page_keyword); //xét với key word
+        setSysConfig("seopage.description",$page_description); // xét meta description
+        Request::setVar('alias',$obj_category['alias']);
+        //var_dump($data); die;
+        $this->render('detail', $data);
+    }
+    
+     
+    //End chinhbv action deltail
 
     public function actionAjaxSearch() {
         $media = new Media();
