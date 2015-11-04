@@ -74,16 +74,31 @@ class VideosController extends FrontEndController {
         }else{
             $obj_item = $model->getItem($id);
         }
-        //var_dump($obj_item); die;
         $items = $model->getItems($obj_item->alias);
-        $items2 = $model->getItems($obj_item->alias);
         $obj_category = $model->getCategory($obj_item->catID);
-       // var_dump($items) ; die;
+        $playlist = $model->getPlaylist($id);//lay id, name playlist
+        if($playlist==1){
+            $itemsDon = $model->getVideodon($id);            //var_dump($itemsDon); die;
+            $data['items'] = $itemsDon;
+            $page_title = $itemsDon['title'];        
+            $page_keyword = $itemsDon['metakey'];
+            $page_description = $itemsDon['metadesc']; 
+            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
+            setSysConfig("seopage.description",$page_description); // xét meta description
+            Request::setVar('alias',$obj_category['alias']);
+        
+        //var_dump($data); die;
+        $this->render('detail_1', $data);
+        }else{
+        $playlists=$playlist['id'];
+        $itemsall = $model->getItemsall($playlists);
         $data['item'] = $obj_item;
         $data['items'] = $items;
-        $data['items2'] = $items2;
+        $data['dem_video'] = count($itemsall);//so video trong playlist
         $data['category'] = $obj_category;
-        //var_dump($data['item']) ; die;
+        $data['playlist'] = $playlist;
+        $data['itemsall'] =$itemsall;
         $page_title = $obj_item->title;        
         $page_keyword = $obj_item->metakey != ""?$obj_item->metakey:$page_title;
         $page_description = $obj_item->metadesc != ""?$obj_item->metadesc:$page_title;
@@ -92,8 +107,11 @@ class VideosController extends FrontEndController {
         setSysConfig("seopage.keyword",$page_keyword); //xét với key word
         setSysConfig("seopage.description",$page_description); // xét meta description
         Request::setVar('alias',$obj_category['alias']);
+        
         //var_dump($data); die;
         $this->render('detail', $data);
+        }
+        
     }
     //End chinhbv action deltail
     public function actionAjaxSearch() {

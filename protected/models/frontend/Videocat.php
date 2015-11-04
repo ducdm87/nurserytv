@@ -76,7 +76,7 @@ class Video extends CFormModel {
         $arr_new = array();
          for($i=0;$i<count($items);$i++){
              $item = $items[$i];
-             $item['link'] = Yii::app()->createUrl("videoscat",array("id"=>$item['id'],"alias"=>$item['alias']));
+             $item['link'] = Yii::app()->createUrl("playlist/detail",array("id"=>$item['id'],"alias"=>$item['alias']));
              $item['playlist'] = $this->getNewCategoy($item['id'],0, $limit);
              //var_dump($item['playlist']); die;
              $arr_new[$item['id']] = $item; 

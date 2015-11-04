@@ -2,7 +2,7 @@
 <div class="entry-container">
     <div class="entry-title">
         <div class="entry-title-text">
-            <a href="<?php if(isset($playlist)) {echo $playlist["link"];} ?>"><span><?php if(isset($playlist)) {echo $playlist["name"];} ?></span></a>
+            <a href="<?php echo $item = Yii::app()->createUrl("playlist"); ?>"><span>Danh sách Playlist</span></a>
         </div>
     </div>
     <?php 

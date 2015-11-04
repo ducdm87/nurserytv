@@ -6,9 +6,9 @@
                 <div class="container-fluid">                
                     <div class="entry-title">
                         <div class="box-bg-left">
-                            <div class="box-bg-right">
-                                <div class="box-bg-center">                                
-                                    <a href="<?php echo $category['link']; ?>"><?php echo $category['title'] ?></a>
+                            <div class="entry-title">
+                                <div class="entry-title-text">
+                                    <a href="<?php echo $category['link']; ?>"><span><?php echo $category['title'] ?></span></a>
                                 </div>
                             </div>
                         </div>

@@ -15,12 +15,12 @@
                                     <div class="entry-recomment-item">
                                         <div class="media">
                                             <div class="media-left">
-                                                <a href="<?php echo $this->createUrl('/xem-video?pid=' . $video['id'] . '&pslug=&vid=' . $video['id'] . '&vslug=' . $video['alias']) ?>">
+                                                <a href="<?php echo $url= Yii::app()->createUrl("videos/detail/", array("id"=>$video['id'],"alias"=>$video['alias']));?>">
                                                     <img class="media-object" src="<?php echo $video['image'] ?>" alt="<?php echo $video['title'] ?>" width="150" height="80">
                                                 </a>
                                             </div>
                                             <div class="media-body">
-                                                <a href="<?php echo $this->createUrl('/xem-video?pid=' . $video['id'] . '&pslug=&vid=' . $video['id'] . '&vslug=' . $video['alias']) ?>"><h4 class="media-heading"><?php echo $video['title'] ?></h4></a>
+                                                <a href="<?php echo  $url= Yii::app()->createUrl("videos/detail/", array("id"=>$video['id'],"alias"=>$video['alias'])); ?>"><h4 class="media-heading"><?php echo $video['title'] ?></h4></a>
                                                 <div class="entry-recomment">
                                                     bởi <a href="#">Nursery Rhymes TV</a>
                                                     <div class="entry-recomment-user">

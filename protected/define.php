@@ -62,7 +62,7 @@ setSysConfig("colright.display", true);
 setSysConfig("page.classSuffix", "");
 setSysConfig("news.scope", $news_scope);
 setSysConfig("news.detail.showpath", 1);
-setSysConfig("news.limit", 10);
+setSysConfig("news.limit", 30);
 
 setSysConfig("seopage.title","seo page title"); 
 setSysConfig("seopage.keyword","seo page keyword"); 

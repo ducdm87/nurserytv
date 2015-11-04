@@ -31,7 +31,7 @@ class Video extends CFormModel {
     }
   
 
-    public function getItems($limit = 10, $start = 0, $where = array()) {
+    public function getItems($limit = 30, $start = 0, $where = array()) {
         
         $filter_playlistID = Request::getVar('filter_playlistID', 0);
         $filter_state = Request::getVar('filter_state', -2);

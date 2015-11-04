@@ -34,8 +34,9 @@ class AppController extends FrontEndController {
         setSysConfig("seopage.title","wapsite - trang tổng hợp video, tin tức mới nhất"); 
         setSysConfig("seopage.keyword","wapsite, tổng hợp video, tin tức mới nhất"); 
         setSysConfig("seopage.description","wapsite - trang tổng hợp video, tin tức mới nhất"); 
+        //var_dump($data); die;
+        $this->render('default', $data);
         
-        $this->render('default', $data);       
     }
 
     private function getVideoUpdates() {

@@ -66,7 +66,7 @@ class Media extends CFormModel {
                 ->leftJoin("$this->table_categories c", "c.id=cidx.cat_id")
                 ->group('f.id')
                 ->queryAll();
-
+        //var_dump($results); die;
         return $results;
     }
 
