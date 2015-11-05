@@ -173,9 +173,9 @@ function SetFileFieldVideo(fileUrl)
     $('#checkYoutube').attr('checked', false);
     $('div.panel-image').show();
     console.log(fileUrl);
-    document.getElementById('video_hiden').value = fileUrl;
+    document.getElementById('videourl').value = fileUrl;
 //    document.getElementById('video_src').src = BASE_URL + fileUrl;
-    document.getElementById('video-src').value = BASE_URL + fileUrl;
+//    document.getElementById('video-src').value = BASE_URL + fileUrl;
 }
 
 

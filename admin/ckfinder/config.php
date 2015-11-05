@@ -193,7 +193,7 @@ to upload `.swf` files only if you understand and can accept this risk.
 ==============================================================================
 */
 $config['DefaultResourceTypes'] = '';
-/*
+
 $config['ResourceType'][] = Array(
 		'name' => 'Files',				// Single quotes not allowed
 		'url' => $baseUrl . 'files',
@@ -201,12 +201,12 @@ $config['ResourceType'][] = Array(
 		'maxSize' => 0,
 		'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
 		'deniedExtensions' => '');
- */
+
 
 $config['ResourceType'][] = Array(
 		'name' => 'Images',
-		'url' => $baseUrl . 'images/'.date('d/m/Y',time()),
-		'directory' => $baseDir . 'images/'.  date('d/m/Y',time()),
+		'url' => $baseUrl . 'images',
+		'directory' => $baseDir . 'images',
 		'maxSize' => 0,
 		'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
 		'deniedExtensions' => '');
@@ -214,21 +214,23 @@ $config['ResourceType'][] = Array(
 
 $config['ResourceType'][] = Array(
 		'name' => 'Videos',
-		'url' => $baseUrl . 'videos/'.date('d/m/Y',time()),
-		'directory' => $baseDir . 'videos/'.date('d/m/Y',time()),
+//		'url' => $baseUrl . 'videos/'.date('d/m/Y',time()),
+		'url' => $baseUrl . 'videos',
+//		'directory' => $baseDir . 'videos/'.date('d/m/Y',time()),
+		'directory' => $baseDir . 'videos',
 		'maxSize' => 0,
 		'allowedExtensions' => 'flv,mov,mp4',
 		'deniedExtensions' => '');
 
-/*
- * $config['ResourceType'][] = Array(
-//		'name' => 'Flash',
-//		'url' => $baseUrl . 'flash',
-//		'directory' => $baseDir . 'flash',
-//		'maxSize' => 0,
-//		'allowedExtensions' => 'swf,flv',
-//		'deniedExtensions' => '');
-*/
+
+ $config['ResourceType'][] = Array(
+		'name' => 'Flash',
+		'url' => $baseUrl . 'flash',
+		'directory' => $baseDir . 'flash',
+		'maxSize' => 0,
+		'allowedExtensions' => 'swf,flv',
+		'deniedExtensions' => '');
+
 /*
  Due to security issues with Apache modules, it is recommended to leave the
  following setting enabled.
