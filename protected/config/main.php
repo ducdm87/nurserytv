@@ -14,6 +14,7 @@ define("TBL_USERS_GROUP", "{{users_group}}");
 define("TBL_PLAYLIST", "{{playlist}}");
 define("TBL_PLAYLIST_XREF", "{{playlist_xref}}");
 define("TBL_VIDEOS", "{{videos}}");
+define("TBL_MODULE_POSITION", "{{module_position}}");
 
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
