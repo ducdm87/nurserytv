@@ -474,3 +474,46 @@ function subGroup($items, $id) {
     }
     echo '</ul>';
 }
+
+function sysLoadXmlParam($xml_file, $values = null, $type = "Module"){
+    global $mainframe;
+        $obj_xml = simplexml_load_file($xml_file);
+        
+        $params_value = json_decode($values, true);
+      
+        if(!is_array($params_value)) $params_value = array();
+        
+        if ($obj_xml == false) {
+            $message = "Failed loading module: ";
+            foreach (libxml_get_errors() as $error) {
+                $message .= "<br>". $error->message;
+            }
+            YiiMessage::raseSuccess($message);
+            return false;
+        }
+//        print_r($obj_xml); die;
+        
+        $config = $obj_xml->config?$obj_xml->config:false;
+        if($config == false) return array();
+        
+        $array_param =array();
+        foreach($config->param as $k=> $param){
+            $obj_param = new stdClass();
+            $param_title = "$type Parameters(".(count($array_param) + 1).")";
+            
+            if(isset($param->attributes()->title)){
+                $param_title = (string)$param->attributes()->title;
+            }
+            
+            $obj_param->title = $param_title;
+            $obj_param->fields = array();
+            foreach($param->field as $field){                
+                $field_name = (string)$field['name'];
+                $field_value = isset($params_value[$field_name])?$params_value[$field_name]:null;
+                $obj_param->fields[] = YiiElement::render($field, $field_value);
+              
+            }
+            $array_param[] = $obj_param;            
+        }
+       return $array_param;
+}

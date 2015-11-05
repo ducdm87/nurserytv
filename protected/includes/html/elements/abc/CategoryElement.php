@@ -20,14 +20,14 @@ class TextElement
         if($this->value == null)
             $this->value = $this->node['default'];
     }
-    function build($prefix_name = "params", $arr_size = array(5,7))
+    function build($prefix_name = "params")
     {
         
         $name = $prefix_name."[".$this->node['name']."]";
         $id = $prefix_name."-".$this->node['name']."-";
 
-        return '<div class="form-group row"> <div class="col-md-'.$arr_size[0].'" title="'.$this->node['description'].'">'.$this->node['label'].'</div> '
-                . '<div class="col-md-'.$arr_size[1].'"> <input type="text" value="'.$this->value.'" name="'.$name.'" id="'.$id.'" '.$this->node['attr'].'  /> </div> '
+        return '<div class="row"> <div class="col-md-3" title="'.$this->node['description'].'">'.$this->node['label'].'</div> '
+                . '<div class="col-md-9"> <input type="text" value="'.$this->value.'" name="'.$name.'" id="'.$id.'" '.$this->node['attr'].'  /> </div> '
                 ." </div>";
     }
 }

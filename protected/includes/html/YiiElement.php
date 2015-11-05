@@ -22,14 +22,15 @@ class YiiElement
         $node['description'] =  isset($node['description'])?$node['description']:"";
         $node['attr'] =  isset($node['attr'])?$node['attr']:"";
     
-        $className = ucfirst($node['type'])."Element";
+        $className = ucfirst($node['type'])."Element";        
+        if(!in_array(strtolower($node['type']), array("menutype", "list",'radio', 'text', "textarea"))) return "";
         if(!class_exists($className))
         {
-            YError::raseNotice("Element ".$node['type']." is not existing ");
-            return false;
+            YiiMessage::raseWarning("Element ".$node['type']." is not existing ");           
+            exit;
         }
         
         $element = new $className($node, $value);
-        return $element->build($prefix_name);
+        return $element->build($prefix_name, array(5,7));
     }
 } 
