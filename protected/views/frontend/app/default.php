@@ -7,13 +7,16 @@ function showBlockHome($items, $title, $link = null){
     ?>
             <div class="entry-container">
                 <div class="entry-title">
-                    <div class="entry-title-text">
-                        <?php if($link != null) {
-                            echo '<a href="'.$link.'"><span>'.$title.'</span></a>';
-                        }else{
-                            echo '<span>'.$title.'</span>';
-                        }?>
-                    </div>
+                  
+                        <div class="entry-title-text-left">
+                            <div class="entry-title-text-right">
+                                <div class="entry-title-text-center">
+                                    <?php if($link != null) {echo '<a href="'.$link.'"><span>'.$title.'</span></a>';
+                                            }else{  echo '<span>'.$title.'</span>'; }?>
+                                </div>
+                            </div>
+                        </div>
+                
                 </div>
                 <div class="entry-content">
                     <div class="col-md-6 no-padding-left padding-mb-2">
@@ -74,12 +77,16 @@ function showBlockHome($items, $title, $link = null){
 <?php foreach ($items as $key=>$item): ?>
     <div class="entry-container">
                 <div class="entry-title">
-                    <div class="entry-title-text">
-                        <?php if($item['link'] != null) {
-                            echo '<a href="'.$item['link'].'"><span>'.$item['title'].'</span></a>';
-                        }else{
-                            echo '<span>'.$item['title'].'</span>';
-                        }?>
+                    <div class="entry-title-text-left">
+                        <div class="entry-title-text-right">
+                                <div class="entry-title-text-center">
+                                         <?php if($item['link'] != null) {
+                                            echo '<a href="'.$item['link'].'"><span>'.$item['title'].'</span></a>';
+                                        }else{
+                                            echo '<span>'.$item['title'].'</span>';
+                                        }?>
+                                </div>
+                        </div>
                     </div>
                 </div>
         <?php if(count($item['playlist']) <=0) return false;?>
