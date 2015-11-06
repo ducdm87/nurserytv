@@ -25,9 +25,10 @@ $settings = array(
                 'tin-tuc/<id:[0-9]+>-<alias:.*>' => array('articles/detail','urlSuffix'=>'.html'),
                 
                 'videos/<id:[0-9]+>-<alias:.*>-<stt:[0-9]+>'=> array('playlist/detail/', 'urlSuffix'=>'/'),//chi tiet playlist
+                'videos/<id:[0-9]+>-<alias:.*>'=> array('playlist/detail/', 'urlSuffix'=>'/'),
                 'video/<id:[0-9]+>-<alias:.*>/<vid:[0-9]+>-<valias:.*>'=> array('playlist/detail', 'urlSuffix'=>'.html'),
                 'video/<id:[0-9]+>-<alias:.*>'=> array('videos/detail','urlSuffix'=>'.html'),
-                'xem-them-videos/<id:[0-9]+>-<alias:.*>' => array('videoscat/','urlSuffix'=>'/'),
+                'videos/<id:[0-9]+>-<alias:.*>' => array('videoscat/','urlSuffix'=>'/'),
             ),
         ),
         

@@ -1,8 +1,12 @@
 
 <div class="entry-container">
             <div class="entry-title">
-                <div class="entry-title-text">
-                    <a href="<?php echo $item = Yii::app()->createUrl("playlist"); ?>"><span>Danh sách Playlist</span></a>
+                <div class="entry-title-text-left">
+                        <div class="entry-title-text-right">
+                                <div class="entry-title-text-center">
+                                    <a href="<?php echo $item = Yii::app()->createUrl("playlist"); ?>"><span>Danh sách Playlist</span></a>
+                                </div>
+                        </div>
                 </div>
             </div>
     <?php if(count($allPlaylist) <=0) return false;?>

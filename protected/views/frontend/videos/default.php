@@ -5,8 +5,12 @@
                 <div class="row">
                     <div class="entry-container">
                         <div class="entry-title">
-                            <div class="entry-title-text">
-                                <span><?php echo isset($_GET['q']) ? 'Từ khóa ' . $_GET['q'] : 'Danh sách video' ?></span>
+                            <div class="entry-title-text-left">
+                                    <div class="entry-title-text-right">
+                                            <div class="entry-title-text-center">
+                                                <span><?php echo isset($_GET['q']) ? 'Từ khóa: ' . $_GET['q'] : 'Danh sách video' ?></span>
+                                            </div>
+                                    </div>
                             </div>
                         </div>
                         <div class="entry-content">

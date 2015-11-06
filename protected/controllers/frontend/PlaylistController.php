@@ -40,10 +40,7 @@ class PlaylistController extends FrontEndController {
         if (!$param) {
             $data_playlists = $playlist->getPlaylists();
             foreach ($data_playlists as $key => $play_id) {
-                if ($data = $video->getVideoByPlayList($play_id['id'])) {
-
-                    $data_playlists[$key]['videos'] = $data;
-                }
+                if ($data = $video->getVideoByPlayList($play_id['id'])) {$data_playlists[$key]['videos'] = $data;}
             }
         } else {
             $data_playlists[] = $playlist->getPlaylistById($param);
@@ -58,26 +55,24 @@ class PlaylistController extends FrontEndController {
         $alias = Request::getVar('alias',null);
         $stt = Request::getVar('stt',null);
         $model = Playlist::getInstance();
-        $items = $model->getItems($id,$stt);
-        $playlist = $model->getplayist($id,$alias);
-        //var_dump($items); die;
+        $items = $model->getItems($id);
+        $cat = $model->getplayist_cat($id,$alias);
         if($stt==null)$stt=0;
+        
         $data['stt'] = $stt;
-        $data['dem_video']= count($items);
         $data['items'] = $items;
-        $data['playlist'] = $playlist;
-        //var_dump($data['item']) ; die;
-        $page_title = $playlist["name"];        
-        $page_keyword = $playlist["metakey"];  
-        $page_description = $playlist["metadesc"];  
-        
-        setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-        setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-        setSysConfig("seopage.description",$page_description); // xét meta description
-        Request::setVar('alias',$playlist['alias']);
+        $data['category'] = $cat;
+        if(isset($cat) && $cat!=null){
+//            $page_title = $cat[0]["name"];        
+//            $page_keyword = $cat[0]["metakey"];  
+//            $page_description = $cat[0]["metadesc"];  
+//            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+//            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
+//            setSysConfig("seopage.description",$page_description); // xét meta description
+//            Request::setVar('alias',$cat[0]['alias']);
+        }
         //var_dump($data); die;
-        $this->render('detail', $data);
-        
+        $this->render('detail', $data);   
         
     }
     //End chinhbv action deltail playlist

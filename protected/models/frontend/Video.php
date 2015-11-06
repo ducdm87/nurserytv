@@ -110,21 +110,32 @@ class Video extends CFormModel {
                 ->from("$this->table  a")                
                 ->leftjoin("$this->table_categories  b", 'a.catID=b.id')
                 ->queryRow();
-        $item['slug'] = $item['id']."-".$item['alias'];
-        $item['catslug'] = $item['catID']."-".$item['cat_alias'];
-        $item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
-        $item['catlink'] = Yii::app()->createUrl("videos/category", array("alias"=>$item['cat_alias']));
+        //$item['slug'] = $item['id']."-".$item['alias'];
+       // $item['catslug'] = $item['catID']."-".$item['cat_alias'];
+        //$item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
+       // $item['catlink'] = Yii::app()->createUrl("videos/category", array("alias"=>$item['cat_alias']));
         return $item;
     }
      function getItemsall($id)
-    {
+    {     
     $command = Yii::app()->db->createCommand();
-        $item = $command->select('a.*')
+        $items = $command->select('c.*')
                 ->from("$this->table  a")                
                 ->leftjoin(TBL_PLAYLIST_XREF ." b", 'a.id=b.videoID')
-                ->where("b.playlistID=$id")
+                ->leftjoin(TBL_PLAYLIST ." c", 'c.id=b.playlistID')
+                ->where("b.videoID=$id")
+                ->group('c.id')
                 ->queryAll();
-        return $item;
+        if(count($items)){
+            $obj_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+            foreach($items as &$item){
+                $item['link'] = Yii::app()->createUrl("playlist/detail", array("id" => $item['id'], "alias" => $item['alias']));
+                $item['count'] = $obj_index->getTotal("playlistID = ". $item['id']);//tính tong ban ghi
+                addObjectID($item['id'], "videos");
+            }
+        }
+       //var_dump($items); die;
+        return $items;
     }
     function getVideodon($id)
     {

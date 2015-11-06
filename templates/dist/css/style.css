@@ -108,21 +108,24 @@ h2.vega_title {
 }.entry-title-text-center{
     background: url(../../../images/app/btn-box-center.png) repeat-x; 
     color: #fff;
-    font-size: 18px;    
+    font-size: 14px;    
     line-height: 35px;
     position: relative;
     padding: 0 5px 0 10px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .entry-title-text-center span{
     font-weight: bold;
     color: #fff;
-    font-size: 18px;  
+    font-size: 14px;  
+    text-transform: uppercase;
+    
 
 }
 .entry-content{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .no-padding-left{
@@ -180,6 +183,7 @@ h2.vega_title {
 }
 .sidebar .hot-video{
     border: 2px solid #eee;
+    padding-bottom: 20px;
 }
 .sidebar .hot-video .entry-recomment-item{
     padding: 10px;
@@ -444,3 +448,10 @@ footer{
     color: #ffffff;
     font-size: 12px;
 }
+.img-right_small {width: 50px; height: 30px; margin-right: 35px;}
+//mo anh trang chu
+.img-video-index {opacity: 0.8; width: 470px; height: 264px; left: 0px; top: 0px; } 
+.ds_playlist_detail a{font-size: 14px; color: #00cccc;}
+.ds_playlist_detail a:hover {color: #f945a7;}
+.dan_index_v_like {margin-top: 20px}
+.can_title_playlist_detail {margin: 0; padding-bottom: 20px; margin-top: -15px;}

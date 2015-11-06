@@ -1,25 +1,18 @@
 <!--cbv -->
 <div class="entry-container">
     <div class="entry-title">
-        <div class="entry-title-text">
-            <a href="<?php echo $item = Yii::app()->createUrl("playlist"); ?>"><span>Danh sách Playlist</span></a>
+        <div class="entry-title-text-left">
+            <div class="entry-title-text-right">
+                    <div class="entry-title-text-center">
+                        <a href="<?php echo $item = Yii::app()->createUrl("playlist"); ?>"><span>Danh sách Playlist</span></a>
+                    </div>
+            </div>
         </div>
     </div>
-    <?php 
-    function show_video ($video){//chinhBV show video 
-            $code=$video["videocode"];
-            $url=$video["videourl"];
-            if(isset($code) && $code!=null){
-               $result = $code;
-            }else if(isset($url)){
-                $result= "<iframe class='embed-responsive-item' src='".$url."' allowfullscreen=''></iframe>";
-            }
-            return $result;    
-    }
-    ?>
     <div class="entry-content">
         <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
                 <div class="detail embed-responsive embed-responsive-16by9" >
+                    <img src="<?php echo $items['image']; ?>" style="width: 100%;">
                     <?php echo show_video($items);  ?>
                 </div>
                 <div class="entry-caption">
@@ -42,13 +35,17 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="entry-desc">
-                        <p>ChinhBV Comment chưa hoàn thành</p>
+                        <p>Comment</p>
                     </div>
                 </div>
                 <div class="entry-container">
                     <div class="entry-title">
-                        <div class="entry-title-text">
-                            <span>Bình Luận</span>
+                        <div class="entry-title-text-left">
+                            <div class="entry-title-text-right">
+                                    <div class="entry-title-text-center">
+                                        <span>Bình luận</span>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                     <div class="entry-content">

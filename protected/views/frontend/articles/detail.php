@@ -6,8 +6,12 @@
                 <div class="entry-title">
                     <div class="box-bg-left">
                         <div class="entry-title">
-                            <div class="entry-title-text">
-                                <a href="<?php echo $category['link']; ?>"><span><?php echo $category['title']; ?></span></a>
+                            <div class="entry-title-text-left">
+                                    <div class="entry-title-text-right">
+                                            <div class="entry-title-text-center">
+                                            <a href="<?php echo $category['link']; ?>"><span><?php echo $category['title']; ?></span></a>
+                                            </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

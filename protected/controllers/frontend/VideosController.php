@@ -77,7 +77,8 @@ class VideosController extends FrontEndController {
         $items = $model->getItems($obj_item->alias);
         $obj_category = $model->getCategory($obj_item->catID);
         $playlist = $model->getPlaylist($id);//lay id, name playlist
-        if($playlist==1){
+        //var_dump($playlist); die;
+        if($playlist==1){//neu khong nam trong 
             $itemsDon = $model->getVideodon($id);            //var_dump($itemsDon); die;
             $data['items'] = $itemsDon;
             $page_title = $itemsDon['title'];        
@@ -87,29 +88,25 @@ class VideosController extends FrontEndController {
             setSysConfig("seopage.keyword",$page_keyword); //xét với key word
             setSysConfig("seopage.description",$page_description); // xét meta description
             Request::setVar('alias',$obj_category['alias']);
-        
-        //var_dump($data); die;
-        $this->render('detail_1', $data);
+            $this->render('detail_1', $data);
         }else{
-        $playlists=$playlist['id'];
-        $itemsall = $model->getItemsall($playlists);
-        $data['item'] = $obj_item;
-        $data['items'] = $items;
-        $data['dem_video'] = count($itemsall);//so video trong playlist
-        $data['category'] = $obj_category;
-        $data['playlist'] = $playlist;
-        $data['itemsall'] =$itemsall;
-        $page_title = $obj_item->title;        
-        $page_keyword = $obj_item->metakey != ""?$obj_item->metakey:$page_title;
-        $page_description = $obj_item->metadesc != ""?$obj_item->metadesc:$page_title;
-        
-        setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-        setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-        setSysConfig("seopage.description",$page_description); // xét meta description
-        Request::setVar('alias',$obj_category['alias']);
-        
-        //var_dump($data); die;
-        $this->render('detail', $data);
+            $playlists=$playlist['id'];
+            $itemsall = $model->getItemsall($id);
+            $data['items'] = $items;
+            $data['playlist'] = $itemsall;
+            //$data['itemsall'] =$itemsall;
+            $page_title = $obj_item->title;        
+            $page_keyword = $obj_item->metakey != ""?$obj_item->metakey:$page_title;
+            $page_description = $obj_item->metadesc != ""?$obj_item->metadesc:$page_title;
+
+            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
+            setSysConfig("seopage.description",$page_description); // xét meta description
+            Request::setVar('alias',$obj_category['alias']);
+
+            //var_dump($data); die;
+            $this->render('detail', $data);
+            
         }
         
     }

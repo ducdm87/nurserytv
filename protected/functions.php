@@ -474,3 +474,49 @@ function subGroup($items, $id) {
     }
     echo '</ul>';
 }
+//CBV viet ham
+
+    function show_video ($video){//chinhBV show video 
+        $code=$video["videocode"];
+        $url=$video["videourl"];
+        $images=$video["image"];
+        if(isset($url) && $url!=null){
+          $result= "<video   controls poster='".$images."'>
+                    <source src='".$url."' type='video/mp4'>
+                    Trình duyệt không hổ trợ tính năng này.
+                    </video>";
+        }else if(isset($code)){$result=$code;}
+        return $result;    
+    }
+    
+     function show_video_playlist ($items,$stt=null){//chinhBV ham lay video 
+            
+            $result="";
+            if(isset($items["videourl_p"]) && $items["videourl_p"]!=null && $stt==null){
+                $url= $items["videourl_p"];
+                $result= "<video   controls poster='".$items["image"]."'>
+                    <source src='".$url."' type='video/mp4'>
+                    Trình duyệt không hổ trợ tính năng này.
+                    </video>";
+            }else if(isset($items["videocode_p"]) && $items["videocode_p"]!=null && $stt==null){
+                $result = $items["videocode_p"];
+            }else {
+                foreach ($items as $key=>$item){
+                    if($key==$stt){
+                    $code=$item["videocode"];
+                    $url=$item["videourl"];
+                    if(isset($url)&& $url!=null){
+                         $result= "<video   controls poster='".$item["image"]."''>
+                        <source src='".$url."' type='video/mp4'>
+                        Trình duyệt không hổ trợ tính năng này.
+                        </video>";
+                    }else  if(isset($code)){
+                       $result = $code;
+                    }
+                    }
+                }                           
+            }
+
+            return $result;    
+        }
+        

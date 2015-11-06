@@ -59,33 +59,42 @@ class Playlist extends CFormModel {
    function getItems($id)
     {
     $command = Yii::app()->db->createCommand();
-        $item = $command->select('a.*')
+        $items = $command->select('a.*,c.id id_list,c.name name_list,c.alias alias_list,c.videourl videourl_p,c.videocode videocode_p')
                 ->from(TBL_VIDEOS ." a")                
                 ->leftjoin(TBL_PLAYLIST_XREF ." b", 'a.id=b.videoID')
+                ->leftjoin(TBL_PLAYLIST ." c", 'c.id=b.playlistID')
                 ->where("b.playlistID=$id")
                 ->queryAll();
-//        $item['slug'] = $item['id']."-".$item['alias'];
-//        $item['catslug'] = $item['catID']."-".$item['cat_alias'];
-//        $item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
-//        $item['catlink'] = Yii::app()->createUrl("videos/category", array("alias"=>$item['cat_alias']));
-        return $item;
+  
+            $obj_index = YiiTables::getInstance(TBL_PLAYLIST_XREF);
+            foreach($items as &$item){
+                $item['link'] = Yii::app()->createUrl("videos/detail", array("id" => $item['id'], "alias" => $item['alias']));
+                $item['dem_video'] = $obj_index->getTotal("playlistID = ". $id );//tính so video trong playlist
+            }
+        
+        return $items;
     }
-    function getplayist($catID, $alias = null){
-        $obj_table = YiiTables::getInstance(TBL_PLAYLIST);
-        //$obj_video = YiiTables::getInstance(TBL_VIDEOS);
-        if(intval($catID) >0 )
-            $item = $obj_table->loadRow("*", " status = 1 AND `id` = $catID");
-        else
-            $item = $obj_table->loadRow("*", " status = 1 AND `alias` = '$alias'");
-         if($item){
-            $item['link'] = Yii::app()->createUrl("playlist/detail",array("id"=>$item['id'],"alias"=>$item['alias']));
-            //$item['total'] = $obj_video->getTotal(" status = 1 AND `catID` = ".$item['id']);
-         }
-         //var_dump($item); die;
-        return $item;
+    function getplayist_cat($id, $alias = null){
+        $command = Yii::app()->db->createCommand();
+        $items = $command->select('c.*')
+                ->from(TBL_PLAYLIST ." a")
+                ->leftjoin(TBL_CATEGORIES_XREF ." b", 'a.id=b.pindex')
+                ->leftjoin(TBL_CATEGORIES ." c", 'c.id=b.cat_id')
+                ->where("b.pindex=$id")
+                ->order("c.id DESC")
+                ->queryAll();
+            $obj_index = YiiTables::getInstance(TBL_CATEGORIES_XREF);
+            foreach($items as &$item){
+                $item['link_cat'] = Yii::app()->createUrl("videoscat/", array("id" => $item['id'], "alias" => $item['alias']));
+                $item['dem_playlist'] = $obj_index->getTotal("cat_id = ". $item['id'] );//tính so video trong playlist
+                addObjectID($item['id'], "playlist");
+                
+            }
+       // var_dump($items); die;
+        return $items;
     }
     //cbv
-    function allPlaylist()
+    function allPlaylist()//trang playlist
     {
     $command = Yii::app()->db->createCommand();
         $item = $command->select('a.*')

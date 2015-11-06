@@ -368,7 +368,7 @@ if (!preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer
     global $mainframe, $db;
 
 
-    $query = "SELECT * FROM {{videos}} WHERE status = 1  "
+    $query = "SELECT * FROM {{videos}} WHERE feature = 1  "
             . " ORDER BY viewed ASC LIMIT 12 ";
     $query_command = $db->createCommand($query);
     $items = $query_command->queryAll();
@@ -471,50 +471,46 @@ if (!preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer
             }
 
             public static function showSideBar() {
-                global $mainframe, $db;
-
-                $query = "SELECT * FROM {{videos}} WHERE status = 1"
-                        . " ORDER BY viewed DESC LIMIT 3 ";
-                $query_command = $db->createCommand($query);
-                $video_hots = $query_command->queryAll();
+                function db_video_right($dieukien){
+                    global $mainframe, $db;
+                    $query = "SELECT * FROM {{videos}} WHERE ".$dieukien." ORDER BY viewed DESC LIMIT 3 ";
+                    $query_command = $db->createCommand($query);
+                    $items = $query_command->queryAll();
+                     if(count($items)){
+                        foreach($items as &$item){
+                            $item['link'] = Yii::app()->createUrl("videos/detail", array("id" => $item['id'], "alias" => $item['alias']));
+                        }
+                    }
+                    return $items;
+                }
                 ?>
-                <div class="col-md-4 no-padding-right sidebar padding-mb-2">
-                    <div class="row-fuild">
-                        <?php if (isset($video_hots) && $video_hots): ?>
-                            <div class="entry-container">
+            
+            <?php function show_video_right($bien_video,$title_video_right){ ?>
+                        <?php if (isset($bien_video) && $bien_video): ?>
+                             <div class="entry-container">
                                 <div class="entry-title">
-                                    <div class="entry-title-text">
-                                        <span>Video Hot</span>
+                                    <div class="entry-title-text-left">
+                                        <div class="entry-title-text-right">
+                                            <div class="entry-title-text-center">
+                                                <span><?php echo $title_video_right; ?></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="entry-content hot-video">
                                     <div class="" style="position: relative">
-                                        <?php $index = 0; ?>
-                                       
-                                        <?php  foreach ($video_hots as $video): ?>
+                                        <?php $index = 0;  foreach ($bien_video as $video): ?>
                                             <?php if ($index == 0): ?>   
-                                                <?php
-                                                if (isset($video['origin_link']) && $video['origin_link']) {
-
-                                                    $urlQ = parse_url($video['fecth_link'], PHP_URL_QUERY);
-                                                    parse_str($urlQ, $query);
-                                                }
-                                                if (isset($video['origin_link']) && $video['origin_link']) {
-                                                    $origin_link = isset($video['origin_link']) ? $video['origin_link'] : '';
-                                                }
-                                                ?>
                                                 <div class="embed-responsive embed-responsive-16by9">
                                                     <img src="<?php echo $video['image']; ?>" class="img-responsive"/>
-                                                    <div class="icon-play" rel="<?php echo isset($query['v']) ? $query['v'] : '' ?>" data-link="<?php echo isset($origin_link) ? $origin_link : '' ?>"></div>
-                                                    <div class="ytplayer"></div>
+                                                    <?php echo show_video($video);  ?>
                                                 </div>
                                             <?php endif; ?>
                                             <div class="caption entry-recomment-item" style="margin-top: 30px;">
-                                                <a href="<?php echo $url= Yii::app()->createUrl("videos/detail/", array("id"=>$video['id'],"alias"=>$video['alias'])); ?>"><h4><?php echo $video['title'] 
-                                                                                                     
-                                                        ?></h4></a>
+                                                <a href="<?php echo $video['link']; ?>"><h4><?php echo $video['title'] ?></h4></a>
                                             </div>
                                             <div class="entry-recomment-user" style="margin-left: 40px;">
+                                                <a href="<?php echo $video['link']; ?>"><img src="<?php echo $video['image']; ?>" class="img-right_small"></a>
                                                 <span class="entry-viewed">
                                                     <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                                 </span>
@@ -525,49 +521,16 @@ if (!preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer
                                             <?php $index ++; ?>
                                         <?php endforeach; ?>
                                     </div>
-
                                 </div>
                             </div>
-                        <?php endif; ?>
-                        <div class="clearfix"></div>
-                        <?php
-                        $query2 = "SELECT * FROM {{videos}} WHERE status = 1"
-                                . " ORDER BY cdate DESC LIMIT 1 ";
-                        $query_command2 = $db->createCommand($query2);
-                        $video_new = $query_command2->queryAll();
-                        ?>
-                        <?php if (isset($video_new) && $video_new): ?>
-                            <div class="entry-container">
-                                <div class="entry-title">
-                                    <div class="entry-title-text">
-                                        <span>Video Mới</span>
-                                    </div>
-                                </div>
-                                <div class="entry-content" style="position: relative;">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <?php
-                                        if (isset($video_new[0]['fecth_link']) && $video_new[0]['fecth_link']) {
-                                            $urlQ = parse_url($video_new[0]['fecth_link'], PHP_URL_QUERY);
-                                            parse_str($urlQ, $query);
-                                        }
-                                        if (isset($video_new[0]['origin_link']) && $video_new[0]['origin_link']) {
-                                            $origin_link = isset($video_new[0]['origin_link']) ? $video_new[0]['origin_link'] : '';
-                                        }
-                                        ?>
-                                    <!--<a href="<?php echo Yii::app()->baseUrl . '/xem-video?pid=' . $video_new[0]['play_id'] . '&pslug=&vid=' . $video_new[0]['id'] . '&vslug=' . $video_new[0]['alias']; ?>"  class="thumb">-->
-                                        <img src="<?php echo $video_new[0]['image']; ?>" class="img-responsive"/>
-                                        <div class="icon-play"   rel="<?php echo isset($query['v']) ? $query['v'] : '' ?>" data-link="<?php echo isset($origin_link) ? $origin_link : '' ?>"></div>
-                                        <div class="ytplayer"></div>
-                                        <!--</a>-->
-                                        <div class="caption entry-recomment-item" style="margin-top: 15px;">
-                                            <a href="<?php echo $url= Yii::app()->createUrl("videos/detail/", array("id"=>$video['id'],"alias"=>$video['alias'])); ?>"><h4><?php echo $video['title'] ?></h4></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                        <?php endif; } ?>
+            
+                <div class="col-md-4 no-padding-right sidebar padding-mb-2">
+                    <div class="row-fuild">
+                        <?php $video_hots=db_video_right("feature=1"); $video_week=  db_video_right("hotweek=1"); ?>
+                        <?php show_video_right($video_hots,"Video Nổi Bật"); show_video_right($video_week,"Video Hót Trong Tuần"); ?>
+                    </div><!--end row fuit-->
+                </div><!--end main container-->
                 <?php
             }
 }

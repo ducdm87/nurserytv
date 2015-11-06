@@ -4,8 +4,12 @@
             <div class="row">
                 <div class="entry-container">
                     <div class="entry-title">
-                        <div class="entry-title-text">
-                            <span>Từ khóa ABC</span>
+                        <div class="entry-title-text-left">
+                                <div class="entry-title-text-right">
+                                        <div class="entry-title-text-center">
+                                          <span>Từ khóa ABC</span>
+                                        </div>
+                                </div>
                         </div>
                     </div>
                     <div class="entry-content">
