@@ -20,14 +20,18 @@ class TextareaElement
         if($this->value == null)
             $this->value = $this->node['default'];
     }
-    function build($prefix_name = "params")
+    function build($prefix_name = "params", $arr_size = array(5,7))
     {
         
         $name = $prefix_name."[".$this->node['name']."]";
         $id = $prefix_name."-".$this->node['name']."-";
+        
+        $cols = $this->node['cols']?(int)$this->node['cols']:20;
+        $rows = $this->node['rows']?(int)$this->node['rows']:2;
+         
 
-        return '<div class="row"> <div class="col-md-3" title="'.$this->node['description'].'">'.$this->node['label'].'</div> '
-                . '<div class="col-md-9"> <textarea class="form-control"  name="'.$name.'" id="'.$id.'" '.$this->node['attr'].' >'.$this->value.'</textarea> </div> '
+        return '<div class="form-group row"> <div class="col-md-'.$arr_size[0].'" title="'.$this->node['description'].'">'.$this->node['label'].'</div> '
+                . '<div class="col-md-'.$arr_size[1].'"> <textarea cols="'.$cols.'" rows="'.$rows.'" type="text" name="'.$name.'" id="'.$id.'" '.$this->node['attr'].'  />'.$this->value.'</textarea> </div> '
                 ." </div>";
     }
 }

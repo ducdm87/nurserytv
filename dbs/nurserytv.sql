@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2015 at 02:57 AM
+-- Generation Time: Nov 05, 2015 at 09:03 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `tbl_category_index` (
   `pindex` int(11) NOT NULL,
   `type` smallint(11) NOT NULL DEFAULT '0' COMMENT '1: article, 2: playlist',
   PRIMARY KEY (`cat_id`,`pindex`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_category_index`
@@ -289,6 +289,40 @@ INSERT INTO `tbl_module_menuitem_ref` (`moduleID`, `menuID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_module_position`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_module_position` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `temp` varchar(128) NOT NULL,
+  `position` varchar(128) NOT NULL,
+  `description` text NOT NULL,
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `tbl_module_position`
+--
+
+INSERT INTO `tbl_module_position` (`id`, `temp`, `position`, `description`, `params`) VALUES
+(1, 'mytheme-yii', 'menu-nav', '', ''),
+(2, 'mytheme-yii', 'debug', '', ''),
+(3, 'mytheme-yii', 'col-left', '', ''),
+(4, 'mytheme-yii', 'col-right', '', ''),
+(5, 'mytheme-yii', 'header', '', ''),
+(6, 'mytheme-yii', 'footer', '', ''),
+(7, 'mytheme-yii', 'breadcrump', '', ''),
+(8, 'mytheme-yii', 'slide', '', ''),
+(9, 'mytheme-yii', 'main-center', '', ''),
+(10, 'mytheme-yii', 'main-bottom', '', ''),
+(11, 'mytheme-yii', 'main-top', '', ''),
+(12, 'trangbenhvien', 'main-menu', '', ''),
+(13, 'trangbenhvien', 'top-banner', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_playlist`
 --
 
@@ -305,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `tbl_playlist` (
   `cdate` datetime NOT NULL,
   `mdate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `tbl_playlist`
@@ -342,19 +376,19 @@ INSERT INTO `tbl_playlist_xref` (`playlistID`, `videoID`) VALUES
 (10, 63),
 (11, 63),
 (8, 63),
-(10, 62),
-(9, 62),
-(8, 62),
 (7, 62),
-(11, 60),
-(10, 60),
-(9, 60),
-(8, 60),
-(7, 60),
-(6, 60),
-(5, 60),
-(4, 60),
+(8, 62),
+(9, 62),
+(10, 62),
 (3, 60),
+(4, 60),
+(5, 60),
+(6, 60),
+(7, 60),
+(8, 60),
+(9, 60),
+(10, 60),
+(11, 60),
 (8, 57),
 (4, 55),
 (4, 54),
@@ -372,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tags` (
   `alias` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_tags`
@@ -395,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tag_index` (
   `tag_id` int(11) NOT NULL,
   `video_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `tbl_tag_index`
@@ -461,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `groupID`, `leader`, `mobile`, `home_phone`, `first_name`, `last_name`, `address`, `city`, `province_state`, `zip_code`, `country`, `suppliers`, `cdate`, `mdate`, `template_id`, `status`, `lastvisit`, `activeCode`, `params`) VALUES
-(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', 2, 0, '', '', 'admin', 'admin', '', '', '', '', 0, '', '2015-10-24 00:00:00', '2015-10-24 00:00:00', 0, 1, '2015-10-30 15:58:56', '', '');
+(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', 2, 0, '', '', 'admin', 'admin', '', '', '', '', 0, '', '2015-10-24 00:00:00', '2015-10-24 00:00:00', 0, 1, '2015-11-05 09:05:33', '', '');
 
 -- --------------------------------------------------------
 
@@ -566,9 +600,9 @@ INSERT INTO `tbl_videos` (`id`, `title`, `alias`, `image`, `actor`, `info`, `lin
 (57, 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', 'tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh', '', '', 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', '', '', '', '1:22', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 04:08:12', '2015-10-30 05:27:58', 1, 1, 0, '4', '', ''),
 (58, 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', 'tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach', '', '', 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', '', '', '', '1:40', NULL, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:08:56', '2015-10-29 07:26:38', 1, 1, 1, '4', '', ''),
 (59, 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', 'nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo', '', '', 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', '', '', '', '1:20', NULL, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:09:42', '2015-10-29 05:43:40', 1, 0, 0, '4', '', ''),
-(60, 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', 'thuy-nga-115-paris-by-night-116-hay-nhat-2015', '', '', 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', '', '', '', '', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 04:10:07', '2015-10-30 05:23:21', 1, 1, 1, '4', '', ''),
+(60, 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', 'thuy-nga-115-paris-by-night-116-hay-nhat-2015', '', '', 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', '', '', '/uploads/videos/05/11/2015/ban-remix-ve-co-giao-cung-bo-cap-chui-hoc-sinh.mp4', '', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 04:10:07', '2015-11-05 03:41:37', 1, 1, 1, '4', '', ''),
 (61, 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', 'asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1', '', '', 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', '', '', '', '1:33:35', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 04:10:51', '2015-10-29 07:26:27', 1, 1, 1, '4', '', ''),
-(62, 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', 'quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng', '/uploads/images/21/10/2015/duong-ve-nha.jpg', '', 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', '', 'dád', 'dád', '3:17', 2, 0, 0, '', 29, NULL, NULL, '2015-08-31 04:12:51', '2015-10-30 05:20:40', 1, 1, 1, '4', 'dád', 'ad'),
+(62, 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', 'quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng', '/uploads/images/21/10/2015/duong-ve-nha.jpg', '', 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', '', '<iframe src="https://www.youtube.com/embed/uwwy6-uA1u4" frameborder="0" allowfullscreen></iframe>', 'dád', '3:17', 2, 0, 0, '', 29, NULL, NULL, '2015-08-31 04:12:51', '2015-11-04 10:21:21', 1, 1, 1, '4', 'dád', 'ad'),
 (63, 'Một khi anh đã cứng thì phải cứng như thế này', 'mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay', '', '', 'Một khi anh đã "cứng" thì phải "cứng" như thế này :3', '', '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/EtReC_NDE2U" frameborder="0" allowfullscreen></iframe>', 'http://clip.vietbao.vn/wp-content/uploads/2015/04/20150424-motor-oil-chug-challenge-3988.mp4', '0:24', 14, 5, 0, '', 29, NULL, NULL, '2015-08-31 04:13:36', '2015-10-30 04:59:59', 1, 1, 0, '4', '', '');
 
 -- --------------------------------------------------------
