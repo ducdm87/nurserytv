@@ -19,13 +19,13 @@ function showBlockHome($items, $title, $link = null){
         <div class="col-md-6 no-padding-left padding-mb-2">
             <div class="embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <img src="<?php echo $item['image']; ?>" class="img-video-index">
+                    <img src="<?php echo $item['image']; ?>" class="img-video-index" alt="<?php echo $item["title"];?>">
                      <?php echo show_video($item);  ?>
                     <div class="ytplayer"></div>
                 </div>
                 <!--</a>-->  
             </div>
-            <h4>
+            <h4 class="media-heading-title">
                 <a href="<?php echo $item['link']; ?>"><?php echo $item['title'] ?></a>
             </h4>
         </div>
@@ -37,20 +37,21 @@ function showBlockHome($items, $title, $link = null){
                         <div class="media">
                             <div class="media-left">
                                 <a href="<?php echo $video['link']; ?>">
-                                    <img class="media-object" src="<?php echo $video['image'] ?>" alt="" width="150" height="80">
+                                    <img class="media-object" src="<?php echo $video['image'] ?>" alt="<?php echo $video["title"];?>" width="150" height="80">
                                 </a>
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="<?php echo $video['link']; ?>" title="<?php echo $video['title'] ?>"><?php echo $video['title'] ?></a></h4>
                                 <div class="entry-recomment-user">
-                                    <p class="dan_index_v_like">
-                                    <span class="entry-viewed">
-                                        <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
-                                    </span>
-                                    <span class="entry-like">
-                                        <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
-                                    </span>
-                                    </p>
+                                    <div class="dan-index-v-like-index">
+                                        <span class="entry-viewed">
+                                            <span><img alt="<?php echo $video["title"];?>" 
+                                                    src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
+                                        </span>
+                                        <span class="entry-like">
+                                            <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +86,7 @@ function showBlockHome($items, $title, $link = null){
         <?php foreach ($item['playlist'] as $key=>$p): ?>
             <div class="<?php if($key%2==0){echo "col-md-6 col-sm-6 col-xs-6 no-padding-left";}else echo "col-md-6 col-sm-6 col-xs-6 no-padding-right";?>">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <img src="<?php echo $p["thumbnail"]; ?>"  class="img-responsive">
+                    <img src="<?php echo $p["thumbnail"]; ?>"  class="img-responsive" alt="<?php echo $p["name"];?>">
                     <a href=" <?php echo $p["link"]; ?>" class="entry-play-list-all">
                         <span><i class="fa fa-play"></i> Phát tất cả</span>
                     </a>
@@ -96,7 +97,7 @@ function showBlockHome($items, $title, $link = null){
                         </span>
                     </a>
                 </div>
-                <h4><a href="<?php echo $p["link"]; ?>"><?php echo $p["name"]; ?></a></h4>
+                <h4 class="media-heading-title"><a href="<?php echo $p["link"]; ?>"><?php echo $p["name"]; ?></a></h4>
             </div>         
         <?php endforeach; ?>
     </div><!--end entry-content-->

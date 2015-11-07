@@ -28,6 +28,7 @@ class Playlist extends CFormModel {
         }
         return $instance;
     }
+    
 
     public function getPlaylists($limit = 5, $offset = 0, $where = array(), $order = false, $by = false) {
 
@@ -94,6 +95,27 @@ class Playlist extends CFormModel {
         return $items;
     }
     //cbv
+    function getPlaylist($id)//trang playlist
+    {
+    $command = Yii::app()->db->createCommand();
+        $item = $command->select('*')->from(TBL_PLAYLIST)
+                ->where("id=$id")
+                ->queryRow();
+        $item['link'] = Yii::app()->createUrl("playlist/detail", array("id" => $item['id'], "alias" => $item['alias']));
+        return $item;  
+    }
+    
+     //cbv
+    function getcat($id)//trang category
+    {
+    $command = Yii::app()->db->createCommand();
+        $item = $command->select('*')->from(TBL_CATEGORIES)
+                ->where("id=$id")
+                ->queryRow();
+        $item['link'] = Yii::app()->createUrl("videoscat/", array("id" => $item['id'], "alias" => $item['alias']));
+        //var_dump($item); die;
+        return $item;  
+    }
     function allPlaylist()//trang playlist
     {
     $command = Yii::app()->db->createCommand();
@@ -101,11 +123,6 @@ class Playlist extends CFormModel {
                 ->from(TBL_PLAYLIST ." a")
                 ->order("id DESC")
                 ->queryAll();
-//        $item['slug'] = $item['id']."-".$item['alias'];
-//        $item['catslug'] = $item['catID']."-".$item['cat_alias'];
-//        $item['link'] = Yii::app()->createUrl("videos/detail", array("id"=>$item['id'],"alias"=>$item['alias']));       
-//        $item['catlink'] = Yii::app()->createUrl("videos/category", array("alias"=>$item['cat_alias']));
-        //var_dump($item); die;
         $arr=array();
         foreach ($item as $v){
             $id=$v['id'];

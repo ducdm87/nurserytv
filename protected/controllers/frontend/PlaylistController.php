@@ -56,20 +56,23 @@ class PlaylistController extends FrontEndController {
         $stt = Request::getVar('stt',null);
         $model = Playlist::getInstance();
         $items = $model->getItems($id);
+        $items=show_stt_active($items,$stt);
+        $getPlaylist= $model->getPlaylist($id);
         $cat = $model->getplayist_cat($id,$alias);
         if($stt==null)$stt=0;
         
         $data['stt'] = $stt;
         $data['items'] = $items;
+        $data['getPlaylist'] =$getPlaylist;
         $data['category'] = $cat;
-        if(isset($cat) && $cat!=null){
-//            $page_title = $cat[0]["name"];        
-//            $page_keyword = $cat[0]["metakey"];  
-//            $page_description = $cat[0]["metadesc"];  
-//            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-//            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-//            setSysConfig("seopage.description",$page_description); // xét meta description
-//            Request::setVar('alias',$cat[0]['alias']);
+        if(isset($getPlaylist) && $getPlaylist!=null){
+            $page_title = $getPlaylist["name"];        
+            $page_keyword = $getPlaylist["metakey"];  
+            $page_description = $getPlaylist["metadesc"];  
+            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
+            setSysConfig("seopage.description",$page_description); // xét meta description
+            Request::setVar('alias',$getPlaylist['alias']);
         }
         //var_dump($data); die;
         $this->render('detail', $data);   

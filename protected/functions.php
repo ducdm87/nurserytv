@@ -490,23 +490,23 @@ function subGroup($items, $id) {
     }
     
      function show_video_playlist ($items,$stt=null){//chinhBV ham lay video 
-            
+        // var_dump($items);         var_dump($stt); die;
             $result="";
-            if(isset($items["videourl_p"]) && $items["videourl_p"]!=null && $stt==null){
-                $url= $items["videourl_p"];
-                $result= "<video   controls poster='".$items["image"]."'>
+            if(isset($items[0]["videourl_p"]) && $items[0]["videourl_p"]!=NULL && $stt==NULL){
+                $url= $items[0]["videourl_p"];
+                $result= "<video Autoplay   controls poster='".$items['0']["image"]."'>
                     <source src='".$url."' type='video/mp4'>
                     Trình duyệt không hổ trợ tính năng này.
                     </video>";
-            }else if(isset($items["videocode_p"]) && $items["videocode_p"]!=null && $stt==null){
-                $result = $items["videocode_p"];
+            }else if(isset($items[0]["videocode_p"]) && $items[0]["videocode_p"]!=NULL && $stt==NULL){
+                $result = $items[0]["videocode_p"];
             }else {
                 foreach ($items as $key=>$item){
                     if($key==$stt){
                     $code=$item["videocode"];
                     $url=$item["videourl"];
                     if(isset($url)&& $url!=null){
-                         $result= "<video   controls poster='".$item["image"]."''>
+                         $result= "<video Autoplay controls poster='".$item["image"]."''>
                         <source src='".$url."' type='video/mp4'>
                         Trình duyệt không hổ trợ tính năng này.
                         </video>";
@@ -518,5 +518,13 @@ function subGroup($items, $id) {
             }
 
             return $result;    
+        }
+        function show_stt_active($items,$stt){
+            $i=0;
+            foreach ($items as $item){
+                $items["$i"]['status']=$stt;
+                $i++;
+            }
+            return $items;
         }
         

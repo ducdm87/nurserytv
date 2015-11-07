@@ -4,7 +4,7 @@
         <div class="entry-title-text-left">
                 <div class="entry-title-text-right">
                         <div class="entry-title-text-center">
-                            <span><?php if(isset($items)) {echo $items[0]["name_list"];} ?></span>
+                            <span><?php if(isset($getPlaylist)) {echo $getPlaylist["name"];} ?></span>
                         </div>
                 </div>
         </div>
@@ -12,43 +12,39 @@
     <div class="entry-content">
         <?php if(isset($items) && isset($stt)) showVideos($stt,$items,$category); //hien thi video run playlist ?>
         
-        <div class="hidden-sm hidden-xs><div class="clearfix"></div>
+            
             <div class="col-md-4 no-padding">
             <div class="detail-video" id="scollbar">
                 <div class="detail-title">
-                    <h4>
-                        <?php  if(isset($items)) {echo $items[0]["name_list"]." ".$items[0]["dem_video"]." Video";}
-                        
-                        ?>
-                    </h4>
+                    <h4><?php  if(isset($getPlaylist)) {echo $getPlaylist["name"]." ".$items[0]["dem_video"]." Video";}?></h4>
                 </div>
                 <div id="box" class="box">
-                            <?php $i=0;  foreach ($items as $item): ?>
-                            <div class="entry-recomment-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="<?php echo  Yii::app()->createUrl("playlist/detail/", array("id"=>$item['id_list'],"alias"=>$item['alias_list'],"stt"=>$i)); ?>">
-                                        <img class="media-object" src="<?php echo $item['image'];?>" alt="<?php echo $item['title'];?>" width="150" height="80">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><?php echo $item['title'];?></h4>
-                                    <div class="entry-recomment-user hidden-lg hidden-md">
-                                        <span class="entry-viewed">
-                                            <span><img src="/images/app/eye.png"><?php echo $item['viewed'] ;?></span>
-                                        </span>
-                                        <span class="entry-like">
-                                            <span><i class="fa fa-heart"></i> <?php echo isset($item['like']) ? $item['like'] : 0 ?></span>
-                                        </span>
+                    
+                            <?php $i=0;   foreach ($items as $item): ?>
+                            
+                            <div class=" <?php 
+                            
+                            if(isset($item['status']) && $item['status']==$i){echo " stt_active";}else echo"entry-recomment-item-playlist";
+                            ?>">
+                                <a href="<?php echo  Yii::app()->createUrl("playlist/detail/", array("id"=>$item['id_list'],"alias"=>$item['alias_list'],"stt"=>$i)); ?>">
+                                <div class="media">
+                                    <div class="media-left">
+                                        
+                                            <img class="media-object" src="<?php echo $item['image'];?>" alt="<?php echo $item['title'];?>" width="150" height="80">
+                                        
                                     </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><p class="media-heading-title-playlist"><?php echo $item['title'];?></p></h4>
+                                    </div>
+
                                 </div>
-                            </div>
+                                </a>
                             </div>
                             <?php $i++; endforeach;?>
                 </div>
             </div>
                     <div class="clearfix"></div>
-        </div><!--lay list E hiden p-->
+            </div><!--end col danh sach playlist-->
 
         <?php echo buildHtml::showSideBar(); ?><!--show right cbv-->
     </div><!--e entry-content-->
@@ -64,9 +60,8 @@
             <?php  echo $c = show_video_playlist($items,$stt);?>
         </div>
         <div class="entry-caption">
-            <a href="<?php echo $item["link"]; ?>"><h4 class="can_title_playlist_detail"><center><?php if(isset($item)) {echo $item["title"];} ?></center></h4></a>
+            <a href="<?php echo $item["link"]; ?>"><h4 class="can_title_playlist_detail"><?php if(isset($item)) {echo $item["title"];} ?></h4></a>
             <div class="ds_playlist_detail">
-                <h4>Category: 
                 <div class="entry-user">
                     <div class="fb-social pull-left">
                         <div class="fb-like" data-href="<?php if(isset($item)) {echo $item["videourl"];} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
@@ -74,7 +69,7 @@
                     <div class="pull-right" style="margin-right: 15px;">
                         <div class="entry-recomment-user">
                             <span class="entry-viewed">
-                                <span><img src="/images/app/eye.png"><?php echo isset($item['viewed']) ? $item['viewed'] : 0 ?></span>
+                                <span><img src="/images/app/eye.png" alt="<?php echo $item["title"];?>"><?php echo isset($item['viewed']) ? $item['viewed'] : 0 ?></span>
                             </span>
                             <span class="entry-like">
                                 <a href="javascript:void(0)" title="Thích" onclick="userLike(39)"><i class="fa fa-heart"></i></a><span class="like-data"><?php echo isset($item['like']) ? $item['like'] : 0 ?></span>
@@ -82,7 +77,7 @@
                         </div>    
                     </div>
                 </div>
-                </h4>
+                <h4><i>Danh sách Category:</i> </h4>
                         <ul>
                         <?php                           
                             foreach ($category as &$list){
@@ -90,6 +85,7 @@
                             }
                         ?>
                         </ul>
+                
             </div>
             
             <div class="clearfix"></div>

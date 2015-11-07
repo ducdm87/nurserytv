@@ -154,6 +154,9 @@
     .detail-video .detail-title{
         color: #ffffff;
     }
+    .detail-video .detail-title h4{
+        font-size: 14px;
+    }
     .detail-video .entry-recomment-item:hover{
         background-color: #66ffff;
         opacity: 0.4;
@@ -161,6 +164,15 @@
         color: #fff;
     }
     .detail-video .entry-recomment-item:hover a,.detail-video .entry-recomment-item:hover h4{
+        color: #fff;
+    }
+    .detail-video .entry-recomment-item-playlist:hover{
+        background-color: #555;
+        opacity: 1;
+        cursor: pointer;
+        color: #fff;
+    }
+    .detail-video .entry-recomment-item-playlist:hover a,.detail-video .entry-recomment-item-playlist:hover h4{
         color: #fff;
     }
 
@@ -283,6 +295,8 @@
     }
 
 }
+//video danh sach playlist
+
 
 
 

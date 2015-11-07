@@ -74,11 +74,13 @@
                             <div class="menu-container navbar-collapse collapse" id="navbar-collapse-mobile">
                                 <ul class="nav navbar-nav ">
                                     <li class="<?php echo ($this->getUniqueId() == 'app') ? 'active' : '' ?>"><a href="<?php echo $this->createUrl('/app') ?>">Home <span class="sr-only">(current)</span></a></li>
-                                    <li class="<?php echo ($this->getUniqueId() == 'playlist') ? 'active' : '' ?> drop-menu dropdown"><a class="" href="<?php echo $this->createUrl('/playlist') ?>">Play list</a>
+                                    <li class="<?php echo ($this->getUniqueId() == 'playlist') ? 'active' : '' ?> drop-menu dropdown">
+                                        <a href="<?php echo $this->createUrl('/playlist') ?>" >
+                                            Play list <span class="caret"></span></a>
                                         <?php echo buildHtml::showSubmenu(); ?>
                                     </li>
                                     <li class="<?php echo ($this->getUniqueId() == 'videos') ? 'active' : '' ?>"><a  href="<?php echo $this->createUrl('/videos') ?>">Video</a></li>
-                                    <li><a href="<?php echo $this->createUrl('/#') ?>">About</a></li>
+                                    <li><a href="<?php echo $this->createUrl('/playlist') ?>">About</a></li>
                                 </ul>
                                 <div class="search hidden-sm hidden-xs">
                                     <form action="/videos/search" method="get">

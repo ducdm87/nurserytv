@@ -12,11 +12,10 @@
     <div class="entry-content">
         <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
                 <div class="detail embed-responsive embed-responsive-16by9" >
-                    <img src="<?php echo $items['image']; ?>" style="width: 100%;">
+                    <img src="<?php echo $items['image']; ?>" style="width: 100%;" alt="<?php echo $items["title"]; ?>">
                     <?php echo show_video($items);  ?>
                 </div>
                 <div class="entry-caption">
-                    <a href=""><h4><?php if(isset($items)) {echo $items["title"];} ?></h4></a>
                     <div class="entry-user">
                         <div class="fb-social pull-left">
                             <div class="fb-like" data-href="<?php if(isset($items)) {echo $items["videourl"];} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
@@ -33,6 +32,8 @@
 
                         </div>
                     </div>
+                    <a href=""><h4><?php if(isset($items)) {echo $items["title"];} ?></h4></a>
+                    
                     <div class="clearfix"></div>
                     <div class="entry-desc">
                         <p>Comment</p>

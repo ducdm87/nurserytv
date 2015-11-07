@@ -25,12 +25,13 @@ class VideoscatController extends FrontEndController {
         $alias = Request::getVar('alias',null);
         $playlist = new Playlist();
         $data = array();
-        $cc['videos'] = $playlist->CatPlaylist($id);
+        $getcategories = $playlist->getcat($id);
         $data['allPlaylist'] =$playlist->CatPlaylist($id);
         
-        $this->setPageTitle(isset($cc['videos'][0]['name']) ? $cc['videos'][0]['name'] : '' . ', Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
-        $this->metaDesc = isset($cc['videos'][0]['metadesc']) ? $cc['videos'][0]['metadesc'] : '';
-        $this->metaKey = isset($cc['videos'][0]['metakey']) ? $cc['videos'][0]['metakey'] : '';
+        setSysConfig("seopage.title",$getcategories['title']); //xét với title của app-templat (tự đông insert với name tương ứng)
+        setSysConfig("seopage.keyword",$getcategories['metakey']); //xét với key word
+        setSysConfig("seopage.description",$getcategories['metadesc']); // xét meta description
+        Request::setVar('alias',$getcategories['alias']);
         //var_dump($data); die;
         $this->render('default', $data);
     }

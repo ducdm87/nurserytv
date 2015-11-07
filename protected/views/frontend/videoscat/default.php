@@ -15,7 +15,7 @@
                 <?php foreach ($allPlaylist as $key=>$p): ?>
                             <div class="col-md-4 play-list-item no-padding-left">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <img src="<?php echo $p["thumbnail"]; ?>" class="img-responsive">
+                                <img src="<?php echo $p["thumbnail"]; ?>" class="img-responsive" alt="<?php echo $p["name"];?>">
                                 <a href="<?php echo $item = Yii::app()->createUrl("playlist/detail/", array("id"=>$p['id'],"alias"=>$p['alias'])); ?>" class="entry-play-list-all">
                                     <span><i class="fa fa-play" ></i> Phát tất cả</span>
                                 </a>
@@ -26,7 +26,7 @@
                                     </span>
                                 </a>
                             </div>
-                            <h4>
+                            <h4 class="media-heading-title">
                                 <a href="<?php echo $item = Yii::app()->createUrl("playlist/detail/", array("id"=>$p['id'],"alias"=>$p['alias'])); ?>"><?php echo $p["name"]; ?></a>
                             </h4>
                             </div>

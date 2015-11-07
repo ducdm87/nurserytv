@@ -47,10 +47,7 @@ class Media extends CFormModel {
 
     public function getMedias($limit = 10, $offset = 0, $where = array(), $order = false) {
 
-        if ($limit > 0) {
-            $this->command->limit($limit, $offset);
-        }
-
+        if ($limit > 0) {$this->command->limit($limit, $offset);}
         if ($where && is_array($where)) {
             $this->command->where($where);
         }

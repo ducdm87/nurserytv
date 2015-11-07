@@ -93,34 +93,38 @@ h2.vega_title {
     background: url(../../../images/app/bg_title_text.png) no-repeat;
     height: 45px;
     position: relative;
-    top: 5px;
+    top: 0px;
     display: block;
 }.entry-title-text-left{
     position: absolute;
-    margin-top: 14px;
+    margin-top: 12px;
      background: url(../../../images/app/btn-box-left.png) no-repeat;
-     padding: 0 0 0 10px;
+     padding: 0 0 0 16px;
 }
 .entry-title-text-right{
     background: url(../../../images/app/btn-box-right.png) no-repeat scroll right 0; 
-    padding: 0 22px 0 0px;
+    padding: 0 17px 0 0px;
+    margin-top: 4px;
     display: inline-block;   
 }.entry-title-text-center{
     background: url(../../../images/app/btn-box-center.png) repeat-x; 
     color: #fff;
-    font-size: 14px;    
-    line-height: 35px;
+    font-size: 16px;    
+    line-height: 32px;
     position: relative;
-    padding: 0 5px 0 10px;
+    padding: 0 50px 0 10px;
+    padding-top: -15px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .entry-title-text-center span{
+
     font-weight: bold;
     color: #fff;
-    font-size: 14px;  
+    font-size: 16px;  
     text-transform: uppercase;
+    
     
 
 }
@@ -134,11 +138,12 @@ h2.vega_title {
 .no-padding{
     padding: 0px;
 }
-.entry-recomment-item{
-    margin-bottom: 10px;
-}
+
 .no-padding-right{
     padding-right: 0px;
+}
+.entry-recomment-item{
+    margin-bottom: 10px;
 }
 .entry-recomment-item h4,.entry-recomment-item h4 a, h4 a{
     margin: 0;
@@ -148,6 +153,35 @@ h2.vega_title {
     text-decoration: none;
 }
 .entry-recomment-item h4 a:hover{
+    text-decoration: none;
+}
+.entry-recomment-item-playlist{
+    margin-bottom: 10px;
+}
+.entry-recomment-item-playlist h4,.entry-recomment-item-playlist h4 a, h4 a{
+    margin: 0;
+    font-size: 12px;
+    color: #C0C0C0;
+    font-weight: bold;
+    text-decoration: none;
+}
+.entry-recomment-item-playlist h4 a:hover{
+    text-decoration: none;
+}
+
+//active playlist
+.stt_active h4 a:hover{
+    text-decoration: none;
+}
+.stt_active{
+    margin-bottom: 10px;
+    background-color: #555;
+}
+.stt_active h4,.stt_active h4 a, h4 a{
+    margin: 0;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
     text-decoration: none;
 }
 .entry-caption{
@@ -186,6 +220,14 @@ h2.vega_title {
     padding-bottom: 20px;
 }
 .sidebar .hot-video .entry-recomment-item{
+    padding: 10px;
+    margin-bottom: 0px;
+}
+.sidebar .hot-video .entry-recomment-item-playlist{
+    padding: 10px;
+    margin-bottom: 0px;
+}
+.sidebar .hot-video .stt_active{
     padding: 10px;
     margin-bottom: 0px;
 }
@@ -445,7 +487,7 @@ footer{
     margin-bottom: 15px;
 }
 #search-result h4{
-    color: #ffffff;
+    color: #00cccc;
     font-size: 12px;
 }
 .img-right_small {width: 50px; height: 30px; margin-right: 35px;}
@@ -454,4 +496,10 @@ footer{
 .ds_playlist_detail a{font-size: 14px; color: #00cccc;}
 .ds_playlist_detail a:hover {color: #f945a7;}
 .dan_index_v_like {margin-top: 20px}
-.can_title_playlist_detail {margin: 0; padding-bottom: 20px; margin-top: -15px;}
+.dan-index-v-like-index { padding: 20px; margin-left: 20px;}
+.can_title_playlist_detail {margin: 0; padding-bottom: 20px; margin-top: 0px;}
+.ds_playlist_detail h4 {margin-top:   -20px; padding: 0;}
+
+.media-heading-title a{color: #f945a7;}
+.media-heading-title-slideshow a{color: #f945a7;}
+.media-heading-title-playlist{padding-top: 10px;}
