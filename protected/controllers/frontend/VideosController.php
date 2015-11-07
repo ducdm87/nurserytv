@@ -21,11 +21,11 @@ class VideosController extends FrontEndController {
     }
 
     public function actionDisplay() {
-        
+
         $this->setPageTitle('Danh sách video, Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
         $this->metaDesc = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
         $this->metaKey = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-        
+
         $media = new Media();
         $data = array();
 
@@ -38,11 +38,11 @@ class VideosController extends FrontEndController {
     }
 
     public function actionSearch() {
-        
-        $this->setPageTitle($_GET['q'].'-Tìm kiếm- kết quả tìm kiếm theo Video');
+
+        $this->setPageTitle($_GET['q'] . '-Tìm kiếm- kết quả tìm kiếm theo Video');
         $this->metaDesc = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
         $this->metaKey = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-        
+
         $media = new Media();
         $data = array();
         if (isset($_GET['q']) && $_GET['q']) {
@@ -58,58 +58,79 @@ class VideosController extends FrontEndController {
         $data['video_new'] = $this->getVideoHots();
         $this->render('default', $data);
     }
-    
-    //chinhBV action detail begin
-     public function actionDetail() {
-        $id = Request::getVar('id',null);
-        $alias = Request::getVar('alias',null);
+ 
 
-        $model =  Video::getInstance();
-        if($id == null OR $id == ""){
-            if($alias != null and $alias != ""){
+    //chinhBV action detail begin
+    public function actionDetail() {
+        $id = Request::getVar('id', null);
+        $alias = Request::getVar('alias', null);
+
+        $model = Video::getInstance();
+        if ($id == null OR $id == "") {
+            if ($alias != null and $alias != "") {
                 $obj_item = $model->getItemByAlias($alias);
-            }else{
+            } else {
                 header("Location: /");
             }
-        }else{
+        } else {
             $obj_item = $model->getItem($id);
         }
-        $items = $model->getItems($obj_item->alias);
-        $obj_category = $model->getCategory($obj_item->catID);
-        $playlist = $model->getPlaylist($id);//lay id, name playlist
+
         //var_dump($playlist); die;
-        if($playlist==1){//neu khong nam trong 
-            $itemsDon = $model->getVideodon($id);            //var_dump($itemsDon); die;
-            $data['items'] = $itemsDon;
-            $page_title = $itemsDon['title'];        
-            $page_keyword = $itemsDon['metakey'];
-            $page_description = $itemsDon['metadesc']; 
-            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-            setSysConfig("seopage.description",$page_description); // xét meta description
-            Request::setVar('alias',$obj_category['alias']);
-            $this->render('detail_1', $data);
+        $view = "";
+        $playlist = $model->getItemsall($id);
+        $page_title = $obj_item->title;
+        $page_keyword = $obj_item->metakey != "" ? $obj_item->metakey : $page_title;
+        $page_description = $obj_item->metadesc != "" ? $obj_item->metadesc : $page_title;
+
+        setSysConfig("seopage.title", $page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+        setSysConfig("seopage.keyword", $page_keyword); //xét với key word
+        setSysConfig("seopage.description", $page_description); // xét meta description
+        $view = "detail";
+        $data['item'] = $obj_item;
+        $data['playlist'] = $playlist;
+        $this->render($view, $data);
+    }
+    
+    function actionLikevideo(){
+        $id = Request::getVar('id',null);
+        $model = Video::getInstance();
+        
+        $like_videos = Yii::app()->session['like-video'];
+        
+        if($like_videos == null) $like_videos = array();
+        if(isset($like_videos[$id])){
+            $res = $model->get_likevideo($id);
         }else{
-            $playlists=$playlist['id'];
-            $itemsall = $model->getItemsall($id);
-            $data['items'] = $items;
-            $data['playlist'] = $itemsall;
-            //$data['itemsall'] =$itemsall;
-            $page_title = $obj_item->title;        
-            $page_keyword = $obj_item->metakey != ""?$obj_item->metakey:$page_title;
-            $page_description = $obj_item->metadesc != ""?$obj_item->metadesc:$page_title;
-
-            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-            setSysConfig("seopage.description",$page_description); // xét meta description
-            Request::setVar('alias',$obj_category['alias']);
-
-            //var_dump($data); die;
-            $this->render('detail', $data);
-            
+            $model = Video::getInstance();
+            $res = $model->likevideo($id);
         }
         
+        $like_videos[$id] = $id;
+        Yii::app()->session['like-video'] = $like_videos;        
+        $str_out = "var vlvcdpd = $res; $('.entry-like .like-data').text(vlvcdpd) ";
+        echo $str_out;
+        die;
+       
     }
+    
+    function actionSetView(){
+        $video_id = Request::getVar("id",0);        
+        if($video_id <=0) { 
+            $return = new stdClass();
+            $return ->status = false; 
+             echo json_encode($return);
+        }
+        else {
+            $model = Video::getInstance();
+            $res = $model->setview($video_id);
+            $str_out = "var vsvcdpd = $res; $('.entry-viewed span').text(vsvcdpd) ";
+            echo $str_out;
+        }
+       
+    }
+
+    
     //End chinhbv action deltail
     public function actionAjaxSearch() {
         $media = new Media();
@@ -130,15 +151,7 @@ class VideosController extends FrontEndController {
     private function getMediaRand() {
         $media = new Media();
         return $media->getMedias(6, 0, false, false, $order = 'm.viewed', $by = "DESC", true);
-    }
-
-    public function actionSetView() {
-        if ($res = $this->media->setView($_POST['video_id'])) {
-            echo json_encode($res);
-        } else {
-            echo json_encode(FALSE);
-        }
-    }
+    } 
 
     public function actionCheckSession() {
         $media = Media::getInstance();

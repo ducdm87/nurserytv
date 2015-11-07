@@ -156,28 +156,35 @@ h2.vega_title {
     text-decoration: none;
 }
 .entry-recomment-item-playlist{
-    margin-bottom: 10px;
+    padding: 5px;
 }
-.entry-recomment-item-playlist h4,.entry-recomment-item-playlist h4 a, h4 a{
+.entry-recomment-item-playlist p,.entry-recomment-item-playlist p a, h4 a{
     margin: 0;
     font-size: 12px;
     color: #C0C0C0;
     font-weight: bold;
     text-decoration: none;
 }
-.entry-recomment-item-playlist h4 a:hover{
+.entry-recomment-item-playlist a:hover{
     text-decoration: none;
 }
 
+.detail-video .entry-recomment-item-playlist:hover{
+    background-color: #525252;
+    opacity: 1;
+    cursor: pointer;
+    color: #fff;
+}
+
+
 //active playlist
-.stt_active h4 a:hover{
+.stt_active a:hover{
     text-decoration: none;
 }
-.stt_active{
-    margin-bottom: 10px;
-    background-color: #555;
+.detail-video .entry-recomment-item-playlist.stt_active{
+    background-color: #3A3A3A;
 }
-.stt_active h4,.stt_active h4 a, h4 a{
+.stt_active p{
     margin: 0;
     font-size: 12px;
     color: white;
@@ -374,7 +381,7 @@ h2.vega_title {
 ===========DETAIL VIDEO*/
 
 .detail-video{
-    background-color: #333;
+    background-color: #222;
     padding-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -473,9 +480,8 @@ footer{
     position: absolute;
     top: 40px;
     background: #ffffff;
-    padding: 10px;
+    padding: 2px 5px 5px;
     z-index: 99999;
-    height: 200px;
     overflow-y: scroll;
     margin-left: -80px;
     width: 320px;
@@ -483,6 +489,25 @@ footer{
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
+
+#search-result .head{ 
+    border-bottom: 1px solid #eee;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 0 5px;
+}
+#search-result .head .search-message{
+    
+}
+#search-result .head .close-btn-search{
+    color: #00cccc;
+    cursor: pointer;
+    margin: 2px 0 0;
+}
+#search-result .inner{
+    max-height: 200px;
+}
+
 #search-result .search-items{
     margin-bottom: 15px;
 }

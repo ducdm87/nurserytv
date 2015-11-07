@@ -4,7 +4,7 @@
         <div class="entry-title-text-left">
             <div class="entry-title-text-right">
                     <div class="entry-title-text-center">
-                        <a href=""><span><?php if(isset($items)) {echo $items["title"];} ?></span></a>
+                        <a href=""><span><?php if(isset($item)) {echo $item->title;} ?></span></a>
                     </div>
             </div>
         </div>
@@ -13,21 +13,28 @@
     <div class="entry-content">
         <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
                 <div class="detail embed-responsive embed-responsive-16by9" >
-                    <img src="<?php echo $items['image']; ?>" style="width: 100%;" alt="<?php echo $items["title"];?>">
-                    <?php echo show_video($items);  ?>
+                    <?php echo show_video($item);  ?>
+                    <script>
+                        var linkvdsvvb = "<?php echo $item->_link_view;?>";
+                        var linkvdslvb = "<?php echo $item->_link_like;?>";
+                    </script>
                 </div>
                 <div class="entry-caption">
                     <div class="entry-user">
                         <div class="fb-social pull-left">
-                            <div class="fb-like" data-href="<?php if(isset($items)) {echo $items["videourl"];} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                            <div class="fb-like" data-href="<?php if(isset($item)) {echo $item->videourl;} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                         </div>
                         <div class="pull-right" style="margin-right: 15px;">
                             <div class="entry-recomment-user">
                                 <span class="entry-viewed">
-                                    <span><img src="/images/app/eye.png"><?php echo isset($items['viewed']) ? $items['viewed'] : 0 ?></span>
+                                    <img src="/images/app/eye.png">
+                                    <span><?php echo isset($item->viewed) ? $item->viewed : 0 ?></span>
                                 </span>
                                 <span class="entry-like">
-                                    <a href="javascript:void(0)" title="Thích" onclick="userLike(39)"><i class="fa fa-heart"></i></a><span class="like-data"><?php echo isset($items['like']) ? $items['like'] : 0 ?></span>
+                                    <a href="javascript:void(0)" title="Thích" onclick="userLike(39)">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                    <span class="like-data"><?php echo isset($item->like) ? $item->like : 0 ?></span>
                                 </span>
                             </div>
 

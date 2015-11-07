@@ -220,6 +220,11 @@ class Video extends CFormModel {
     public function getItem($cid){
         $obj = YiiTables::getInstance(TBL_VIDEOS);
         $obj->load($cid);
+        
+        if($obj != null){
+            $obj->_link_view  = Yii::app()->createUrl("videos/setview", array("id"=>$obj->id));
+            $obj->_link_like  = Yii::app()->createUrl("videos/likevideo", array("id"=>$obj->id));
+        }
         return $obj;
     }
     
@@ -249,6 +254,20 @@ class Video extends CFormModel {
         $items[] = array("value"=>1, "text"=>"Enable");        
         $list['feature'] = buildHtml::select($items, $mainItem->feature, "feature");        
         return $list;
+    }
+    
+    function likevideo($video_id){
+        $video = $this->getItem($video_id);
+        $video->like = $video->like + 1;
+        $video->store();
+        return $video->like;
+    }
+    
+    function setview($video_id){
+        $video = $this->getItem($video_id);
+        $video->viewed = $video->viewed + 1;
+        $video->store();
+        return $video->viewed;
     }
 
 }

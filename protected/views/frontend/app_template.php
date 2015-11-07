@@ -86,10 +86,13 @@
                                     <form action="/videos/search" method="get">
                                         <input type="text" name="q" class="form-control input-sm input-search" maxlength="64" placeholder="Tìm kiếm..." value="<?php echo isset($_GET['q']) ? $_GET['q'] : '' ?>" />
                                         <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
-                                    </form>
+                                    </form>                                    
                                     <div id="search-result">
-
-
+                                        <div class="head">
+                                            <div class="search-message col-xs-10"></div>
+                                            <i class="fa fa-close fa-lg close-btn-search col-xs-2 text-right"></i>
+                                        </div>
+                                        <div class="inner"></div>
                                     </div>
                                 </div>
                             </div>

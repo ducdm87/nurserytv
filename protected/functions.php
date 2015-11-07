@@ -477,100 +477,116 @@ function subGroup($items, $id) {
 
 //CBV viet ham
 
-    function show_video ($video){//chinhBV show video 
-        $code=$video["videocode"];
-        $url=$video["videourl"];
-        $images=$video["image"];
-        if(isset($url) && $url!=null){
-          $result= "<video   controls poster='".$images."'>
-                    <source src='".$url."' type='video/mp4'>
-                    Trình duyệt không hổ trợ tính năng này.
-                    </video>";
-        }else if(isset($code)){$result=$code;}
-        return $result;    
+function show_video($item, $width = 600, $height = 300) {//chinhBV show video 
+    if(is_array($item)){
+        $video_code = $item["videocode"];
+        $video_url = $item["videourl"];
+        $video_image = $item["image"];
+        $video_id = $item["id"];
+    }else if(is_object($item)){
+        $video_code = $item->videocode;
+        $video_url = $item->videourl;
+        $video_image = $item->image;
+        $video_id = $item->id;
     }
-    
-     function show_video_playlist ($items,$stt=null){//chinhBV ham lay video 
-        // var_dump($items);         var_dump($stt); die;
-            $result="";
-            if(isset($items[0]["videourl_p"]) && $items[0]["videourl_p"]!=NULL && $stt==NULL){
-                $url= $items[0]["videourl_p"];
-                $result= "<video Autoplay   controls poster='".$items['0']["image"]."'>
-                    <source src='".$url."' type='video/mp4'>
-                    Trình duyệt không hổ trợ tính năng này.
-                    </video>";
-            }else if(isset($items[0]["videocode_p"]) && $items[0]["videocode_p"]!=NULL && $stt==NULL){
-                $result = $items[0]["videocode_p"];
-            }else {
-                foreach ($items as $key=>$item){
-                    if($key==$stt){
-                    $code=$item["videocode"];
-                    $url=$item["videourl"];
-                    if(isset($url)&& $url!=null){
-                         $result= "<video Autoplay controls poster='".$item["image"]."''>
-                        <source src='".$url."' type='video/mp4'>
-                        Trình duyệt không hổ trợ tính năng này.
-                        </video>";
-                    }else  if(isset($code)){
-                       $result = $code;
-                    }
-                    }
-                }                           
-            }
-
-            return $result;    
-        }
-        function show_stt_active($items,$stt){
-            $i=0;
-            foreach ($items as $item){
-                $items["$i"]['status']=$stt;
-                $i++;
-            }
-            return $items;
-        }
-        
-
-
-function sysLoadXmlParam($xml_file, $values = null, $type = "Module"){
-    global $mainframe;
-        $obj_xml = simplexml_load_file($xml_file);
-        
-        $params_value = json_decode($values, true);
-      
-        if(!is_array($params_value)) $params_value = array();
-        
-        if ($obj_xml == false) {
-            $message = "Failed loading module: ";
-            foreach (libxml_get_errors() as $error) {
-                $message .= "<br>". $error->message;
-            }
-            YiiMessage::raseSuccess($message);
-            return false;
-        }
-//        print_r($obj_xml); die;
-        
-        $config = $obj_xml->config?$obj_xml->config:false;
-        if($config == false) return array();
-        
-        $array_param =array();
-        foreach($config->param as $k=> $param){
-            $obj_param = new stdClass();
-            $param_title = "$type Parameters(".(count($array_param) + 1).")";
-            
-            if(isset($param->attributes()->title)){
-                $param_title = (string)$param->attributes()->title;
-            }
-            
-            $obj_param->title = $param_title;
-            $obj_param->fields = array();
-            foreach($param->field as $field){                
-                $field_name = (string)$field['name'];
-                $field_value = isset($params_value[$field_name])?$params_value[$field_name]:null;
-                $obj_param->fields[] = YiiElement::render($field, $field_value);
-              
-            }
-            $array_param[] = $obj_param;            
-        }
-       return $array_param;
+    $result = "";
+    if ($video_code != "") {
+        $result = $video_code;
+    }else if ($video_url != null) {
+        $result = ' <div id="mediaplayer-'.$video_id.'"></div>  
+                    <script type="text/javascript">
+                        jwplayer("mediaplayer-'.$video_id.'").setup({
+                                flashplayer: "http://app.vietbao.vn/player/jw/player.swf",
+                                provider: "video", stretching: \'exactfit\',                            
+                                width: '.$width.', height: "'.$height.'",
+                                image: "'.$video_image.'",
+                                file: "'.$video_url.'"
+                            });
+                    </script>  ';
+    }
+    return $result;
 }
 
+function show_video_playlist($items, $stt = null) {//chinhBV ham lay video 
+    // var_dump($items);         var_dump($stt); die;
+    $result = "";
+    if (isset($items[0]["videourl_p"]) && $items[0]["videourl_p"] != NULL && $stt == NULL) {
+        $url = $items[0]["videourl_p"];
+        $result = "<video Autoplay   controls poster='" . $items['0']["image"] . "'>
+                    <source src='" . $url . "' type='video/mp4'>
+                    Trình duyệt không hổ trợ tính năng này.
+                    </video>";
+    } else if (isset($items[0]["videocode_p"]) && $items[0]["videocode_p"] != NULL && $stt == NULL) {
+        $result = $items[0]["videocode_p"];
+    } else {
+        foreach ($items as $key => $item) {
+            if ($key == $stt) {
+                $code = $item["videocode"];
+                $url = $item["videourl"];
+                if (isset($url) && $url != null) {
+                    $result = "<video Autoplay controls poster='" . $item["image"] . "''>
+                        <source src='" . $url . "' type='video/mp4'>
+                        Trình duyệt không hổ trợ tính năng này.
+                        </video>";
+                } else if (isset($code)) {
+                    $result = $code;
+                }
+            }
+        }
+    }
+
+    return $result;
+}
+
+function show_stt_active($items, $stt) {
+    $i = 0;
+    foreach ($items as $item) {
+        $items["$i"]['status'] = $stt;
+        $i++;
+    }
+    return $items;
+}
+
+function sysLoadXmlParam($xml_file, $values = null, $type = "Module") {
+    global $mainframe;
+    $obj_xml = simplexml_load_file($xml_file);
+
+    $params_value = json_decode($values, true);
+
+    if (!is_array($params_value))
+        $params_value = array();
+
+    if ($obj_xml == false) {
+        $message = "Failed loading module: ";
+        foreach (libxml_get_errors() as $error) {
+            $message .= "<br>" . $error->message;
+        }
+        YiiMessage::raseSuccess($message);
+        return false;
+    }
+//        print_r($obj_xml); die;
+
+    $config = $obj_xml->config ? $obj_xml->config : false;
+    if ($config == false)
+        return array();
+
+    $array_param = array();
+    foreach ($config->param as $k => $param) {
+        $obj_param = new stdClass();
+        $param_title = "$type Parameters(" . (count($array_param) + 1) . ")";
+
+        if (isset($param->attributes()->title)) {
+            $param_title = (string) $param->attributes()->title;
+        }
+
+        $obj_param->title = $param_title;
+        $obj_param->fields = array();
+        foreach ($param->field as $field) {
+            $field_name = (string) $field['name'];
+            $field_value = isset($params_value[$field_name]) ? $params_value[$field_name] : null;
+            $obj_param->fields[] = YiiElement::render($field, $field_value);
+        }
+        $array_param[] = $obj_param;
+    }
+    return $array_param;
+}

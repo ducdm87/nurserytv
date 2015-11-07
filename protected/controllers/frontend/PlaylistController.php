@@ -23,8 +23,8 @@ class PlaylistController extends FrontEndController {
         $playlist = new Playlist();
         $data = array();
         //$data['videos'] = $this->getVideos($pid);
-        $data['allPlaylist'] =$playlist->allPlaylist();
-        
+        $data['allPlaylist'] = $playlist->allPlaylist();
+
         $this->setPageTitle(isset($data['videos'][0]['name']) ? $data['videos'][0]['name'] : '' . ', Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
         $this->metaDesc = isset($data['videos'][0]['metadesc']) ? $data['videos'][0]['metadesc'] : '';
         $this->metaKey = isset($data['videos'][0]['metakey']) ? $data['videos'][0]['metakey'] : '';
@@ -40,7 +40,9 @@ class PlaylistController extends FrontEndController {
         if (!$param) {
             $data_playlists = $playlist->getPlaylists();
             foreach ($data_playlists as $key => $play_id) {
-                if ($data = $video->getVideoByPlayList($play_id['id'])) {$data_playlists[$key]['videos'] = $data;}
+                if ($data = $video->getVideoByPlayList($play_id['id'])) {
+                    $data_playlists[$key]['videos'] = $data;
+                }
             }
         } else {
             $data_playlists[] = $playlist->getPlaylistById($param);
@@ -49,35 +51,37 @@ class PlaylistController extends FrontEndController {
         return $data_playlists;
     }
 
-     //chinhBV action detail playlist begin 
-     public function actionDetail() {
-        $id = Request::getVar('id',null);
-        $alias = Request::getVar('alias',null);
-        $stt = Request::getVar('stt',null);
+    //chinhBV action detail playlist begin 
+    public function actionDetail() {
+        $id = Request::getVar('id', null);
+        $alias = Request::getVar('alias', null);
+        $stt = Request::getVar('stt', null);
+        
         $model = Playlist::getInstance();
         $items = $model->getItems($id);
-        $items=show_stt_active($items,$stt);
-        $getPlaylist= $model->getPlaylist($id);
-        $cat = $model->getplayist_cat($id,$alias);
-        if($stt==null)$stt=0;
         
+        $getPlaylist = $model->getPlaylist($id);
+        $cat = $model->getplayist_cat($id, $alias);
+        if ($stt == null)
+            $stt = 0;
+
         $data['stt'] = $stt;
         $data['items'] = $items;
-        $data['getPlaylist'] =$getPlaylist;
+        $data['getPlaylist'] = $getPlaylist;
         $data['category'] = $cat;
-        if(isset($getPlaylist) && $getPlaylist!=null){
-            $page_title = $getPlaylist["name"];        
-            $page_keyword = $getPlaylist["metakey"];  
-            $page_description = $getPlaylist["metadesc"];  
-            setSysConfig("seopage.title",$page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
-            setSysConfig("seopage.keyword",$page_keyword); //xét với key word
-            setSysConfig("seopage.description",$page_description); // xét meta description
-            Request::setVar('alias',$getPlaylist['alias']);
+        if (isset($getPlaylist) && $getPlaylist != null) {
+            $page_title = $getPlaylist["name"];
+            $page_keyword = $getPlaylist["metakey"];
+            $page_description = $getPlaylist["metadesc"];
+            setSysConfig("seopage.title", $page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
+            setSysConfig("seopage.keyword", $page_keyword); //xét với key word
+            setSysConfig("seopage.description", $page_description); // xét meta description
+            Request::setVar('alias', $getPlaylist['alias']);
         }
         //var_dump($data); die;
-        $this->render('detail', $data);   
-        
+        $this->render('detail', $data);
     }
+
     //End chinhbv action deltail playlist
 
     private function getVideoById($pid = false, $vid = false) {
