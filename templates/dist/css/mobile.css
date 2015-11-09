@@ -12,9 +12,10 @@
         padding: 0;
         position: relative;
         display: block;
-        max-height: 355px;
-        margin-bottom: 25px;
+        max-height: 357px;
+        margin-bottom: 0px;
         float: left;
+        height: 356px;
     }
     .dropdown-menu{
         padding-left: 10px;
@@ -23,7 +24,7 @@
 
     .entry-content .pl-list-video{
         overflow-y: scroll;
-            height: 287px;
+            height: 276px;
         padding: 0; 
     }
     #search-result::-webkit-scrollbar-track
@@ -109,12 +110,10 @@
     }
     .dropdown .dropdown-menu{
         width: 100%;
-
+         background: white none repeat scroll 0 0;
+        width: 100%;
     }
-    .dropdown-menu{
-        background: #e6e7e7;
-        border-color: #e6e7e7;
-    }
+    .dropdown-menu a {color: #00cccc;}
     .grid-menu [class*="col-"] {
         margin-top: 5px;
         margin-bottom: 5px;

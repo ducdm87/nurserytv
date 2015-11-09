@@ -26,7 +26,7 @@
                                             <div class="media-body">
                                                 <a href="<?php echo  $url= Yii::app()->createUrl("videos/detail/", array("id"=>$video['id'],"alias"=>$video['alias'])); ?>"><h4 class="media-heading"><?php echo $video['title'] ?></h4></a>
                                                 <div class="entry-recomment">
-                                                    bởi <a href="#">Nursery Rhymes TV</a>
+                                                    Bởi: <a href="#">Nursery Rhymes TV</a>
                                                     <div class="entry-recomment-user">
                                                         <span class="entry-viewed">
                                                             <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>

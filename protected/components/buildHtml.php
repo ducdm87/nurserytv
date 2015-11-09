@@ -353,7 +353,7 @@ class buildHtml {
                 <?php if (isset($playlists) && $playlists): ?>
                 <ul class="dropdown-menu" role="menu">
                     <?php foreach ($playlists as $menu): ?>
-                    <li><a style="color: #f945a7;" href="<?php  echo Yii::app()->createUrl("playlist/detail/", array("id"=>$menu['id'],"alias"=>$menu['alias'])); ?>"><?php echo $menu['name'] ?></a></li>
+                    <li><a href="<?php  echo Yii::app()->createUrl("playlist/detail/", array("id"=>$menu['id'],"alias"=>$menu['alias'])); ?>"><?php echo $menu['name'] ?></a></li>
                 <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
@@ -476,7 +476,6 @@ class buildHtml {
                     return $items;
                 }
                 ?>
-            
             <?php function show_video_right($bien_video,$title_video_right){ ?>
                         <?php if (isset($bien_video) && $bien_video): ?>
                              <div class="entry-container">
@@ -494,16 +493,9 @@ class buildHtml {
                                         <?php $index = 0;  foreach ($bien_video as $video): ?>
                                             <?php if ($index == 0): ?>   
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                   
-                                                    <?php
-                                                    if($video['videocode']!=null){
-                                                        ?>
+                                                    <?php if($video['videocode']!=null){ ?>
                                                     <img src="<?php echo $video["image"]; ?>" class="img-responsive" alt="<?php echo $video["title"];?>">
-                                                    <?php
-                                                    }
-                                                    echo show_video($video,"304","200");
-                                                    
-                                                    ?>
+                                                    <?php } echo show_video($video,"304","200"); ?>
                                                 </div>
                                             <?php endif; ?>
                                             <div class="caption entry-recomment-item" style="margin-top: 30px;">
@@ -524,7 +516,6 @@ class buildHtml {
                                 </div>
                             </div>
                         <?php endif; } ?>
-            
                 <div class="col-md-4 no-padding-right sidebar padding-mb-2">
                     <div class="row-fuild">
                         <?php $video_hots=db_video_right("feature=1"); $video_week=  db_video_right("hotweek=1"); ?>

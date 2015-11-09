@@ -50,6 +50,7 @@ function showBlockHome($items, $title, $link = null){
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="<?php echo $video['link']; ?>" title="<?php echo $video['title'] ?>"><?php echo $video['title'] ?></a></h4>
+                                Bởi: <a href="#">Nursery Rhymes TV</a>
                                 <div class="entry-recomment-user">
                                     <div class="dan-index-v-like-index">
                                         <span class="entry-viewed">
@@ -57,10 +58,7 @@ function showBlockHome($items, $title, $link = null){
                                                     src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                         </span>
                                         <span class="entry-like">
-                                            <a href="javascript:void(0)" title="Thích" onclick="userLike(39)">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                            <span class="like-data"><?php echo isset($video["like"]) ? $video["like"] : 0 ?></span>
+                                           <i class="fa fa-heart"></i> <span class="like-data"> <?php echo isset($video["like"]) ? $video["like"] : 0 ?></span>
                                         </span>
                                     </div>
                                 </div>

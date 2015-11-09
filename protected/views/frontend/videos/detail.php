@@ -16,7 +16,7 @@
                     <?php  if( $item->videocode!=null){
                             ?>
                         <img src="<?php echo $item->image; ?>" class="img-responsive" alt="<?php echo$item->title;?>">
-                    <?php } echo show_video($item,"632","355");   ?>
+                    <?php } if(isset($item))echo show_video($item,"632","355");   ?>
                     <script>
                         var linkvdsvvb = "<?php echo $item->_link_view;?>";
                         var linkvdslvb = "<?php echo $item->_link_like;?>";

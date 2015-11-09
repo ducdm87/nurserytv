@@ -224,8 +224,10 @@ class Video extends CFormModel {
         if($obj != null){
             $obj->_link_view  = Yii::app()->createUrl("videos/setview", array("id"=>$obj->id));
             $obj->_link_like  = Yii::app()->createUrl("videos/likevideo", array("id"=>$obj->id));
+            $obj->video_link  = Yii::app()->createUrl("videos/detail/", array("id"=>$obj->id,"alias"=>$obj->alias));
         }
         return $obj;
+        
     }
     
     public function getListEdit($mainItem)

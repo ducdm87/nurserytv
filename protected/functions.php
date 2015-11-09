@@ -483,32 +483,33 @@ function show_video($item, $width = 632, $height = 355) {//chinhBV show video
         $video_url = $item["videourl"];
         $video_image = $item["image"];
         $video_id = $item["id"];
+        $video_link= $item["link"];
     }else if(is_object($item)){
         $video_code = $item->videocode;
         $video_url = $item->videourl;
         $video_image = $item->image;
         $video_id = $item->id;
+        $video_link = $item->video_link;
     }
     $result = "";
     if ($video_code != "") {
         $result = $video_code;
     }else if ($video_url != null) {
         $result = ' <div id="mediaplayer-'.$video_id.'"></div>  
-                    <script type="text/javascript">
-                        jwplayer("mediaplayer-'.$video_id.'").setup({
-                                flashplayer: "http://app.vietbao.vn/player/jw/player.swf",
-                                provider: "video", stretching: \'exactfit\',                            
-                                width: '.$width.', height: "'.$height.'",
-                                image: "'.$video_image.'",
-                                file: "'.$video_url.'"
-                            });
-                    </script>  ';
+            <script type="text/javascript">
+                jwplayer("mediaplayer-'.$video_id.'").setup({
+                        flashplayer: "'.$video_link.'",
+                        provider: "video", stretching: \'exactfit\',                            
+                        width: '.$width.', height: "'.$height.'",
+                        image: "'.$video_image.'",
+                        file: "'.$video_url.'"
+                    });
+            </script>  ';
     }
     return $result;
 }
 
 function show_video_playlist($items, $stt = null) {//chinhBV ham lay video 
-    // var_dump($items);         var_dump($stt); die;
     $result = "";
     if (isset($items[0]["videourl_p"]) && $items[0]["videourl_p"] != NULL && $stt == NULL) {
         $url = $items[0]["videourl_p"];
