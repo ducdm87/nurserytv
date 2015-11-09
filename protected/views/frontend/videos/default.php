@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <?php echo buildHtml::showSideBar(); ?>
+            <?php echo fnVDShowSideBar(); ?>
         </div>
     </div>
     <div class="clearfix"></div>

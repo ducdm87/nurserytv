@@ -36,6 +36,9 @@ class FrontEndController extends CController {
             }
             
         }
+        $file_function_layout = PATH_VIEW."frontend/functions.php";
+         
+        if(file_exists($file_function_layout)) require_once $file_function_layout;
         /*
         $link_ajax_login = MASTER_DOMAIN . "/ajax/get-login/";
         $linkApi_Authen = MASTER_DOMAIN . "/service/check-login/";

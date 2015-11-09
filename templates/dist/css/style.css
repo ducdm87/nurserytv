@@ -85,10 +85,12 @@ h2.vega_title {
 ===========ENTRY============*/
 .entry-title{
     background: url(../../../images/app/bg_title.png) repeat-x;
-    height: 50px;
+    height: 48px;
     position: relative;
     margin-bottom: 10px;
 }
+
+.sidebar  .entry-title{ margin-bottom: 0px; }
 
 .entry-title-text{
     background: url(../../../images/app/bg_title_text.png) no-repeat;
@@ -130,7 +132,7 @@ h2.vega_title {
 
 }
 .entry-content{
-    margin-top: 10px;
+    
 }
 
 .no-padding-left{
@@ -224,7 +226,9 @@ h2.vega_title {
     display: block;
 }
 .sidebar .hot-video{
-    border: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-right: 2px solid #eee;
+    border-bottom: 2px solid #eee;
     padding-bottom: 20px;
 }
 .sidebar .hot-video .entry-recomment-item{

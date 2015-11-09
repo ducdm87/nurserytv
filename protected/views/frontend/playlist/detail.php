@@ -54,7 +54,7 @@
             <div class="clearfix"></div>
         </div><!--end col danh sach playlist-->
 
-<?php echo buildHtml::showSideBar(); ?><!--show right cbv-->
+<?php echo fnVDShowSideBar(); ?><!--show right cbv-->
     </div><!--e entry-content-->
 </div><!--E entry container-->
 

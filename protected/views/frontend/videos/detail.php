@@ -97,6 +97,6 @@
                 </div>
             </div>
             
-            <?php echo buildHtml::showSideBar(); ?><!--show right cbv-->
+            <?php echo fnVDShowSideBar(); ?><!--show right cbv-->
     </div><!--e  content-->
 </div>

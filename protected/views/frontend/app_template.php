@@ -1,4 +1,4 @@
-<?php $user_session = Yii::app()->session->get('user_data'); ?>
+<?php $user_session = Yii::app()->session->get('user_data');  ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

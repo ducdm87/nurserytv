@@ -54,6 +54,8 @@ define("ENABLE_SSO", 0);
 
 define("ROOT_PATH", dirname(dirname(__FILE__)) . "/");
 define('PATH_APIFILE', ROOT_PATH . "tmp/apifile/");
+        
+define('PATH_VIEW', dirname(__FILE__) . "/views/");
 
 global $sys_config, $sys_menu;
 $sys_menu = $sys_config = array();

@@ -35,7 +35,7 @@
                 </div>
                 
                                         
-                <?php echo buildHtml::showSideBar(); ?>
+                <?php echo fnVDShowSideBar(); ?><!--show right cbv-->
             </div><!--end entry-content-->   
             
 </div><!--End entroy-containet-->

@@ -100,7 +100,8 @@ class VideosController extends FrontEndController {
         
         if($like_videos == null) $like_videos = array();
         if(isset($like_videos[$id])){
-            $res = $model->get_likevideo($id);
+            $video = $model->getItem($id);
+            $res = $video->like;
         }else{
             $model = Video::getInstance();
             $res = $model->likevideo($id);

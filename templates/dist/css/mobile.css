@@ -189,9 +189,18 @@
     }
     .sidebar .embed-responsive.embed-responsive-16by9{
         padding-bottom: 0px;
-        height: auto;
+        height: 200px;
     }
     
+    .sidebar .item{ 
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px; 
+    }
+    .sidebar .item:last-child{
+        border-bottom: none;
+    }
+    .sidebar .item .caption{ }
+    .sidebar .item .entry-recomment-user{ margin-left: 40px; }
     
     .drop-menu:hover> .dropdown-menu{
         display: block;
