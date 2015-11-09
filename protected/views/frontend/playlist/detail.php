@@ -69,9 +69,15 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
             <div class="col-md-8 no-padding-left padding-mb-2">
                 <div class="detail embed-responsive embed-responsive-16by9">
             <?php echo $c = show_video_playlist($items, $stt); ?>
+                     <script>
+                        var linkvdsvvb = "<?php echo Yii::app()->createUrl("videos/setview", array("id"=>$item["id"]));?>";
+                        var linkvdslvb = "<?php echo Yii::app()->createUrl("videos/likevideo", array("id"=>$item["id"])); ?>";
+                    </script>
+                 
                 </div>
                 <div class="entry-caption">
-                    <a href="<?php echo $item["link"]; ?>"><h4 class="can_title_playlist_detail"><?php
+                    <a href="<?php
+                    echo $item["link"]; ?>"><h4 class="can_title_playlist_detail"><?php
                             if (isset($item)) {
                                 echo $item["title"];
                             }
@@ -79,21 +85,21 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
                     <div class="ds_playlist_detail">
                         <div class="entry-user">
                             <div class="fb-social pull-left">
-                                <div class="fb-like" data-href="<?php
-                                if (isset($item)) {
-                                    echo $item["videourl"];
-                                }
-                                ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                <div class="fb-like" data-href="<?php if(isset($item["videourl"])) {echo $item["videourl"] ;} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                             </div>
                             <div class="pull-right" style="margin-right: 15px;">
                                 <div class="entry-recomment-user">
                                     <span class="entry-viewed">
-                                        <span><img src="/images/app/eye.png" alt="<?php echo $item["title"]; ?>"><?php echo isset($item['viewed']) ? $item['viewed'] : 0 ?></span>
+                                        <img src="/images/app/eye.png">
+                                        <span><?php echo isset($item["viewed"]) ? $item["viewed"] : 0 ?></span>
                                     </span>
                                     <span class="entry-like">
-                                        <a href="javascript:void(0)" title="Thích" onclick="userLike(39)"><i class="fa fa-heart"></i></a><span class="like-data"><?php echo isset($item['like']) ? $item['like'] : 0 ?></span>
+                                        <a href="javascript:void(0)" title="Thích" onclick="userLike(39)">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                                        <span class="like-data"><?php echo isset($item["like"]) ? $item["like"] : 0 ?></span>
                                     </span>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                         <h4><i>Danh sách Category:</i> </h4>

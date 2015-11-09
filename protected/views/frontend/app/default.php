@@ -5,22 +5,30 @@ function showBlockHome($items, $title, $link = null){
     unset($items[0]);
 ?>
 <div class="entry-container">
-    <div class="entry-title">
-    <div class="entry-title-text-left">
-        <div class="entry-title-text-right">
-            <div class="entry-title-text-center">
-                <?php if($link != null) {echo '<a href="'.$link.'"><span>'.$title.'</span></a>';
-                }else{  echo '<span>'.$title.'</span>'; }?>
+    <div class="entry-title col-md-12 ">
+        <div class="col-md-10">
+            <div class="entry-title-text-left">
+                <div class="entry-title-text-right">
+                    <div class="entry-title-text-center">
+                        <?php if($link != null) {echo '<a href="'.$link.'"><span>'.$title.'</span></a>';
+                        }else{  echo '<span>'.$title.'</span>'; }?>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="xem-them col-md-2"><a href="/playlist">Xem Thêm <span class="caret"></span></a></div>
     </div>
     <div class="entry-content">
         <div class="col-md-6 no-padding-left padding-mb-2">
             <div class="embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive embed-responsive-16by9">
+                     <?php
+                     if ($item["videourl"] == null) {
+                        ?>
                     <img src="<?php echo $item['image']; ?>" class="img-video-index" alt="<?php echo $item["title"];?>">
-                     <?php echo show_video($item);  ?>
+                    <?php    
+                        }
+                     echo show_video($item,"470","264");  ?>
                     <div class="ytplayer"></div>
                 </div>
                 <!--</a>-->  
@@ -49,7 +57,10 @@ function showBlockHome($items, $title, $link = null){
                                                     src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                         </span>
                                         <span class="entry-like">
-                                            <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
+                                            <a href="javascript:void(0)" title="Thích" onclick="userLike(39)">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <span class="like-data"><?php echo isset($video["like"]) ? $video["like"] : 0 ?></span>
                                         </span>
                                     </div>
                                 </div>
@@ -69,17 +80,20 @@ function showBlockHome($items, $title, $link = null){
  ?>   
 <?php foreach ($items as $key=>$item): ?>
     <div class="entry-container">
-        <div class="entry-title">
-            <div class="entry-title-text-left">
-                <div class="entry-title-text-right">
-                    <div class="entry-title-text-center">
-                        <?php if($item['link'] != null) {
-                           echo '<a href="'.$item['link'].'"><span>'.$item['title'].'</span></a>';
-                           }else{echo '<span>'.$item['title'].'</span>';}
-                       ?>
+        <div class="entry-title col-md-12 ">
+            <div class="col-md-10">
+                <div class="entry-title-text-left">
+                    <div class="entry-title-text-right">
+                        <div class="entry-title-text-center">
+                            <?php if($item['link'] != null) {
+                               echo '<a href="'.$item['link'].'"><span>'.$item['title'].'</span></a>';
+                               }else{echo '<span>'.$item['title'].'</span>';}
+                           ?>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="xem-them col-md-2"><a href="<?php echo $item['link'];?>">Xem Thêm <span class="caret"></span></a></div>
         </div>
 <?php if(count($item['playlist']) <=0) return false;?>
     <div class="entry-content">

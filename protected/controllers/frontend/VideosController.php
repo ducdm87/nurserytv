@@ -30,10 +30,10 @@ class VideosController extends FrontEndController {
         $data = array();
 
         $offset = isset($_GET['limitstart']) ? $_GET['limitstart'] : 0;
-        $limit = 10;
+        $limit = 5;
         $data['total'] = $this->media->getCountTotal();
         $data['videos'] = $media->getMedias($limit, $offset);
-
+        //var_dump($data); die;
         $this->render('default', $data);
     }
 
@@ -76,7 +76,7 @@ class VideosController extends FrontEndController {
             $obj_item = $model->getItem($id);
         }
 
-        //var_dump($playlist); die;
+        //var_dump($obj_item); die;
         $view = "";
         $playlist = $model->getItemsall($id);
         $page_title = $obj_item->title;

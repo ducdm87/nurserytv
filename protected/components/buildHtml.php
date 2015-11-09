@@ -95,13 +95,13 @@ class buildHtml {
         return $return;
     }
 
-    static function pagination($total, $limitstart = 1, $limit = 20) {
+    static function pagination($total, $limitstart = 1, $limit = 5) {
         $pages_total = ceil($total / $limit);
         $pages_current = intval($limitstart / $limit) + 1;
         ob_start();
         ?>
         <div class="paging">
-            <ul>
+            <ul class="pagination">
                 <?php
                 if ($pages_current != 1) {
                     $_limitstartjm = $limit * ($pages_current - 2);
@@ -109,7 +109,7 @@ class buildHtml {
                     <li class="pagenav-inactive">
                         <a href="?limitstart=<?php echo ("$_limitstartjm"); ?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstartjm"); ?>;
                                 submitform();
-                                return false;"> < </a
+                                return false;"> &laquo; </a>
                     </li>
                     <?php
                 }
@@ -147,7 +147,7 @@ class buildHtml {
                     <li class="pagenav-inactive">
                         <a href="?limitstart=<?php echo ("$_limitstart"); ?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
                                 submitform();
-                                return false;"> > </a>
+                                return false;"> &raquo; </a>
                     </li>
                     <?php
                 }
@@ -363,10 +363,7 @@ class buildHtml {
             public static function SlideShow() {
             ?>
                 <?php     function show_item_active($item){?>
-                    <div class="col-md-3"><a href="<?php echo Yii::app()->createUrl("videos/detail/", array("id"=>$item['id'],"alias"=>$item['alias'])); ?>"><img src="<?php echo $item['image'] ?>" class="img-responsive" alt="<?php echo $item["title"];?>" ></a>
-                        <h4 class="media-heading-title-slideshow">
-                            <a href="<?php  echo Yii::app()->createUrl("videos/detail/", array("id"=>$item['id'],"alias"=>$item['alias'])); ?>"><?php echo $item['title'] ?></a>
-                        </h4>
+            <div class="col-md-3"><a href="<?php echo Yii::app()->createUrl("videos/detail/", array("id"=>$item['id'],"alias"=>$item['alias'])); ?>"><img src="<?php echo $item['image'] ?>" class="img-responsive" alt="<?php echo $item["title"];?>"></a>
                     </div>
                 <?php }?>
                 <?php
@@ -497,8 +494,16 @@ class buildHtml {
                                         <?php $index = 0;  foreach ($bien_video as $video): ?>
                                             <?php if ($index == 0): ?>   
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <img src="<?php echo $video['image']; ?>" class="img-responsive" alt="<?php echo $video['title']; ?>"/>
-                                                    <?php echo show_video($video);  ?>
+                                                   
+                                                    <?php
+                                                    if($video['videocode']!=null){
+                                                        ?>
+                                                    <img src="<?php echo $video["image"]; ?>" class="img-responsive" alt="<?php echo $video["title"];?>">
+                                                    <?php
+                                                    }
+                                                    echo show_video($video,"304","200");
+                                                    
+                                                    ?>
                                                 </div>
                                             <?php endif; ?>
                                             <div class="caption entry-recomment-item" style="margin-top: 30px;">
@@ -523,7 +528,8 @@ class buildHtml {
                 <div class="col-md-4 no-padding-right sidebar padding-mb-2">
                     <div class="row-fuild">
                         <?php $video_hots=db_video_right("feature=1"); $video_week=  db_video_right("hotweek=1"); ?>
-                        <?php show_video_right($video_hots,"Video Nổi Bật"); show_video_right($video_week,"Video Hót Trong Tuần"); ?>
+                        <?php //show_video_right($video_hots,"Video Nổi Bật"); 
+                        show_video_right($video_week,"Video Hot Trong Tuần"); ?>
                     </div><!--end row fuit-->
                 </div><!--end main container-->
                 <?php

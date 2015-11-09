@@ -23,8 +23,8 @@
 
     .entry-content .pl-list-video{
         overflow-y: scroll;
-        height: 295px;
-        padding: 0;
+            height: 287px;
+        padding: 0; 
     }
     #search-result::-webkit-scrollbar-track
     {
@@ -157,6 +157,7 @@
     }
     .detail-video .detail-title{
         color: #ffffff;
+        min-height: 58px;
     }
     .detail-video .detail-title h4{
         border-bottom: 1px solid #5b5656;

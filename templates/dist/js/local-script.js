@@ -2,14 +2,14 @@
 $(window).ready(function() {
     var isftclpv = 1;
     var isftcllv = 1;
-    jwplayer().onDisplayClick(function(event) {
-        if (isftclpv == 1) {
-            var tag_script = $('<script/>', {src: linkvdsvvb});
-            $("head").append(tag_script);
-        }
-        isftclpv = 0;
-        jwplayer(event.id).play();
-    });
+//    jwplayer().onPlaylistItem(function(event) {
+//        if (isftclpv == 1) {
+//            var tag_script = $('<script/>', {src: linkvdsvvb});
+//            $("head").append(tag_script);
+//        }
+//        isftclpv = 0;
+//        jwplayer(event.id).play();
+//    });
 
     $(".entry-like").click(function() {
         if (isftcllv == 1) {
@@ -26,8 +26,9 @@ $(window).ready(function() {
     // playlist scroll to active element
     var parent = $(".box.pl-list-video");
     var element = $(".entry-recomment-item-playlist.stt_active");
-
-    var height = $(element).offset().top - $(parent).offset().top - 7;
+    if (parent.length) {
+        var height = $(element).offset().top - $(parent).offset().top - 7;
+    }
     $(parent).scrollTop(height);
 });
 
@@ -123,15 +124,13 @@ function showSearchResult(obj)
     var html = '';
     $('#search-result').show();
     $.each(obj, function(k, val) {
-        html += '<div class="search-items">';
-        html += '<div class="media">';
-        html += '<div class="media-left">';
-        html += '<a href="' + BASE_URL + '/playlist/detail?pid=' + val.play_id + '&pslug=&vid=' + val.id + '&vslug=' + val.alias + '">';
+        html += '<div class="search-items"><div class="media"><div class="media-left">';
+        html += '<a href="' + BASE_URL + '/video/' + val.id + '-' + val.alias + '.html">';
         html += '<img class="media-object" src="' + val.image + '" alt="" style="width:90px;height:60px">';
         html += '</a>';
         html += '</div>';
         html += '<div class="media-body">';
-        html += '<h4 class="media-heading"><a href="' + BASE_URL + '/playlist/detail?pid=' + val.play_id + '&pslug=&vid=' + val.id + '&vslug=' + val.alias + '">' + val.title + '</a></h4>';
+        html += '<h4 class="media-heading"><a href="' + BASE_URL + '/video/' + val.id + '-' + val.alias + '.html">' + val.title + '</a></h4>';
         html += '</div>';
         html += '</div>';
         html += '</div>';

@@ -13,7 +13,10 @@
     <div class="entry-content">
         <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
                 <div class="detail embed-responsive embed-responsive-16by9" >
-                    <?php echo show_video($item);  ?>
+                    <?php  if( $item->videocode!=null){
+                            ?>
+                        <img src="<?php echo $item->image; ?>" class="img-responsive" alt="<?php echo$item->title;?>">
+                    <?php } echo show_video($item,"632","355");   ?>
                     <script>
                         var linkvdsvvb = "<?php echo $item->_link_view;?>";
                         var linkvdslvb = "<?php echo $item->_link_like;?>";

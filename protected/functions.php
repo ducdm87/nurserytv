@@ -477,7 +477,7 @@ function subGroup($items, $id) {
 
 //CBV viet ham
 
-function show_video($item, $width = 600, $height = 300) {//chinhBV show video 
+function show_video($item, $width = 632, $height = 355) {//chinhBV show video 
     if(is_array($item)){
         $video_code = $item["videocode"];
         $video_url = $item["videourl"];
