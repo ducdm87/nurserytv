@@ -5,8 +5,8 @@ function showBlockHome($items, $title, $link = null){
     unset($items[0]);
 ?>
 <div class="entry-container">
-    <div class="entry-title col-md-12 ">
-        <div class="col-md-10">
+    <div class="entry-title">
+        <div class="xt-col-md-10">
             <div class="entry-title-text-left">
                 <div class="entry-title-text-right">
                     <div class="entry-title-text-center">
@@ -16,7 +16,7 @@ function showBlockHome($items, $title, $link = null){
                 </div>
             </div>
         </div>
-        <div class="xem-them col-md-2"><a href="/playlist">Xem Thêm <span class="caret"></span></a></div>
+        <div class= "xt-col-md-2"><a class="xem-them-view" href="/playlist">Xem Thêm <span class="caret"></span></a></div>
     </div>
     <div class="entry-content">
         <div class="col-md-6 no-padding-left padding-mb-2">
@@ -33,11 +33,7 @@ function showBlockHome($items, $title, $link = null){
                 </div>
                 <!--</a>-->  
             </div>
-            <h4 class="media-heading-title">
-                <a href="<?php echo $item['link']; ?>"><?php echo $item['title'] ?></a>
-            </h4>
         </div>
-
         <div class="col-md-6 no-padding-right padding-mb-2">
             <?php if (isset($items) && $items): ?>
                 <?php foreach ($items as $video): ?>
@@ -50,14 +46,14 @@ function showBlockHome($items, $title, $link = null){
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="<?php echo $video['link']; ?>" title="<?php echo $video['title'] ?>"><?php echo $video['title'] ?></a></h4>
-                                Bởi: <a href="#">Nursery Rhymes TV</a>
+                                <a href="#" class="content-author">Bởi: Nursery Rhymes TV</a>
                                 <div class="entry-recomment-user">
                                     <div class="dan-index-v-like-index">
                                         <span class="entry-viewed">
                                             <span><img alt="<?php echo $video["title"];?>" 
                                                     src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
                                         </span>
-                                        <span class="entry-like">
+                                        <span class="entry-like-fix">
                                            <i class="fa fa-heart"></i> <span class="like-data"> <?php echo isset($video["like"]) ? $video["like"] : 0 ?></span>
                                         </span>
                                     </div>
@@ -78,8 +74,8 @@ function showBlockHome($items, $title, $link = null){
  ?>   
 <?php foreach ($items as $key=>$item): ?>
     <div class="entry-container">
-        <div class="entry-title col-md-12 ">
-            <div class="col-md-10">
+        <div class="entry-title">
+            <div class="xt-col-md-10">
                 <div class="entry-title-text-left">
                     <div class="entry-title-text-right">
                         <div class="entry-title-text-center">
@@ -91,7 +87,7 @@ function showBlockHome($items, $title, $link = null){
                     </div>
                 </div>
             </div>
-            <div class="xem-them col-md-2"><a href="<?php echo $item['link'];?>">Xem Thêm <span class="caret"></span></a></div>
+            <div class="xt-col-md-2"><a class="xem-them-view" href="<?php echo $item['link'];?>">Xem Thêm <span class="caret"></span></a></div>
         </div>
 <?php if(count($item['playlist']) <=0) return false;?>
     <div class="entry-content">
@@ -109,7 +105,6 @@ function showBlockHome($items, $title, $link = null){
                         </span>
                     </a>
                 </div>
-                <h4 class="media-heading-title"><a href="<?php echo $p["link"]; ?>"><?php echo $p["name"]; ?></a></h4>
             </div>         
         <?php endforeach; ?>
     </div><!--end entry-content-->
@@ -127,7 +122,11 @@ function showBlockHome($items, $title, $link = null){
         <?php if (isset($videos_update) && $videos_update){
             showBlockHome($videos_update,"Video mới update");
         } ?>
-        
+        <div class="google-adwords">
+            <div class="content-thuvienanh">
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/content-thuvienanh.png" alt="Google AdWords" class="img-responsives"/>
+            </div>
+        </div>
         <div class="clearfix"></div>
         <?php if (isset($items_videos) && $items_videos){
             showplaylist($items_videos,"Video_playlist");
@@ -135,11 +134,4 @@ function showBlockHome($items, $title, $link = null){
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
-    <div class="google-adwords" style="margin-top: 15px">
-        <div class="text-center">
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/addword2.png" alt="Google AdWords" class="img-responsives"/>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-
 </div>

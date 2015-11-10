@@ -37,9 +37,3 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-
-<style type="text/css">
-    #wrapper{
-        margin-bottom: 20px;
-    }
-</style>

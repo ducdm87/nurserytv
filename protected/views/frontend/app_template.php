@@ -39,6 +39,16 @@
     <script>
             var BASE_URL = '<?php echo Yii::app()->request->baseUrl ?>';
     </script>
+    <!--cbv load commentfacebook-->
+        <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+    <!--E comment load face-->
 </head>
 <body id="index">
     <header>
@@ -69,7 +79,7 @@
                             <!--/#end-->
                         </div>
                     </div>
-                    <div class="nav-container">
+                    <div class="container-nav">
                         <div class="menu-main ">
                             <div class="menu-container navbar-collapse collapse" id="navbar-collapse-mobile">
                                 <ul class="nav navbar-nav ">
@@ -109,13 +119,19 @@
             <div class="container">
                 <div class="row">
                     <?php echo buildHtml::SlideShow(); ?>
-                    <div class="google-adwords" style="margin-top: 15px">
-                        <div class="text-center">
+                    <div class="google-adwords">
+                        <div class="content-center-pop">
                             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/addword1.png" alt="Google AdWords" class="img-responsives"/>
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <?php echo $content; ?>
+                    <?php echo $content; //show content ?>
+                    <div class="clearfix"></div>
+                    <div class="google-adwords">
+                        <div class="content-hoisach">
+                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/content-hoisach.png" alt="Google AdWords" class="img-responsives"/>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                     <?php echo buildHtml::showPost(); ?>
                 </div>

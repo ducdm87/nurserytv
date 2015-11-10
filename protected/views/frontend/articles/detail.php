@@ -26,7 +26,7 @@
                 <p>
                     <b><?php echo $item['introtext']; ?></b>
                 </p>
-                <div>
+                <div class="main-content-artical">
                     <?php echo $item['fulltext'];  ?>
                 </div>
             </div>

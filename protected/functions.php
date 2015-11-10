@@ -489,22 +489,16 @@ function show_video($item, $width = 632, $height = 355) {//chinhBV show video
         $video_url = $item->videourl;
         $video_image = $item->image;
         $video_id = $item->id;
-        $video_link = $item->video_link;
+        $video_link = $item->_video_link;
     }
     $result = "";
     if ($video_code != "") {
         $result = $video_code;
     }else if ($video_url != null) {
-        $result = ' <div id="mediaplayer-'.$video_id.'"></div>  
-            <script type="text/javascript">
-                jwplayer("mediaplayer-'.$video_id.'").setup({
-                        flashplayer: "'.$video_link.'",
-                        provider: "video", stretching: \'exactfit\',                            
-                        width: '.$width.', height: "'.$height.'",
-                        image: "'.$video_image.'",
-                        file: "'.$video_url.'"
-                    });
-            </script>  ';
+        $result = "<video controls poster='" . $video_image . "'>
+        <source src='" .  $video_url . "' type='video/mp4'>
+        Trình duyệt không hổ trợ tính năng này.
+        </video>";
     }
     return $result;
 }

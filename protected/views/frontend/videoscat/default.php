@@ -11,7 +11,7 @@
             </div>
     <?php if(count($allPlaylist) <=0) return false;?>
             <div class="entry-content">
-                <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
+                <div class="col-md-8 no-padding-left padding-mb-2">
                 <?php foreach ($allPlaylist as $key=>$p): ?>
                             <div class="col-md-4 play-list-item no-padding-left">
                             <div class="embed-responsive embed-responsive-16by9">
@@ -33,7 +33,7 @@
                 <?php  endforeach; ?>
                 <div class="clearfix"></div>
                 </div>
-                <?php echo buildHtml::showSideBar(); ?>
+                 <?php echo fnVDShowSideBar(); ?><!--show right cbv-->
             </div><!--end entry-content-->   
             
 </div><!--End entroy-containet-->

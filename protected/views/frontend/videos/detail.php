@@ -11,7 +11,7 @@
     </div>
 
     <div class="entry-content">
-        <div class="col-md-8 no-padding-left padding-mb-2" style="margin-top: 12px;">
+        <div class="col-md-8 no-padding-left padding-mb-2">
                 <div class="detail embed-responsive embed-responsive-16by9" >
                     <?php  if( $item->videocode!=null){
                             ?>
@@ -42,7 +42,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div><br />
                     <h4>Danh sách PlayList: </h4>
                     <div class="ds_playlist_detail"><ul>
                         <?php foreach ($playlist as $list){
@@ -51,9 +51,7 @@
                      </ul></div>
                     
                     <div class="clearfix"></div>
-                    <div class="entry-desc">
-                        <p>Comment</p>
-                    </div>
+                  
                 </div>
                 <div class="entry-container">
                     <div class="entry-title">
@@ -70,7 +68,7 @@
                                     <i class="fa fa-warning"></i> <a class="btn-err" data-toggle="collapse" href="#collapseForm" aria-expanded="true" aria-controls="collapseForm" style="color: #ff0000">Báo lỗi VIDEO</a>
                                 </h5>
                             </div>
-                            <div id="collapseForm" class="form-err collapse" style="margin-bottom: 20px; height: 0px;" aria-expanded="false">
+                            <div id="collapseForm" class="form-err collapse" aria-expanded="false">
                                 <form action="" method="post" id="formErr">
                                     <input type="hidden" name="vid" value="42">
                                     <div class="form-group">
@@ -91,10 +89,13 @@
                                 </form>
                             </div>
                             <div class="clearfix"></div>
-
+                            <div class="google-adwords">
+                            <div class="fb-comments" data-href="http://dev.nurserytv.com" data-width="640" data-numposts="3"></div>
+                            </div>                      
                         </div>
                     </div>
                 </div>
+            
             </div>
             
             <?php echo fnVDShowSideBar(); ?><!--show right cbv-->
