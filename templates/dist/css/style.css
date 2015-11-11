@@ -176,7 +176,10 @@ h2.vega_title {
 }
 
 .no-padding-left{
-padding-left: 4px;
+padding-left: -1px;
+}
+.no-padding-left-home{
+padding-left: 1px;
 }
 .no-padding{
     padding: 0px;

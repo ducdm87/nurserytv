@@ -92,7 +92,7 @@ function showBlockHome($items, $title, $link = null){
 <?php if(count($item['playlist']) <=0) return false;?>
     <div class="entry-content">
         <?php foreach ($item['playlist'] as $key=>$p): ?>
-            <div class="<?php if($key%2==0){echo "col-md-6 col-sm-6 col-xs-6 no-padding-left";}else echo "col-md-6 col-sm-6 col-xs-6 no-padding-right";?>">
+            <div class="<?php if($key%2==0){echo "col-md-6 col-sm-6 col-xs-6 no-padding-left-home";}else echo "col-md-6 col-sm-6 col-xs-6 no-padding-right";?>">
                 <div class="embed-responsive embed-responsive-16by9">
                     <img src="<?php echo $p["thumbnail"]; ?>"  class="img-responsive" alt="<?php echo $p["name"];?>">
                     <a href=" <?php echo $p["link"]; ?>" class="entry-play-list-all">
