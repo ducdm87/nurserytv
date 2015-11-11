@@ -73,20 +73,20 @@
                                         <input type="text" name="q" class="form-control input-sm input-search" maxlength="64" placeholder="Tìm kiếm..." value="<?php echo isset($_GET['q']) ? $_GET['q'] : '' ?>" />
                                         <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
                                     </form>
-
                                 </div>
                             </div>
                             <!--/#end-->
                         </div>
                     </div>
                     <div class="container-nav">
+                        <div class="header-selction">
                         <div class="menu-main ">
-                            <div class="menu-container navbar-collapse collapse" id="navbar-collapse-mobile">
+                            <div class="collapse navbar-collapse " id="navbar-collapse-mobile">
+                                <div class="menu-container ">
                                 <ul class="nav navbar-nav ">
                                     <li class="<?php echo ($this->getUniqueId() == 'app') ? 'active' : '' ?>"><a href="<?php echo $this->createUrl('/app') ?>">Home <span class="sr-only">(current)</span></a></li>
                                     <li class="<?php echo ($this->getUniqueId() == 'playlist') ? 'active' : '' ?> drop-menu dropdown">
-                                        <a href="<?php echo $this->createUrl('/playlist') ?>" >
-                                            Play list <span class="caret"></span></a>
+                                        <a href="<?php echo $this->createUrl('/playlist') ?>" >Play list</a>
                                         <?php echo buildHtml::showSubmenu(); ?>
                                     </li>
                                     <li class="<?php echo ($this->getUniqueId() == 'videos') ? 'active' : '' ?>"><a  href="<?php echo $this->createUrl('/videos') ?>">Video</a></li>
@@ -105,7 +105,9 @@
                                         <div class="inner"></div>
                                     </div>
                                 </div>
+                                </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
