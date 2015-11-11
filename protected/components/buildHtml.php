@@ -94,7 +94,7 @@ class buildHtml {
         return $return;
     }
 
-    static function pagination($total, $limitstart = 1, $limit = 10) {
+    static function pagination($total, $limitstart = 1, $limit = 10,$q=NULL) {
         $pages_total = ceil($total / $limit);
         $pages_current = intval($limitstart / $limit) + 1;
         ob_start();
@@ -106,7 +106,7 @@ class buildHtml {
                     $_limitstartjm = $limit * ($pages_current - 2);
                     ?>
                     <li class="pagenav-inactive">
-                        <a href="?limitstart=<?php echo ("$_limitstartjm"); ?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstartjm"); ?>;
+                        <a href="?limitstart=<?php echo ("$_limitstartjm"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstartjm"); ?>;
                                 submitform();
                                 return false;"> &laquo; </a>
                     </li>
@@ -119,13 +119,15 @@ class buildHtml {
                     if ($j == $pages_current) {
                 ?>
                         <li class="pagenav-active">
-                            <span><?php echo $j; ?></span>							
+                            <span>
+                                <?php echo $j; ?>
+                            </span>							
                         </li>
                         <?php
                     } else {
                         ?>
                         <li class="pagenav-inactive">
-                            <a href="?limitstart=<?php echo ("$_limitstart"); ?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
+                            <a href="?limitstart=<?php echo ("$_limitstart"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
                                     submitform();
                                     return false;">
                                    <?php echo $j; ?>
@@ -139,7 +141,7 @@ class buildHtml {
                     $_limitstart = $limit * ($pages_current);
                     ?>
                     <li class="pagenav-inactive">
-                        <a href="?limitstart=<?php echo ("$_limitstart"); ?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
+                        <a href="?limitstart=<?php echo ("$_limitstart"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
                                 submitform();
                                 return false;"> &raquo; </a>
                     </li>

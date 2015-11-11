@@ -40,7 +40,8 @@
                 <?php endif; ?>
                 <div class="text-center">
                         <div class="pull-right-">
-                            <?php echo buildHtml::pagination($total, isset($_GET['limitstart']) ? $_GET['limitstart'] : 0) ?>
+                            <?php if(isset($_GET['q'])) {$q=$_GET['q'];}  else {$q=NULL;}
+                            echo buildHtml::pagination($total, isset($_GET['limitstart']) ? $_GET['limitstart'] : 0,10,$q) ?>
                         </div>
                 </div>
             </div>

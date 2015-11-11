@@ -39,13 +39,13 @@ class VideosController extends FrontEndController {
 
     public function actionSearch() {
 
-        $this->setPageTitle($_GET['q'] . '-Tìm kiếm- kết quả tìm kiếm theo Video');
+        if(isset($_GET['q'])){$this->setPageTitle($_GET['q'] . '-Tìm kiếm- kết quả tìm kiếm theo Video');}
         $this->metaDesc = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
         $this->metaKey = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
 
         $media = new Media();
         $data = array();
-        if (isset($_GET['q']) && $_GET['q']) {
+        if(isset($_GET['q']) && $_GET['q']) {
             $keyword = $_GET['q'];
             $offset = isset($_GET['limitstart']) ? $_GET['limitstart'] : 0;
             $limit = 10;
