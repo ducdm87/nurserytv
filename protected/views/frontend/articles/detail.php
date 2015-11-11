@@ -1,10 +1,6 @@
 
 <div class="page-article-detail">        
     <div class="entry-container">
-        <div class="entry-header">
-            <div class="container-fluid">
-                <div class="entry-title">
-                    <div class="box-bg-left">
                         <div class="entry-title">
                             <div class="entry-title-text-left">
                                     <div class="entry-title-text-right">
@@ -14,10 +10,6 @@
                                     </div>
                             </div>
                         </div>
-                    </div>
-                </div>                    
-            </div> 
-        </div> 
         <div class="entry-body">
             <div class="container">
                 <h4 class="media-heading">

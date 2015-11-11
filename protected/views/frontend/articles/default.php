@@ -1,21 +1,15 @@
- 
-
 <div class="page-news">   
     <?php foreach ($items as $category): ?>
         <div class="entry-container">
-            <div class="entry-header">                
-                <div class="container-fluid">                
                     <div class="entry-title">
-                        <div class="box-bg-left">
-                            <div class="box-bg-right">
-                                <div class="box-bg-center">                                
+                        <div class="entry-title-text-left">
+                            <div class="entry-title-text-right">
+                                <div class="entry-title-text-center">                                
                                     <a href="<?php echo $category['link']; ?>"><?php echo $category['title'] ?></a>
                                 </div>
                             </div>
                         </div>
                     </div>                
-                </div>                
-            </div>
             <div class="entry-body">     
                 <div class="container-fluid">
                     <?php if (isset($category['items']) && $category['items']): ?>
