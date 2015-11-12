@@ -356,6 +356,9 @@ class buildHtml {
             function show_item_active($item) { ?>
                 <div class="col-md-3">
                     <a href="<?php echo Yii::app()->createUrl("videos/detail/", array("id" => $item['id'], "alias" => $item['alias'])); ?>"><img src="<?php echo $item['image'] ?>" class="img-responsive" alt="<?php echo $item["title"]; ?>"></a>
+                    <h4 class="media-heading-title-slideshow">
+                        <a href="<?php  echo Yii::app()->createUrl("videos/detail/", array("id"=>$item['id'],"alias"=>$item['alias'])); ?>"><?php echo $item['title'] ?></a>
+                    </h4>
                 </div>
             <?php }
             $useragent = $_SERVER['HTTP_USER_AGENT'];
