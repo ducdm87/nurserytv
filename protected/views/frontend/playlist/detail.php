@@ -1,5 +1,4 @@
 <!--cbv-->
-
 <div class="entry-container">
     <div class="entry-title">
         <div class="entry-title-text-left">
@@ -15,7 +14,7 @@
         </div>
     </div>
     <div class="entry-content">
-        <?php if (isset($items) && isset($stt)) showVideos($stt, $items, $category); //hien thi video run playlist   ?>
+        <?php if (isset($items) && isset($stt)) showVideos($stt, $items, $category,$getPlaylist); //hien thi video run playlist   ?>
         <div class="col-md-4 no-padding">
             <div class="detail-video" >
                 <div class="detail-title">
@@ -35,7 +34,7 @@
                             <a href="<?php echo Yii::app()->createUrl("playlist/detail/", array("id" => $item['id_list'], "alias" => $item['alias_list'], "stt" => $i)); ?>">
                                 <div class="media">
                                     <div class="media-left">
-                                        <img class="media-object" src="<?php echo $item['image']; ?>" alt="<?php echo $item['title']; ?>" width="150" height="80">
+                                        <img class="media-object" src="<?php echo $item['image']; ?>" alt="<?php echo $item['title']; ?>">
                                     </div>
                                     <div class="media-body">
                                         <p class="media-heading-title-playlist"><?php echo $item['title']; ?></p>
@@ -51,12 +50,23 @@
             </div>
             <div class="clearfix"></div>
         </div><!--end col danh sach playlist-->
-
-<?php echo fnVDShowSideBar_detail_Playlist(); ?><!--show right cbv-->
+        <div class="entry-title hidden-lg">
+                <div class="entry-title-text-left">
+                    <div class="entry-title-text-right">
+                        <div class="entry-title-text-center">
+                            <span>Bình luận</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="hidden-lg">
+            <div class="fb-comments" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-width="350"  data-numposts="1"></div>
+        </div>
+        <?php echo fnVDShowSideBar_detail_Playlist(); ?><!--show right cbv-->
     </div><!--e entry-content-->
 </div><!--E entry container-->
 <?php
-function showVideos($stt = "0", $items = null, $category) { //ham hien thi video trong list 
+function showVideos($stt = "0", $items = null, $category,$getPlaylist) { //ham hien thi video trong list 
     $i = 0;
     foreach ($items as $key => $item):
     if ($key == $stt):
@@ -68,7 +78,6 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
                 var linkvdsvvb = "<?php echo Yii::app()->createUrl("videos/setview", array("id"=>$item["id"]));?>";
                 var linkvdslvb = "<?php echo Yii::app()->createUrl("videos/likevideo", array("id"=>$item["id"])); ?>";
             </script>
-
         </div>
         <div class="entry-caption">
                 <h4 class="can_title_playlist_detail">
@@ -109,7 +118,7 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
             <div class="clearfix"></div>
         </div>
         <div class="entry-container">
-            <div class="entry-title">
+            <div class="entry-title hidden-md hidden-sm hidden-xs">
                 <div class="entry-title-text-left">
                     <div class="entry-title-text-right">
                         <div class="entry-title-text-center">
@@ -119,7 +128,7 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
                 </div>
             </div>
             <div class="entry-content">
-                <div class="">
+                
                     <div class="pull-right">
                         <h5 style="color: #ff0000; font-weight: bold;">
                             <i class="fa fa-warning"></i> <a class="btn-err" data-toggle="collapse" href="#collapseForm" aria-expanded="true" aria-controls="collapseForm" style="color: #ff0000">Báo lỗi VIDEO</a>
@@ -145,14 +154,15 @@ function showVideos($stt = "0", $items = null, $category) { //ham hien thi video
                             </div>
                         </form>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="fb-comments" data-href="http://dev.nurserytv.com" data-width="640" data-numposts="5"></div>
-                </div>
+                    <div class="hidden-md hidden-sm hidden-sm hidden-xs">
+                        <div class="fb-comments" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-width="620" data-numposts="5"></div>
+                    </div>
+                    
             </div>
         </div>
     </div>
-            <?php
+<?php
         endif;
-    endforeach;
+endforeach;
 }
 ?>

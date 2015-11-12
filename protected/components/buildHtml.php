@@ -108,7 +108,7 @@ class buildHtml {
                     <li class="pagenav-inactive">
                         <a href="?limitstart=<?php echo ("$_limitstartjm"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstartjm"); ?>;
                                 submitform();
-                                return false;"> &laquo; </a>
+                                return false;">  <img src="/images/app/arrow_left.png" class="imgback"> </a>
                     </li>
                     <?php
                 }
@@ -127,7 +127,7 @@ class buildHtml {
                     } else {
                         ?>
                         <li class="pagenav-inactive">
-                            <a href="?limitstart=<?php echo ("$_limitstart"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
+                            <a class="text-pagination" href="?limitstart=<?php echo ("$_limitstart"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
                                     submitform();
                                     return false;">
                                    <?php echo $j; ?>
@@ -143,7 +143,7 @@ class buildHtml {
                     <li class="pagenav-inactive">
                         <a href="?limitstart=<?php echo ("$_limitstart"); ?><?php if($q!=NULL)echo "&q=".$q ;?>" onclick="javascript: document.adminForm.limitstart.value =<?php echo ("$_limitstart"); ?>;
                                 submitform();
-                                return false;"> &raquo; </a>
+                                return false;"> <img src="/images/app/arrow_r.png" class="imgback"> </a>
                     </li>
                     <?php
                 }
@@ -151,12 +151,11 @@ class buildHtml {
             </ul>            
         </div>
         <?php
-        echo "<div style='display: inline-table;'>Total: $total item. Page $pages_current of $pages_total. </div>";
+        echo "<div class='info-pagination-n'>Page $pages_current of $pages_total. Total: $total item</div>";
         $return = ob_get_contents();
         ob_end_clean();
         return $return;
     }
-
     static function headSort($title, $order, $order_current, $order_dir) {
         $imgsort = 'sort_desc';
         if (strtolower($order_dir) == 'asc') {
@@ -428,7 +427,16 @@ class buildHtml {
                                     $link = fnCreateUrlNewsDetail($item['id'], $item['alias']);
                                     ?>
                                     <div class="col-md-3 no-padding">
-                                        <div class="thumbnail">
+                                        
+                                         <div class="mobile-img-artical hidden-lg">
+                                            <a href="<?php echo $link; ?>">
+                                                <img src="<?php echo $item['thumbnail'] ?>" alt="<?php echo $item["title"]; ?>" />
+                                            </a>
+                                            <div class="caption">
+                                                <p class="text-post-home"><a href="<?php echo $link; ?>"><?php echo $item['title'] ?></a></p>
+                                            </div>
+                                        </div>
+                                        <div class="thumbnail hidden-md hidden-sm hidden-xs">
                                             <a href="<?php echo $link; ?>">
                                                 <img src="<?php echo $item['thumbnail'] ?>" alt="<?php echo $item["title"]; ?>" />
                                             </a>

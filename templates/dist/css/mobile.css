@@ -15,6 +15,15 @@
         max-height: 357px;
         margin-bottom: 0px;
         float: left;
+        height: 347px;
+    }
+    .detail-video-mobile{
+        padding: 0;
+        position: relative;
+        display: block;
+        max-height: 357px;
+        margin-bottom: 0px;
+        float: left;
         height: 356px;
     }
     .dropdown-menu{
@@ -24,9 +33,10 @@
 
     .entry-content .pl-list-video{
         overflow-y: scroll;
-            height: 276px;
+        height: 269px;
         padding: 0; 
     }
+     
     #search-result::-webkit-scrollbar-track
     {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -178,6 +188,8 @@
     .detail-video .entry-recomment-item-playlist:hover a,.detail-video .entry-recomment-item-playlist:hover h4{
         color: #fff;
     }
+    
+    
 
     .input-lg-50{
         width: 50%;
@@ -228,7 +240,7 @@
         display: block;
     }
 
-    .embed-responsive.embed-responsive-16by9{
+    .embed-responsive .embed-responsive-16by9{
         padding-bottom: 0px;
         height: auto;
     }
@@ -255,7 +267,7 @@
     ===========MENU==========*/
     header .bg_header{
         background-color: #46c4c9;
-        height: 120px;
+        height: 60px;
     }
     .navbar-header{
         position: relative;
@@ -263,7 +275,7 @@
     .navbar-toggle{
         position: absolute;
         left: 0px;
-        top: 26px;
+        top: -2px;
     }
     .navbar-toggle i{
         color: #ffffff;
@@ -280,6 +292,7 @@
         max-height: 355px;
         margin-bottom: 25px;
         float: left;
+        background: #333 none repeat scroll 0 0;
     }
     .detail-video .detail-title h4{
         color: #f945a7;
@@ -294,7 +307,7 @@
 
     .search-mb{
         position: relative;
-        top: 35px;
+        top: 9px;
         right: 5px;
     }
 
@@ -307,8 +320,14 @@
     }
 
 }
+.show-mobile-text-menu {
+    font-weight: bold;
+    color: #00cccc;
+}
 //video danh sach playlist
-
+.no-padding-left-cat{
+        padding: 0px
+    }
 
 
 

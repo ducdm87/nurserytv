@@ -85,13 +85,19 @@ h2.vega_title {
 ===========ENTRY============*/
 .entry-title{
     background: url(../../../images/app/bg_title.png) repeat-x;
-    height: 46px;
+    height: 36px;
     position: relative;
+    margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 9px;
 }
 
-.sidebar  .entry-title{ margin-bottom: -2px; }
+.sidebar  .entry-title{ 
+    margin-bottom: -2px; 
+    margin-top: -1px;
+    margin-top: -2px;
+    border-top: 1px solid #00cccc;
+}
 
 .entry-title-text{
     background: url(../../../images/app/bg_title_text.png) no-repeat;
@@ -99,10 +105,11 @@ h2.vega_title {
     position: relative;
     top: 0px;
     display: block;
+    
 }
 .entry-title-text-left{
     position: absolute;
-    margin-top: 11px;
+    margin-top: 1px;
     margin-left: 0px;
     margin-left: -6px;
     background: url(../../../images/app/btn-box-left.png) no-repeat;
@@ -134,13 +141,18 @@ h2.vega_title {
 }
 .tit-bar {
     background: url(../../../images/app/bg_title.png) repeat-x;
-    height: 46px;
+    height:  36px;
+    padding-top: 1px; 
+    border-left: 1px solid #00cccc;
+    border-right: 1px solid #00cccc;
+    border-top: 1px solid #00cccc;
+    margin-top: 20px;
 }
 .entry-title-text-left-bar{
     position: absolute;
-    margin-top: 11px;
+    margin-top: 0px;
     margin-left: 0px;
-    margin-left: -9px;
+    margin-left: -10px;
     background: url(../../../images/app/btn-box-left.png) no-repeat;
     padding: 0 0 0 16px;
 }
@@ -178,15 +190,21 @@ h2.vega_title {
 .no-padding-left{
 padding-left: -1px;
 }
+.no-padding-left-playlist{
+padding: 0px;
+}
+.no-padding-left-cat{
+padding: 0px;
+}
 .no-padding-left-home{
-padding-left: 1px;
+padding-left: 4px;
 }
 .no-padding{
     padding: 0px;
 }
 
 .no-padding-right{
-    padding-right: 0px;
+    padding-right: 4px;
 }
 .entry-recomment-item{
     margin-bottom: 10px;
@@ -413,7 +431,7 @@ padding-left: 1px;
     position: absolute;
     text-align: center;
     top: 50px;
-    font-size: 14px;
+    font-size: 12px;
     left: 20px;
     color: #fff;
     font-weight: bold;
@@ -448,10 +466,7 @@ padding-left: 1px;
 
 .detail-video{
     background-color: #222;
-    padding-top: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+   
 }
 
 .form-control{
@@ -484,7 +499,8 @@ footer{
     border-radius:0px;
     border: 0px;
     height: auto;
-    padding: 20px;
+    margin-bottom: 53px;
+    padding: 0 15px;
 }
 
 .news-items .thumbnail img{
@@ -493,7 +509,26 @@ footer{
     display: block;
 
 }
+
+
 .news-items .thumbnail .caption a{
+    color: #f945a7;
+    font-weight: bold;
+
+}
+
+.news-items .mobile-img-artical {
+    border: 0 none;
+    border-radius: 0;
+    height: auto;
+    margin-bottom: 25px;
+    padding: 0 15px;
+}
+.mobile-img-artical img{
+    width: 100%;
+    display: block;
+}
+.news-items .mobile-img-artical .caption a{
     color: #f945a7;
     font-weight: bold;
 
@@ -547,7 +582,7 @@ footer{
 #search-result {
     position: absolute;
     top: 40px;
-    background: #ffffff;
+    background: #333;
     padding: 2px 5px 5px;
     z-index: 99999;
     overflow-y: scroll;
@@ -557,12 +592,16 @@ footer{
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
+#search-result a:hover{
+    color: whitesmoke;
+}
 
 #search-result .head{ 
     border-bottom: 1px solid #eee;
     height: 22px;
     line-height: 22px;
     margin: 0 0 5px;
+    color: white;
 }
 #search-result .head .search-message{
     
@@ -589,7 +628,9 @@ footer{
 .ds_playlist_detail a{font-size: 14px; color: #00cccc;}
 .ds_playlist_detail a:hover {color: #f945a7;}
 .dan_index_v_like {margin-top: 20px}
-.dan-index-v-like-index { padding: 7px; margin-left: 20px;}
+.dan-index-v-like-index { 
+    margin-left: 26px;
+    padding: 0; }
 .can_title_playlist_detail {margin: 0; padding-bottom: 20px; margin-top: 0px;}
 .ds_playlist_detail h4 {margin-top:   -20px; padding: 0;}
 
@@ -612,14 +653,19 @@ footer{
     text-align: center;
 }
 .content-hoisach{
-  margin-top: -12px;
+  margin-top: 5px;
   text-align: center;  
 }
 .entry-like-fix {margin-left: 35px;}
 .content-author { 
     color: #8b8a8a;
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 25px;
+}
+.content-author-videos { 
+    color: #8b8a8a;
+    font-size: 12px;
+    margin-left: 0px;
 }
 .content-author-bar-right{
     color: #8b8a8a;
@@ -629,7 +675,7 @@ footer{
 .xt-col-md-2{
     float: right;
     margin-right: 40px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .xem-them-view{color: #8b8a8a; }
 .qc-bar-right img{
@@ -645,3 +691,113 @@ footer{
 .like-share-facebook{
     margin-bottom: -110px
 }
+.main-header-h1{
+     margin-left: 297px;
+    padding-top: 95px;
+    width: 168px;;
+}
+.main-header-h1 h1{
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 1px 1px #b7b7b7;
+}
+.fix-video-side-bar {
+    min-height: 250px;
+    min-height: 250px
+}
+.fix-video-side-index {
+    min-height: 200px; 
+}
+.media-left img {width: 120px; height: 79px;}
+.pl-list-video-mobile{
+        overflow-y: scroll;
+        height: 150px;
+        padding: 0; 
+    }
+   //playlist mobile
+    .detail-video-mobile .detail-title-mobile{
+        color: #333;
+        min-height: 58px;
+    }
+    .detail-video-mobile .detail-title-mobile h4{
+        border-bottom: 1px solid #5b5656;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 22px;
+        padding: 0 10px 3px;
+    }
+    .detail-video-mobile .entry-recomment-item:hover{
+        background-color: #eee;
+        opacity:1;
+        cursor: pointer;
+        color: #00cccc;
+    }
+    .detail-video-mobile .entry-recomment-item:hover a,.detail-video-mobile .entry-recomment-item:hover h4{
+        color: #00cccc;
+    }
+    
+    .detail-video-mobile .entry-recomment-item-playlist-mobile:hover a,.detail-video-mobile .entry-recomment-item-playlist-mobile:hover h4{
+        color: #00cccc;
+    }
+    .detail-video-mobile{
+        background: #F5F5F5;
+    }
+    .detail-video-mobile a{
+        font-size: 13px;
+        color: #00cccc;
+        background: #eee;
+        
+    }
+    .detail-video-mobile .box{
+        position: relative;
+        display: block;
+        overflow-y: scroll;
+        max-height: 200px;
+        background: #F5F5F5;
+        margin-top: -10px;
+        float: left;
+    }
+    .detail-video-mobile .detail-title-mobile h4{
+        color: #f945a7;
+        border-bottom: 1px solid;
+    }
+    
+    //active playlist
+.detail-video-mobile .entry-recomment-item-playlist-mobile .stt_active-mobile{
+    background-color: #eee;
+}
+.stt_active-mobile p{
+    margin: 0;
+    font-size: 12px;
+    color: #f945a7;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: justify;
+}
+.entry-recomment-item img{
+    max-height: 80px;
+    max-width: 150px;
+}
+.entry-recomment-item-playlist img{
+    max-height: 80px;
+    max-width: 150px;
+}
+.imgback {
+    height: 18px;
+    width: 25px;
+}
+.text-pagination{
+}
+.info-pagination-n{
+    color: #00cccc;
+    margin-top: -23px;
+}
+
+
+    //end playlist mobile
+
+    
+

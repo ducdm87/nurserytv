@@ -44,6 +44,16 @@ class Media extends CFormModel {
                 ->queryAll();
         return (int) count($query);
     }
+    
+    public function getCountTotal_playlist($where=false) {
+        if ($where && is_array($where)) {
+            $this->command->where($where);
+        }
+        $query = $this->command->select('*')
+                ->from(TBL_PLAYLIST)
+                ->queryAll();
+        return (int) count($query);
+    }
 
     public function getMedias($limit = 10, $offset = 0, $where = array(), $order = false) {
 

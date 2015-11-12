@@ -16,22 +16,19 @@ function showBlockHome($items, $title, $link = null){
                 </div>
             </div>
         </div>
-        <div class= "xt-col-md-2"><a class="xem-them-view" href="/playlist">Xem Thêm <span class="caret"></span></a></div>
+        <div class= "xt-col-md-2 hidden-md hidden-sm hidden-xs"><a class="xem-them-view" href="/playlist">Xem Thêm <span class="caret"></span></a></div>
     </div>
     <div class="entry-content">
         <div class="col-md-6 no-padding-left padding-mb-2">
             <div class="embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive embed-responsive-16by9">
-                     <?php
-                     if ($item["videourl"] == null) {
-                        ?>
-                    <img src="<?php echo $item['image']; ?>" class="img-video-index" alt="<?php echo $item["title"];?>">
-                    <?php    
-                        }
-                     echo show_video($item,"470","264");  ?>
+                    <div class="fix-video-side-index">
+                        <?php echo show_video($item,"470","264");  ?>
+                    </div>
                     <div class="ytplayer"></div>
                 </div>
-                <!--</a>-->  
+                <!--</a>--> 
+                
             </div>
         </div>
         <div class="col-md-6 no-padding-right padding-mb-2">
@@ -87,7 +84,7 @@ function showBlockHome($items, $title, $link = null){
                     </div>
                 </div>
             </div>
-            <div class="xt-col-md-2"><a class="xem-them-view" href="<?php echo $item['link'];?>">Xem Thêm <span class="caret"></span></a></div>
+            <div class="xt-col-md-2 hidden-md hidden-sm hidden-xs"><a class="xem-them-view" href="<?php echo $item['link'];?>">Xem Thêm <span class="caret"></span></a></div>
         </div>
 <?php if(count($item['playlist']) <=0) return false;?>
     <div class="entry-content">

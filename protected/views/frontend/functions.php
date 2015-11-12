@@ -25,7 +25,7 @@ function fnVDShowSideBar() {//sitebar-for-playlist-default
             ?>
             <div class="entry-container">
                 <?php if(count($bien_video)>1){?>
-                <div class="google-adwords">
+                <div class="google-adwords hidden-md hidden-sm hidden-xs">
                         <div class="qc-bar-right">
                             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/qc-bar-playlist.png" alt="Google AdWords" class="img-responsives"/>
                         </div>
@@ -50,7 +50,9 @@ function fnVDShowSideBar() {//sitebar-for-playlist-default
                     foreach ($bien_video as $video){
                         if ($index == 0) {?>   
                             <div class="embed-responsive embed-responsive-16by9">
+                                <div class="fix-video-side-bar">
                                 <?php echo show_video($video, "308", "210"); ?>
+                                </div>
                             </div>
                         <?php }
                         if(count($bien_video)>1){
@@ -94,7 +96,9 @@ function fnVDShowSideBar() {//sitebar-for-playlist-default
         </div>
         <div class="entry-content hot-video">
             <div class="embed-responsive embed-responsive-16by9">
+                <div class="fix-video-side-bar">
                 <?php  echo show_video($video_hots, "308", "210"); ?>
+                </div>
             </div>
         </div>
     </div>
@@ -103,7 +107,7 @@ function fnVDShowSideBar() {//sitebar-for-playlist-default
         <div class="row-fuild"><!--show sitebar-->
             <?php
             $video_week = db_video_right("hotweek=1",$limit=3);
-            show_video_right($video_week, "Video Hot Trong Tuần");
+            show_video_right($video_week, "Video Hot");
             
             function db_video_rightb($dieukien,$limit) {
                 global $mainframe, $db;
@@ -159,7 +163,9 @@ function fnVDShowSideBar_detail_Playlist() {//show-site-bar-for-playlist-detail
                         foreach ($bien_video as $video){
                             if ($index == 0) {?>   
                                 <div class="embed-responsive embed-responsive-16by9">
-                                    <?php echo show_video($video, "308", "210"); ?>
+                                    <div class="fix-video-side-bar">
+                                        <?php echo show_video($video, "308", "210"); ?>
+                                    </div>
                                 </div>
                             <?php }
                             if(count($bien_video)>1){
@@ -203,7 +209,9 @@ function fnVDShowSideBar_detail_Playlist() {//show-site-bar-for-playlist-detail
             </div>
             <div class="entry-content hot-video">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <?php  echo show_video($video_hots, "308", "210"); ?>
+                    <div class="fix-video-side-bar">
+                        <?php  echo show_video($video_hots, "308", "210"); ?>
+                    </div>
                 </div>
             </div>
         </div>

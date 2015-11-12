@@ -21,11 +21,9 @@ class VideosController extends FrontEndController {
     }
 
     public function actionDisplay() {
-
-        $this->setPageTitle('Danh sách video, Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
-        $this->metaDesc = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-        $this->metaKey = "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí";
-
+        setSysConfig("seopage.title", "Danh sách video, Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); //xét với title của app-templat (tự đông insert với name tương ứng)
+        setSysConfig("seopage.keyword", "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí"); //xét với key word
+        setSysConfig("seopage.description", "Nurseryty.Com trang chia sẻ các clip giải trí hay, clip được cập nhật liên tục với tốc độ load video cực nhanh và xem hoàn toàn miễn phí"); 
         $media = new Media();
         $data = array();
 
@@ -79,16 +77,20 @@ class VideosController extends FrontEndController {
         //var_dump($obj_item); die;
         $view = "";
         $playlist = $model->getItemsall($id);
+        $data['item'] = $obj_item;
+        $data['playlist'] = $playlist;
         $page_title = $obj_item->title;
-        $page_keyword = $obj_item->metakey != "" ? $obj_item->metakey : $page_title;
+        $page_title=$page_title." - ".$playlist[0]['name'];
+        $page_keyword = $obj_item->metakey != "" ? $obj_item->metakey  : $page_title;
+        $page_keyword=$page_keyword." - ".$playlist[0]['name'];
         $page_description = $obj_item->metadesc != "" ? $obj_item->metadesc : $page_title;
-
+        $page_description =$page_description." - ".$playlist[0]['name'];
+        
         setSysConfig("seopage.title", $page_title); //xét với title của app-templat (tự đông insert với name tương ứng)
         setSysConfig("seopage.keyword", $page_keyword); //xét với key word
         setSysConfig("seopage.description", $page_description); // xét meta description
         $view = "detail";
-        $data['item'] = $obj_item;
-        $data['playlist'] = $playlist;
+        
         $this->render($view, $data);
     }
     

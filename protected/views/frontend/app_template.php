@@ -16,26 +16,13 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/css/style.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/css/mobile.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/growl/jquery.growl.css" />
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/js/jquery-1.11.1.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/js/bootstrap.js"></script>
-
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jwplayer/jwplayer.js"></script>
         <script type="text/javascript">jwplayer.key = "SjtqmP/7QZDt0Kb7ykYbu2MoBELtSImfkFCaQ/zvZ/MuQ4cz8fWyJQ==";</script>
-
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/js/local-script.js"></script>
-
-
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/templates/dist/js/jquery.growl.js"></script>
-    
     <script>
             var BASE_URL = '<?php echo Yii::app()->request->baseUrl ?>';
     </script>
@@ -58,6 +45,9 @@
                     <div class="bg_header">
                         <div class="header-selction">
                             <div class="navbar-header">
+                                <div class="main-header-h1 hidden-md hidden-xs hidden-sm pull-right">
+                                    <h1>wapsite - trang tổng hợp video, tin tức mới nhất</h1>
+                                </div>
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-mobile" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <i class="fa fa-list fa-2x"></i>
@@ -65,7 +55,9 @@
                                 <a class="navbar-brand logo hidden-sm hidden-xs" href="<?php echo $this->createUrl('/app') ?>">
                                     <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/avatar.png"/>
                                 </a>
+                                
                             </div>
+                            
                             <!-- SEARCH MOBILE -->
                             <div class="hidden-lg hidden-md pull-right search-mb">
                                 <div class="search">
@@ -84,13 +76,45 @@
                             <div class="collapse navbar-collapse " id="navbar-collapse-mobile">
                                 <div class="menu-container ">
                                 <ul class="nav navbar-nav ">
-                                    <li class="<?php echo ($this->getUniqueId() == 'app') ? 'active' : '' ?>"><a href="<?php echo $this->createUrl('/app') ?>">Home <span class="sr-only">(current)</span></a></li>
+                                    <li class="<?php echo ($this->getUniqueId() == 'app') ? 'active' : '' ?>">
+                                        <a href="<?php echo $this->createUrl('/app') ?>">
+                                            <div class="show-mobile-text-menu hidden-lg hidden-md">
+                                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/home-mobile.png" alt="Google AdWords" class="img-responsives hidden-lg">
+                                                Home 
+                                                <span class="sr-only">(current)</span>
+                                            </div>
+                                            <div class="show-pc-text-menu hidden-md hidden-sm hidden-xs">Home</div>
+                                        </a>
+                                    </li>
                                     <li class="<?php echo ($this->getUniqueId() == 'playlist') ? 'active' : '' ?> drop-menu dropdown">
-                                        <a href="<?php echo $this->createUrl('/playlist') ?>" >Playlist</a>
+                                        
+                                        <a href="<?php echo $this->createUrl('/playlist') ?>">
+                                            <div class="show-mobile-text-menu hidden-lg hidden-md">
+                                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/playlist-mobile.png" alt="Google AdWords" class="img-responsives hidden-lg">
+                                                Playlist
+                                            </div>
+                                            <div class="show-pc-text-menu hidden-md hidden-sm hidden-xs">Playlist</div>
+                                        </a>
                                         <?php echo buildHtml::showSubmenu(); ?>
                                     </li>
-                                    <li class="<?php echo ($this->getUniqueId() == 'videos') ? 'active' : '' ?>"><a  href="<?php echo $this->createUrl('/videos') ?>">Video</a></li>
-                                    <li><a href="<?php echo $this->createUrl('/playlist') ?>">About</a></li>
+                                    <li class="<?php echo ($this->getUniqueId() == 'videos') ? 'active' : '' ?>">
+                                        <a  href="<?php echo $this->createUrl('/videos') ?>">
+                                            <div class="show-mobile-text-menu hidden-lg hidden-md">
+                                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/videos-mobile.png" alt="Google AdWords" class="img-responsives hidden-lg">
+                                                Videos
+                                            </div>
+                                            <div class="show-pc-text-menu hidden-md hidden-sm hidden-xs">Videos</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo $this->createUrl('/playlist') ?>">
+                                            <div class="show-mobile-text-menu hidden-lg hidden-md">
+                                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/about-mobile.png" alt="Google AdWords" class="img-responsives hidden-lg">
+                                                About
+                                            </div>
+                                            <div class="show-pc-text-menu hidden-sm hidden-xs">About</div>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <div class="search hidden-sm hidden-xs">
                                     <form action="/videos/search" method="get">

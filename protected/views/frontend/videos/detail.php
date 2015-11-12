@@ -16,7 +16,9 @@
                     <?php  if( $item->videocode!=null){
                             ?>
                         <img src="<?php echo $item->image; ?>" class="img-responsive" alt="<?php echo$item->title;?>">
-                    <?php } if(isset($item))echo show_video($item,"632","355");   ?>
+                    <?php } if(isset($item))echo show_video($item,"632","355"); 
+                    
+                    ?>
                     <script>
                         var linkvdsvvb = "<?php echo $item->_link_view;?>";
                         var linkvdslvb = "<?php echo $item->_link_like;?>";
@@ -89,9 +91,12 @@
                                 </form>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="google-adwords">
-                            <div class="fb-comments" data-href="http://dev.nurserytv.com" data-width="640" data-numposts="3"></div>
-                            </div>                      
+                            <div class="hidden-md hidden-sm hidden-sm hidden-xs">
+                                <div class="fb-comments" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-width="620" data-numposts="3"></div>
+                            </div>     
+                            <div class="hidden-lg">
+                                <div class="fb-comments" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-width="350" data-numposts="3"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

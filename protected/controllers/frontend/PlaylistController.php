@@ -9,26 +9,27 @@
 class PlaylistController extends FrontEndController {
 
     public $item = array();
-
+    private $media;
     function init() {
         parent::init();
+        $this->media = Media::getInstance();
     }
 
     public function actionDisplay() {
-
+        
         $pid = false;
         if (isset($_GET['pid']) && $_GET['pid']) {
             $pid = $_GET['pid'];
         }
         $playlist = new Playlist();
         $data = array();
-        //$data['videos'] = $this->getVideos($pid);
-        $data['allPlaylist'] = $playlist->allPlaylist();
-
-        $this->setPageTitle(isset($data['videos'][0]['name']) ? $data['videos'][0]['name'] : '' . ', Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com');
-        $this->metaDesc = isset($data['videos'][0]['metadesc']) ? $data['videos'][0]['metadesc'] : '';
-        $this->metaKey = isset($data['videos'][0]['metakey']) ? $data['videos'][0]['metakey'] : '';
-        //var_dump($data); die;
+        $data['total'] = $this->media->getCountTotal_playlist();
+        $offset = isset($_GET['limitstart']) ? $_GET['limitstart'] : 0;
+        $limit = 5;
+        $data['allPlaylist'] = $playlist->allPlaylist($limit,$offset);
+        setSysConfig("seopage.title", "Danh sách playlist Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); //xét với title của app-templat (tự đông insert với name tương ứng)
+        setSysConfig("seopage.keyword", "Danh sách playlist Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); //xét với key word
+        setSysConfig("seopage.description", "Danh sách playlist Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); // xét meta description
         $this->render('default', $data);
     }
 

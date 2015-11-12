@@ -116,12 +116,14 @@ class Playlist extends CFormModel {
         //var_dump($item); die;
         return $item;  
     }
-    function allPlaylist()//trang playlist
+    function allPlaylist($limit = 5, $offset = 0)//trang playlist
     {
+    
     $command = Yii::app()->db->createCommand();
         $item = $command->select('a.*')
                 ->from(TBL_PLAYLIST ." a")
                 ->order("id DESC")
+                ->limit($limit,$offset)
                 ->queryAll();
         $arr=array();
         foreach ($item as $v){
