@@ -28,7 +28,7 @@ class VideosController extends FrontEndController {
         $data = array();
 
         $offset = isset($_GET['limitstart']) ? $_GET['limitstart'] : 0;
-        $limit = 10;
+        $limit = 12;
         $data['total'] = $this->media->getCountTotal();
         $data['videos'] = $media->getMedias($limit, $offset);
         //var_dump($data); die;

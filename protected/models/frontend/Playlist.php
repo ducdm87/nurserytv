@@ -116,7 +116,7 @@ class Playlist extends CFormModel {
         //var_dump($item); die;
         return $item;  
     }
-    function allPlaylist($limit = 5, $offset = 0)//trang playlist
+    function allPlaylist($limit = 20, $offset = 0)//trang playlist
     {
     
     $command = Yii::app()->db->createCommand();

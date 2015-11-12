@@ -25,7 +25,7 @@ class PlaylistController extends FrontEndController {
         $data = array();
         $data['total'] = $this->media->getCountTotal_playlist();
         $offset = isset($_GET['limitstart']) ? $_GET['limitstart'] : 0;
-        $limit = 5;
+        $limit = 20;
         $data['allPlaylist'] = $playlist->allPlaylist($limit,$offset);
         setSysConfig("seopage.title", "Danh sách playlist Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); //xét với title của app-templat (tự đông insert với name tương ứng)
         setSysConfig("seopage.keyword", "Danh sách playlist Xem video giả trí hay hay, clip giả trí, clip nóng mới nhất tại Nuseryty.Com"); //xét với key word

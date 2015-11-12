@@ -23,13 +23,16 @@ function showBlockHome($items, $title, $link = null){
             <div class="embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive embed-responsive-16by9">
                     <div class="fix-video-side-index">
-                        <?php echo show_video($item,"470","264");  ?>
-                    </div>
-                    <div class="ytplayer"></div>
-                </div>
+                        <?php echo show_video($item,"470","264"); ?>
+                    </div> 
+                   
                 <!--</a>--> 
-                
+                </div>
             </div>
+            <div class="ytplayer"></div>
+            <h4>
+                <a href="<?php echo $item['link']; ?>"><?php echo $item['title'] ?></a>
+            </h4>
         </div>
         <div class="col-md-6 no-padding-right padding-mb-2">
             <?php if (isset($items) && $items): ?>
@@ -102,6 +105,9 @@ function showBlockHome($items, $title, $link = null){
                         </span>
                     </a>
                 </div>
+                <h4>
+                    <a href="<?php echo $p["link"]; ?>"><?php echo $p["name"]; ?></a>
+                </h4>
             </div>         
         <?php endforeach; ?>
     </div><!--end entry-content-->

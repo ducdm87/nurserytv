@@ -178,6 +178,7 @@
             </div>
         </div>
     </div>
+    <div class=" clearfix"></div>
     <footer>
         <div class="container bg-footer">
             <div class="footer-bellow text-center">
