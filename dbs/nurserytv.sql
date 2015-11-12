@@ -1,23 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 2.11.11.3
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 05, 2015 at 09:03 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Nov 12, 2015 at 09:34 PM
+-- Server version: 5.1.73
+-- PHP Version: 5.3.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `nurserytv`
+-- Database: `nurserytv_demo`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `tbl_articles` (
 --
 
 INSERT INTO `tbl_articles` (`id`, `title`, `alias`, `introtext`, `fulltext`, `catID`, `uid`, `thumbnail`, `ordering`, `created`, `metakey`, `metadesc`, `cdate`, `mdate`, `status`, `feature`, `link_original`) VALUES
-(7, 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn a', 'thu-thuat-trang-diem-dep-tu-nhien-cho-nang-ban-ron-a', 'Trang điểm là biện pháp làm đẹp nhanh nhất, nó dường như có sức mạnh ma thuật có thể biến một vẻ đẹp bình thường trở thành một lộng lẫy. Vì lẽ đó mà đối với người phụ nữ thì trang điểm là một phần không thể thiếu trong cuộc sốn a', '<p>\r\n	Tại Cung Quần Ngựa H&agrave; Nội, chương tr&igrave;nh nghệ thuật &quot;Kẻ nổi loạn truyền thống&quot; với sự tham dự của hơn 1.000 nh&agrave; tạo mẫu t&oacute;c đ&atilde; mang đến nhiều tiết mục, bộ sưu tập t&oacute;c độc đ&aacute;o c&aacute; t&iacute;nh. Giải V&agrave;ng Color Zoom&#39;15 của hai hạng mục dự thi s&aacute;ng tạo v&agrave; t&agrave;i năng trẻ đ&atilde; được trao cho nh&agrave; tạo mẫu t&oacute;c Nguyễn Huyền Linh - Salon Linh Hair v&agrave; nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - Salon H&agrave; T&oacute;c. a</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-20152-9715-1440665074.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					&Ocirc;ng Trần Anh Tuấn gi&aacute;m đốc SunStar Việt Nam -&nbsp;nh&agrave; ph&acirc;n phối của Goldwell tại Việt Nam trao giải V&agrave;ng Quốc gia Color Zoom&nbsp;hạng mục s&aacute;ng tạo cho nh&agrave; tạo mẫu t&oacute;c&nbsp;Nguyễn Huyền Linh - Salon Linh Hair.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	Chia sẻ về t&aacute;c phẩm dự thi của m&igrave;nh, nh&agrave; tạo mẫu t&oacute;c Nguyễn Huyền Linh cho biết: &rdquo;&Yacute; tưởng của t&ocirc;i đến từ những điều giản dị trong cuộc sống đời thường. Cảm x&uacute;c an l&agrave;nh, th&aacute;nh thiện đến từ thiết kế nội thất, c&aacute;ch phối s&aacute;ng của h&agrave;ng trăm h&agrave;ng ngh&igrave;n mảng m&agrave;u lấp l&aacute;nh nơi m&aacute;i v&ograve;m của nh&agrave; thờ hay những hoa văn tu&acirc;n thủ theo h&igrave;nh thức Roman v&agrave; G&ocirc; - T&iacute;ch, t&ocirc;n nghi&ecirc;m v&agrave; trang nh&atilde;. H&igrave;nh tượng về sự nổi loạn v&agrave; th&aacute;ch thức của những thanh thiếu ni&ecirc;n trong tiểu thuyết &quot;Bắt trẻ đồng xanh&quot; của Holden Caulfield. Tất cả tạo cảm hứng trong t&ocirc;i để x&acirc;y dựng &yacute; tưởng cho b&agrave;i dự thi của m&igrave;nh&rdquo;.</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-20158-6168-1440665074.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					Nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - Salon H&agrave; T&oacute;c - giải V&agrave;ng Quốc gia Color Zoom hạng mục t&agrave;i năng trẻ tr&igrave;nh diễn c&ugrave;ng t&aacute;c phẩm dự thi của m&igrave;nh.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	&ldquo;May mắn của t&ocirc;i l&agrave; c&oacute; sự động vi&ecirc;n v&agrave; chỉ bảo của người thầy cũng l&agrave; qu&aacute;n qu&acirc;n giải Quốc Gia Color Zoom&#39;14 - nh&agrave; tạo mẫu t&oacute;c Nguyễn Hải H&agrave;. T&aacute;c phẩm của t&ocirc;i muốn thể hiện phong c&aacute;ch thanh lịch thời thượng, đẳng cấp nhưng cũng đầy g&oacute;c cạnh&quot;, nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - giải V&agrave;ng hạng mục t&agrave;i năng chia sẻ.</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-201514-925443799-4069-1440665075.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					Gi&acirc;y ph&uacute;t hồi hộp chờ c&ocirc;ng bố giải V&agrave;ng Quốc gia Color Zoom.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	Trong th&aacute;ng 10 tới đ&acirc;y, hai nh&agrave; tạo mẫu t&oacute;c sẽ đại diện cho c&aacute;c nh&agrave; tạo mẫu t&oacute;c Việt Nam tham dự cuộc thi to&agrave;n cầu tại Las Vegas, Mỹ.</p>\r\n<div>\r\n	<div>\r\n		<div>\r\n			&nbsp;</div>\r\n	</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 29, 0, '/uploads/images/27/10/2015/images.jpg', 0, '2015-09-07 23:11:00', 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn', 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn', '2015-09-07 23:11:00', '2015-10-27 10:19:06', 1, 1, 'http://www.24h.com.vn/lam-dep/bo-tui-5-meo-hay-giup-doi-moi-xinh-nhu-nu-hoa-hong-c145a729727.html'),
+(7, 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn a', 'thu-thuat-trang-diem-dep-tu-nhien-cho-nang-ban-ron-a', 'Trang điểm là biện pháp làm đẹp nhanh nhất, nó dường như có sức mạnh ma thuật có thể biến một vẻ đẹp bình thường trở thành một lộng lẫy. Vì lẽ đó mà đối với người phụ nữ thì trang điểm là một phần không thể thiếu trong cuộc sốn a', '<p>\r\n	Tại Cung Quần Ngựa H&agrave; Nội, chương tr&igrave;nh nghệ thuật &quot;Kẻ nổi loạn truyền thống&quot; với sự tham dự của hơn 1.000 nh&agrave; tạo mẫu t&oacute;c đ&atilde; mang đến nhiều tiết mục, bộ sưu tập t&oacute;c độc đ&aacute;o c&aacute; t&iacute;nh. Giải V&agrave;ng Color Zoom&#39;15 của hai hạng mục dự thi s&aacute;ng tạo v&agrave; t&agrave;i năng trẻ đ&atilde; được trao cho nh&agrave; tạo mẫu t&oacute;c Nguyễn Huyền Linh - Salon Linh Hair v&agrave; nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - Salon H&agrave; T&oacute;c. a</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-20152-9715-1440665074.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					&Ocirc;ng Trần Anh Tuấn gi&aacute;m đốc SunStar Việt Nam -&nbsp;nh&agrave; ph&acirc;n phối của Goldwell tại Việt Nam trao giải V&agrave;ng Quốc gia Color Zoom&nbsp;hạng mục s&aacute;ng tạo cho nh&agrave; tạo mẫu t&oacute;c&nbsp;Nguyễn Huyền Linh - Salon Linh Hair.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	Chia sẻ về t&aacute;c phẩm dự thi của m&igrave;nh, nh&agrave; tạo mẫu t&oacute;c Nguyễn Huyền Linh cho biết: &rdquo;&Yacute; tưởng của t&ocirc;i đến từ những điều giản dị trong cuộc sống đời thường. Cảm x&uacute;c an l&agrave;nh, th&aacute;nh thiện đến từ thiết kế nội thất, c&aacute;ch phối s&aacute;ng của h&agrave;ng trăm h&agrave;ng ngh&igrave;n mảng m&agrave;u lấp l&aacute;nh nơi m&aacute;i v&ograve;m của nh&agrave; thờ hay những hoa văn tu&acirc;n thủ theo h&igrave;nh thức Roman v&agrave; G&ocirc; - T&iacute;ch, t&ocirc;n nghi&ecirc;m v&agrave; trang nh&atilde;. H&igrave;nh tượng về sự nổi loạn v&agrave; th&aacute;ch thức của những thanh thiếu ni&ecirc;n trong tiểu thuyết &quot;Bắt trẻ đồng xanh&quot; của Holden Caulfield. Tất cả tạo cảm hứng trong t&ocirc;i để x&acirc;y dựng &yacute; tưởng cho b&agrave;i dự thi của m&igrave;nh&rdquo;.</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-20158-6168-1440665074.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					Nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - Salon H&agrave; T&oacute;c - giải V&agrave;ng Quốc gia Color Zoom hạng mục t&agrave;i năng trẻ tr&igrave;nh diễn c&ugrave;ng t&aacute;c phẩm dự thi của m&igrave;nh.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	&ldquo;May mắn của t&ocirc;i l&agrave; c&oacute; sự động vi&ecirc;n v&agrave; chỉ bảo của người thầy cũng l&agrave; qu&aacute;n qu&acirc;n giải Quốc Gia Color Zoom&#39;14 - nh&agrave; tạo mẫu t&oacute;c Nguyễn Hải H&agrave;. T&aacute;c phẩm của t&ocirc;i muốn thể hiện phong c&aacute;ch thanh lịch thời thượng, đẳng cấp nhưng cũng đầy g&oacute;c cạnh&quot;, nh&agrave; tạo mẫu t&oacute;c Lương Xu&acirc;n Vinh - giải V&agrave;ng hạng mục t&agrave;i năng chia sẻ.</p>\r\n<table border="0" cellpadding="2" cellspacing="0">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n				<img alt="" data-natural-width="500" data-pwidth="470.40625" data-width="500" src="http://c1.f9.img.vnecdn.net/2015/08/27/27-8-201514-925443799-4069-1440665075.png" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n				<p>\r\n					Gi&acirc;y ph&uacute;t hồi hộp chờ c&ocirc;ng bố giải V&agrave;ng Quốc gia Color Zoom.</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n<p>\r\n	Trong th&aacute;ng 10 tới đ&acirc;y, hai nh&agrave; tạo mẫu t&oacute;c sẽ đại diện cho c&aacute;c nh&agrave; tạo mẫu t&oacute;c Việt Nam tham dự cuộc thi to&agrave;n cầu tại Las Vegas, Mỹ.</p>\r\n<div>\r\n	<div>\r\n		<div>\r\n			&nbsp;</div>\r\n	</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 29, 0, '/uploads/images/2015/11/Penguins.jpg', 0, '2015-09-07 23:11:00', 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn', 'Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn', '2015-09-07 23:11:00', '2015-11-05 16:41:59', 1, 1, 'http://www.24h.com.vn/lam-dep/bo-tui-5-meo-hay-giup-doi-moi-xinh-nhu-nu-hoa-hong-c145a729727.html'),
 (8, 'Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng', 'bo-tui-5-meo-hay-giup-doi-moi-xinh-nhu-nu-hoa-hong', 'Hiện nay trên thị trường có nhiều loại kem dưỡng ẩm có thể giúp chị em khắc phục được tình trạng làn môi khô ráp. Nhưng để đôi môi có được sắc hồng, mịn màng một cách tự nhiên thì việc chăm sóc môi với những nguyên liệu tự nhiên là sự lựa chọn vừa rẻ lại ', '<div class="contentbaiviet">\r\n	<p>\r\n		Hiện nay tr&ecirc;n thị trường c&oacute; nhiều loại kem dưỡng ẩm c&oacute; thể gi&uacute;p chị em khắc phục được t&igrave;nh trạng&nbsp;l&agrave;n m&ocirc;i kh&ocirc; r&aacute;p. Nhưng để đ&ocirc;i m&ocirc;i c&oacute; được sắc hồng, mịn m&agrave;ng một c&aacute;ch tự nhi&ecirc;n th&igrave; việc&nbsp;chăm s&oacute;c m&ocirc;i với những nguy&ecirc;n liệu tự nhi&ecirc;n l&agrave; sự lựa chọn vừa rẻ lại tiện lợi</p>\r\n	<div style="page-break-after: always;">\r\n		<span style="display: none;">&nbsp;</span></div>\r\n	<p style="text-align: center;">\r\n		<img alt="bo tui 5 meo hay giup doi moi xinh nhu nu hoa hong hinh anh 1" class="news-image" data-pagespeed-loaded="1" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" id="news-image-id-0" src="http://streaming1.danviet.vn/upload/3-2015/images/2015-08-22/1440242501-moi-dv1.jpg" title="Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng hình ảnh 1" width="100%" /></p>\r\n	<p style="text-align: center;">\r\n		<em>Phụ nữ&nbsp;hấp dẫn với vẻ đẹp tự nhi&ecirc;n</em></p>\r\n	<p>\r\n		<em>Nếu bạn l&agrave; người y&ecirc;u chuộng c&aacute;c biện ph&aacute;p tự nhi&ecirc;n, h&atilde;y tham khảo 5 mẹo chăm s&oacute;c l&agrave;n m&ocirc;i dưới đ&acirc;y.</em></p>\r\n	<p>\r\n		<strong>1. Tẩy tế b&agrave;o chết bởi chanh, đường</strong></p>\r\n	<p>\r\n		Chanh c&oacute; nhiều axit tự nhi&ecirc;n gi&uacute;p loại bỏ c&aacute;c hắc tố trong da m&ocirc;i. Đường với kết cấu hạt nhỏ li ti đảm nhiệm chức năng l&agrave;m bong c&aacute;c tế b&agrave;o chết. V&igrave; vậy, sử dụng hỗn hợp n&agrave;y để tẩy tế b&agrave;o chết c&oacute; thể gi&uacute;p cho l&agrave;n m&ocirc;i s&aacute;ng hồng tự nhi&ecirc;n.</p>\r\n	<p>\r\n		Đổ 1 th&igrave;a đường ra ch&eacute;n rồi bổ sung th&ecirc;m 1 th&igrave;a nước cốt chanh v&agrave; trộn đều. Sử dụng hỗn hợp n&agrave;y ch&agrave; x&aacute;t l&ecirc;n đ&ocirc;i m&ocirc;i khoảng 10 sau đ&oacute; rửa sạch với nước ấm.</p>\r\n	<p style="text-align: center;">\r\n		<img alt="bo tui 5 meo hay giup doi moi xinh nhu nu hoa hong hinh anh 2" class="news-image" data-pagespeed-loaded="1" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" id="news-image-id-1" src="http://streaming1.danviet.vn/upload/3-2015/images/2015-08-22/1440242501-moi-dv2.jpg" title="Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng hình ảnh 2" width="100%" /></p>\r\n	<p style="text-align: center;">\r\n		<em>Chanh với đường n&acirc;u tạo th&agrave;nh kem tẩy tế b&agrave;o chết tuyệt diệu</em></p>\r\n	<p>\r\n		<strong>2. M&aacute;t xa m&ocirc;i với mật ong v&agrave; chanh</strong></p>\r\n	<p>\r\n		Mật ong l&agrave; th&agrave;nh phần tự nhi&ecirc;n c&oacute; t&aacute;c dụng dưỡng ẩm v&agrave; kh&aacute;ng khuẩn tuyệt vời. Trong khi chanh l&agrave; th&agrave;nh phần tẩy trắng gi&uacute;p đ&ocirc;i m&ocirc;i s&aacute;ng hồng.</p>\r\n	<p>\r\n		Cắt đ&ocirc;i quả chanh sau đ&oacute; r&oacute;t v&agrave;i giọt mật ong l&ecirc;n chanh rồi m&aacute;t xa nhẹ nh&agrave;ng l&ecirc;n đ&ocirc;i m&ocirc;i, để ch&uacute;ng trong 15 ph&uacute;t sau đ&oacute; rửa sạch với nước ấm.</p>\r\n	<p style="text-align: center;">\r\n		<img alt="bo tui 5 meo hay giup doi moi xinh nhu nu hoa hong hinh anh 3" class="news-image" data-pagespeed-loaded="1" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" id="news-image-id-2" src="http://streaming1.danviet.vn/upload/3-2015/images/2015-08-22/1440242501-moi-dv3.jpg" title="Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng hình ảnh 3" width="100%" /></p>\r\n	<p style="text-align: center;">\r\n		<em>Chanh v&agrave; mật ong gi&uacute;p đ&ocirc;i m&ocirc;i vừa s&aacute;ng hồng, vừa mềm mịn</em></p>\r\n	<p>\r\n		<strong>3. Nước củ cải đường</strong></p>\r\n	<p>\r\n		Đ&acirc;y l&agrave; loại nước tự nhi&ecirc;n c&oacute; dồi d&agrave;o c&aacute;c hợp chất chống oxy h&oacute;a v&agrave; loại bỏ c&aacute;c hắc tố da gi&uacute;p l&agrave;n da m&ocirc;i trở n&ecirc;n mềm mịn v&agrave; s&aacute;ng hơn.</p>\r\n	<p>\r\n		Sử dụng m&aacute;y &eacute;p tr&aacute;i c&acirc;y để &eacute;p của cải đường lấy nước ra cốc, sau đ&oacute; sử dụng nước n&agrave;y m&aacute;t xa l&ecirc;n đ&ocirc;i m&ocirc;i. Sau 15 ph&uacute;t rửa sạch với nước ấm.</p>\r\n	<p style="text-align: center;">\r\n		<img alt="bo tui 5 meo hay giup doi moi xinh nhu nu hoa hong hinh anh 4" class="news-image" data-pagespeed-loaded="1" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" id="news-image-id-3" src="http://streaming1.danviet.vn/upload/3-2015/images/2015-08-22/1440242501-moi-dv4.jpg" title="Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng hình ảnh 4" width="100%" /></p>\r\n	<p style="text-align: center;">\r\n		<em>Nước &eacute;p củ cải đường l&agrave;m s&aacute;ng bờ m&ocirc;i</em></p>\r\n	<p>\r\n		<strong>4. Dưỡng ẩm với dầu hạnh nh&acirc;n v&agrave; dầu dừa</strong></p>\r\n	<p>\r\n		Đ&acirc;y l&agrave; 2 loại tinh dầu đặc hiệu gi&uacute;p l&agrave;n da mềm mịn. Với đ&ocirc;i m&ocirc;i ch&uacute;ng cung cấp nhiều th&agrave;nh phần kh&aacute;ng khuẩn v&agrave; độ ẩm gi&uacute;p đ&ocirc;i m&ocirc;i c&oacute; được vẻ đẹp mịn m&agrave;ng một c&aacute;ch tự nhi&ecirc;n.</p>\r\n	<p>\r\n		Trộn 1 th&igrave;a dầu hạnh nh&acirc;n c&ugrave;ng với 1 th&igrave;a dầu dừa đ&atilde; được đun h&oacute;a lỏng trong một c&aacute;i ch&eacute;n con. Sử dụng ng&oacute;n tay chấm hỗn hợp dầu v&agrave; m&aacute;t xa l&ecirc;n đ&ocirc;i m&ocirc;i thay thế c&oacute; một thỏi son dưỡng m&ocirc;i h&agrave;ng ng&agrave;y.</p>\r\n	<p style="text-align: center;">\r\n		<img alt="bo tui 5 meo hay giup doi moi xinh nhu nu hoa hong hinh anh 5" class="news-image" data-pagespeed-loaded="1" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" id="news-image-id-4" src="http://streaming1.danviet.vn/upload/3-2015/images/2015-08-22/1440242501-moi-dv5.jpg" title="Bỏ túi 5 mẹo hay giúp đôi môi xinh như nụ hoa hồng hình ảnh 5" width="100%" /></p>\r\n	<p style="text-align: center;">\r\n		<em>Dầu dừa v&agrave; dầu hạnh nhận tạo độ ẩm tuyệt vời cho đ&ocirc;i m&ocirc;i</em></p>\r\n	<p>\r\n		<strong>5. Vitamin E</strong></p>\r\n	<p>\r\n		Vitamin E l&agrave; thần dược gi&uacute;p k&iacute;ch th&iacute;ch sự ph&aacute;t triển của c&aacute;c tế b&agrave;o da. Do đ&oacute;, biết c&aacute;ch bổ sung vitamin E cho cơ thể hoặc m&aacute;t xa dầu vitamin E cũng c&oacute; thể đem lại vẻ đẹp tự nhi&ecirc;n, mịn m&agrave;ng cho đ&ocirc;i m&ocirc;i.</p>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 31, 0, '/uploads/images/26/08/2015/1440383969-1440242501-moi-dv1%5B1%5D.jpg', 0, '2015-08-26 08:26:30', 'tu van lam dep, cham soc moi, moi dep tu nhien, môi xinh, da đẹp, môi hồng', 'Hiện nay trên thị trường có nhiều loại kem dưỡng ẩm có thể giúp chị em khắc phục được tình trạng làn môi khô ráp. Nhưng để đôi môi có được sắc hồng, mịn màng một cách tự nhiên thì việc chăm sóc môi với những nguyên liệu tự nhiên là sự lựa chọn vừa rẻ lại ', '2015-08-26 08:26:30', '2015-10-28 08:04:49', 1, 1, 'http://www.24h.com.vn/lam-dep-c145.html'),
 (5, 'Nuôi da trắng mịn bằng trứng gà', 'nuoi-da-trang-min-bang-trung-ga', 'Trứng là một loại thực phẩm chứa nhiều dinh dưỡng có lợi cho sức khỏe. Không những thế, với những thành phần như vitamin A, B6, B12, D và E… trứng còn giúp chị em chúng mình chăm sóc hiệu quả đối với vẻ đẹp của làn da.', '\r\n	Trứng lÃ  một loại thực phẩm chứa nhiều dinh dưỡng cÃ³ lợi cho sức khỏe. KhÃ´ng những thế, với những thÃ nh phần như vitamin A, B6, B12, D vÃ  Eâ¦ trứng cÃ²n giÃºp chị em chÃºng mÃ¬nh chăm sÃ³c hiệu quả đối với vẻ đẹp của lÃ n da.\r\n\r\n	Điều đÃ¡ng nÃ³i ở đÃ¢y lÃ  với mỗi loại da như da nhờn, da khÃ´, giÃ£n chÃ¢n lÃ´ngâ¦ cần phải hiểu vÃ  sử dụng trứng một cÃ¡ch hợp lÃ½ thÃ¬ mới đem đến hiệu quả thiết thực.\r\n\r\n	Â \r\n\r\n	LÃ n da sÃ¡ng, mịn lÃ  thÃ nh phần khÃ´ng thể thiếu trong vẻ đẹp của chị em phụ nữ\r\n\r\n	Â \r\n\r\n	Trứng lÃ  nguyÃªn liệu chăm sÃ³c lÃ n da đẹp toÃ n diện\r\n\r\n	HÃ£y cÃ¹ng chÃºng tÃ´i học cÃ¡ch sử dụng một số biện phÃ¡p từ mặt nạ trứng đối với cÃ¡c loại da.\r\n\r\n	1. Chăm sÃ³c da dầu\r\n\r\n	Da nhờn xuất hiện khi quÃ¡ trÃ¬nh sản xuất tuyến nhờn dưới da diễn ra ngoÃ i vÃ²ng kiểm soÃ¡t. Vấn đề cÃ¡c chất nhờn xuất hiện quÃ¡ mức trÃªn bề mặt lÃ n da lÃ m ảnh hưởng đến kết quả trang điểm cũng như sức khỏe tế bÃ o da.\r\n\r\n	Với hiện tượng đÃ³, bạn chỉ nÃªn sử dụng lÃ²ng trắng trứng vÃ¬ tÃ­nh năng hÃºt dầu tồn tại cơ bản ở thÃ nh phần nÃ y.\r\n\r\n	CÃ¡ch sử dụng\r\n\r\n	Đập vỡ một quả trứng, sau đÃ³ khÃ©o lÃ©o tÃ¡ch rời loại bỏ lÃ²ng đỏ, chỉ sử dụng lÃ²ng trắng trứng. Vắt thÃªm vÃ i giọt nước cốt chanh vÃ  trộn đều hỗn hợp. DÃ¹ng một bÃ n chải để xoa hỗn hợp lÃªn khuÃ´n mặt vÃ  thư giÃ£n khoảng 15 phÃºt đủ cho mặt nạ khÃ´. Cuối cÃ¹ng lÃ m sạch mọi thứ bằng khăn vÃ  nước ấm.\r\n\r\n	Â \r\n\r\n	Mặt nạ lÃ²ng trắng trứng kiểm soÃ¡t da dầu\r\n\r\n	2. Chăm sÃ³c da khÃ´\r\n\r\n	TrÃ¡i với da nhờn thÃ¬ da khÃ´ lại lÃ  hiện tượng cÃ¡c tế bÃ o da bị cướp đi độ ẩm khiến chÃºng trở nÃªn khÃ´ rÃ¡p. LÃ n da khÃ´ cũng sẽ lÃ m cho sức khỏe của tế bÃ o bị ảnh hưởng tiÃªu cực, những lớp trang điểm cũng trở nÃªn sần sÃ¹i.\r\n\r\n	Để khắc phục hiện tượng da khÃ´, bạn nÃªn sử dụng lÃ²ng đỏ của trứng. ĐÃ¢y lÃ  bộ phận cung cấp kịp thời độ ẩm vÃ  những dinh dưỡng cần thiết giÃºp tế bÃ o da nhanh chÃ³ng lấy lại sự cÃ¢n bằng.\r\n\r\n	CÃ¡ch sử dụng\r\n\r\n	Đập vỡ trứng rồi tÃ¡ch bỏ lÃ²ng trắng, chỉ để lại lÃ²ng đỏ trong bÃ¡t con. Bổ sung thÃªm 1 thÃ¬a mật ong cÃ¹ng 1 thÃ¬a dầu Ã´ liu vÃ  khuấy đều cho cÃ¡c hỗn hợp hÃ²a lẫn với nhau. Ãp dụng mặt nạ lÃªn khuÃ´n mặt vÃ  thư giÃ£n trong 15 phÃºt rồi rửa sạchÂ  với nước ấm.\r\n\r\n	Â \r\n\r\n	LÃ²ng đỏ trứng với mật ong khắc phục lÃ n da khÃ´\r\n\r\n	3. Chăm sÃ³c da thường\r\n\r\n	Nếu lÃ n da của bạn bÃ¬nh thường, để duy trÃ¬ sự mềm mại thÃ¬ sử dụng mặt nạ trứng để dưỡng da cũng lÃ  biện phÃ¡p đem lại hiệu quả tốt. Sự kết hợp giữa việc tẩy bỏ chất dầu vÃ  dưỡng ẩm của cả hai thÃ nh phần lÃ²ng trắng vÃ  lÃ²ng đỏ của trứng sẽ giÃºp lÃ n da luÃ´n tươi trẻ.\r\n\r\n	CÃ¡ch sử dụng\r\n\r\n	Đập vỡ trứng, tÃ¡ch riÃªng lÃ²ng trắng vÃ  lÃ²ng đỏ vÃ o hai cÃ¡i bÃ¡t sạch. LÃ m sạch lÃ n da, sau đÃ³ trước tiÃªn bạn Ã¡p dụng mặt nạ lÃ²ng trắng trứng lÃªn khuÃ´n mặt chờ 15 phÃºt cho khÃ´. Tiếp tục bạn sử dụng mặt nạ lÃ²ng đỏ trứng lÃªn vÃ  chờ đến khi chÃºng hoÃ n toÃ n khÃ´. Cuối cÃ¹ng rửa sạch với nước ấm.\r\n\r\n	4. Mở lỗ chÃ¢n lÃ´ng\r\n\r\n	Hiện tượng tắc nghẽn lỗ chÃ¢n lÃ´ng lÃ  một trong những nguyÃªn nhÃ¢n khiến cho lÃ n da gặp nhiều vấn để rắc rối. VÃ¬ vậy, mỗi tuần mở rộng lỗ chÃ¢n lÃ´ng đÃª giải thoÃ¡t những chất cặn bÃ£ vÃ  lượng dầu dư thừa lÃ  một bước trong quyÂ trÃ¬nh lÃ m đẹp.\r\n\r\n	CÃ¡ch sử dụng\r\n\r\n	Trước hết, đập vỡ trứng vÃ  chỉ sử dụng lÃ²ng trắng trứng để loại bỏ hết lớp chất dầu trÃªn bề mặt lÃ n da. Bước tiếp theo lÃ  dÃ¹ng một bÃ¡t nước nÃ³ng thực hiện bước xÃ´ng mặt để hơi nÃ³ng lÃ m giÃ£n nở lÃ´ chÃ¢n lÃ´ng. Cuối cÃ¹ng dÃ¹ng khăn mềm để thấm khÃ´ sau đÃ³ rửa lại với nước lạnh để thu hẹp lỗ chÃ¢n lÃ´ng.\r\n\r\n	Â ', 31, 0, '/uploads/images/26/08/2015/1440556303-1440297664-trung-dv5%5B1%5D.jpg', 0, '2015-08-26 08:20:17', 'Nuôi da trắng mịn bằng trứng gà', 'Trứng là một loại thực phẩm chứa nhiều dinh dưỡng có lợi cho sức khỏe. Không những thế, với những thành phần như vitamin A, B6, B12, D và E… trứng còn giúp chị em chúng mình chăm sóc hiệu quả đối với vẻ đẹp của làn da.', '2015-08-26 08:20:17', '2015-08-26 08:20:17', 1, 0, 'http://www.24h.com.vn/lam-dep/nuoi-da-trang-min-bang-trung-ga-c145a730214.html'),
 (6, 'Bí quyết gương mặt đẹp như nữ thần của Song Hye-Kyo', 'bi-quyet-guong-mat-dep-nhu-nu-than-cua-song-hye-kyo', 'Không quá khó để nắm được cách trang điểm trong suốt của Song Hye-Kyo.', '<p>\r\n	1. L&Atilde;&acute;ng m&Atilde; y Trước ti&Atilde;&ordf;n ch&Atilde;&ordm;ng ta sẽ d&Atilde;&sup1;ng cọ kẻ l&Atilde;&acute;ng m&Atilde; y t&Atilde;&iexcl;n phấn m&Atilde; u n&Atilde;&cent;u tự nhi&Atilde;&ordf;n theo khu&Atilde;&acute;n l&Atilde;&acute;ng m&Atilde; y sẵn c&Atilde;&sup3;. C&Atilde;&iexcl;c bạn ch&Atilde;&ordm; &Atilde;&frac12; t&Atilde;&iexcl;n phấn ở phần giữa v&Atilde; đu&Atilde;&acute;i l&Atilde;&acute;ng m&Atilde; y trước, sau đ&Atilde;&sup3; mới d&Atilde;&sup1;ng lượng phấn c&Atilde;&sup2;n lại tr&Atilde;&ordf;n cọ để t&Atilde;&iexcl;n phần đầu l&Atilde;&acute;ng m&Atilde; y. Vừa t&Atilde;&iexcl;n vừa chải xu&Atilde;&acute;i theo chiều l&Atilde;&acute;ng m&Atilde; y. Đối với những v&Atilde;&sup1;ng &Atilde;&shy;t l&Atilde;&acute;ng m&Atilde; y th&Atilde;&not; ch&Atilde;&ordm;ng ta c&Atilde;&sup3; thể sử dụng m&Atilde; u phấn đậm hơn. Ngo&Atilde; i ra c&Atilde;&iexcl;c bạn n&Atilde;&ordf;n sử dụng m&Atilde; u phấn d&Atilde;&sup1;ng cho l&Atilde;&acute;ng m&Atilde; y gần với m&Atilde; u&Acirc; t&Atilde;&sup3;c&Acirc; để đem lại cảm gi&Atilde;&iexcl;c tự nhi&Atilde;&ordf;n. &Acirc; Vẻ đẹp trong ngần của Song Hye-Kyo 2. Bầu mắt Ở bước n&Atilde; y ch&Atilde;&ordm;ng ta sẽ sử dụng đầu ng&Atilde;&sup3;n tay để t&Atilde;&iexcl;n một lớp phấn m&Atilde; u n&Atilde;&cent;u tự nhi&Atilde;&ordf;n thật mỏng l&Atilde;&ordf;n bầu mắt v&Atilde; bọng mắt. Nếu như c&Atilde;&iexcl;c bạn muốn tạo điểm nhấn hơn th&Atilde;&not; ch&Atilde;&ordm;ng ta c&Atilde;&sup3; thể d&Atilde;&sup1;ng m&Atilde; u phấn đậm hơn một ch&Atilde;&ordm;t để t&Atilde;&iexcl;n l&Atilde;&ordf;n phần m&Atilde;&shy; mắt để tạo ra hiệu ứng b&Atilde;&sup3;ng đổ. 3. Viền mắt Phong c&Atilde;&iexcl;ch&Acirc; trang điểm&Acirc; trong suốt kh&Atilde;&acute;ng cần qu&Atilde;&iexcl; nhấn mạnh v&Atilde; o phần eyeliner. Ch&Atilde;&ordm;ng ta sẽ chỉ sử dụng eyeliner m&Atilde; u n&Atilde;&cent;u để kẻ s&Atilde;&iexcl;t m&Atilde;&shy; mắt một đường thật mảnh. &Acirc; Viền mắt mảnh v&Atilde; s&Atilde;&iexcl;t m&Atilde;&shy; 4. L&Atilde;&acute;ng mi D&Atilde;&sup1;ng kẹp mi để uốn cong l&Atilde;&acute;ng mi, sau đ&Atilde;&sup3; chải mascara để khiến cho đ&Atilde;&acute;i mắt long lanh v&Atilde; quyến rũ hơn. 5. M&Atilde;&iexcl; hồng Sử dụng phấn m&Atilde;&iexcl; dạng kem v&Atilde; d&Atilde;&sup1;ng tay để t&Atilde;&iexcl;n nhẹ v&Atilde; từ phần xương g&Atilde;&sup2; m&Atilde;&iexcl; l&Atilde;&ordf;n ph&Atilde;&shy;a th&Atilde;&iexcl;i dương. &Acirc; M&Atilde;&iexcl; hồng h&Atilde; o, căng khỏe 6. Son m&Atilde;&acute;i Việc sử dụng m&Atilde; u son nhẹ nh&Atilde; ng (Natural Lip tint gloss) ph&Atilde;&sup1; hợp với tổng thể khu&Atilde;&acute;n mặt sẽ đem lại hiệu quả tốt hơn so với một t&Atilde;&acute;ng son qu&Atilde;&iexcl; nổi bật. C&Atilde;&iexcl;c bạn ch&Atilde;&ordm; &Atilde;&frac12; n&Atilde;&ordf;n d&Atilde;&sup1;ng cọ t&Atilde;&iexcl;n son từ trong long m&Atilde;&acute;i ra ph&Atilde;&shy;a ngo&Atilde; i. &Acirc; &Acirc;</p>\r\n', 27, 0, '/uploads/images/26/08/2015/1440468146-1440467967-1%5B1%5D.jpg', 0, '2015-08-26 08:22:49', 'Bí quyết gương mặt đẹp như nữ thần của Song Hye-Kyo', 'Không quá khó để nắm được cách trang điểm trong suốt của Song Hye-Kyo.', '2015-08-26 08:22:49', '2015-10-27 10:17:56', 1, 0, 'http://www.24h.com.vn/lam-dep/bi-quyet-guong-mat-dep-nhu-nu-than-cua-song-hye-kyo-c145a729949.html'),
@@ -124,9 +117,17 @@ INSERT INTO `tbl_category_index` (`cat_id`, `pindex`, `type`) VALUES
 (27, 8, 2),
 (27, 9, 2),
 (29, 3, 2),
-(29, 11, 2),
 (32, 3, 2),
-(32, 4, 2);
+(32, 4, 2),
+(29, 10, 2),
+(28, 10, 2),
+(27, 10, 2),
+(32, 10, 2),
+(32, 5, 2),
+(27, 5, 2),
+(28, 5, 2),
+(29, 5, 2),
+(32, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -289,40 +290,6 @@ INSERT INTO `tbl_module_menuitem_ref` (`moduleID`, `menuID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_module_position`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_module_position` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `temp` varchar(128) NOT NULL,
-  `position` varchar(128) NOT NULL,
-  `description` text NOT NULL,
-  `params` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
-
---
--- Dumping data for table `tbl_module_position`
---
-
-INSERT INTO `tbl_module_position` (`id`, `temp`, `position`, `description`, `params`) VALUES
-(1, 'mytheme-yii', 'menu-nav', '', ''),
-(2, 'mytheme-yii', 'debug', '', ''),
-(3, 'mytheme-yii', 'col-left', '', ''),
-(4, 'mytheme-yii', 'col-right', '', ''),
-(5, 'mytheme-yii', 'header', '', ''),
-(6, 'mytheme-yii', 'footer', '', ''),
-(7, 'mytheme-yii', 'breadcrump', '', ''),
-(8, 'mytheme-yii', 'slide', '', ''),
-(9, 'mytheme-yii', 'main-center', '', ''),
-(10, 'mytheme-yii', 'main-bottom', '', ''),
-(11, 'mytheme-yii', 'main-top', '', ''),
-(12, 'trangbenhvien', 'main-menu', '', ''),
-(13, 'trangbenhvien', 'top-banner', '', '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_playlist`
 --
 
@@ -331,6 +298,8 @@ CREATE TABLE IF NOT EXISTS `tbl_playlist` (
   `name` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `thumbnail` varchar(255) NOT NULL,
+  `videocode` text NOT NULL,
+  `videourl` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `feature` tinyint(4) NOT NULL,
   `active` int(11) NOT NULL,
@@ -345,16 +314,16 @@ CREATE TABLE IF NOT EXISTS `tbl_playlist` (
 -- Dumping data for table `tbl_playlist`
 --
 
-INSERT INTO `tbl_playlist` (`id`, `name`, `alias`, `thumbnail`, `status`, `feature`, `active`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
-(3, 'Happy Birthday songs', 'happy-birthday-songs', '', 1, 1, 1, 'Happy Birthday songs, Happy Birthday songs', 'Happy Birthday songs. Happy Birthday songs', '2015-10-28 05:18:13', '2015-10-30 05:24:32'),
-(4, 'Happy Birthday songs - Karaoke - Sing along', 'happy-birthday-songs-karaoke-sing-along', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 05:24:58'),
-(5, 'Numbers songs - Counting for kids - Karaoke - Sing Along', 'numbers-songs-counting-for-kids-karaoke-sing-along', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-29 04:56:29'),
-(6, 'Nursery Rhymes Collection', 'nursery-rhymes-collection', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-29 04:56:45'),
-(7, 'ABCs and Phonics Songs', 'abcs-and-phonics-songs', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-29 04:56:23'),
-(8, 'Animals songs', 'animals-songs', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 05:24:06'),
-(9, 'Lullabies for kids - Karaoke - Sing Along', 'lullabies-for-kids-karaoke-sing-along', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 05:25:28'),
-(10, 'ABCs and Phonics Songs - Karaoke - Sing Along', 'abcs-and-phonics-songs-karaoke-sing-along', '', 1, 0, 0, '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 'Karaoke Songs', 'karaoke-songs', '', 1, 0, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 04:34:55');
+INSERT INTO `tbl_playlist` (`id`, `name`, `alias`, `thumbnail`, `videocode`, `videourl`, `status`, `feature`, `active`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
+(3, 'Happy Birthday songs', 'happy-birthday-songs', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '<iframe width="560" height="315" src="https://www.youtube.com/embed/Aif3ZyFyiFQ?list=PLywPjrI3bRlqKbPylWxLiTb1JyrSQh7MG" frameborder="0" allowfullscreen></iframe>', '', 1, 1, 1, 'Happy Birthday songs, Happy Birthday songs', 'Happy Birthday songs. Happy Birthday songs', '2015-10-28 05:18:13', '2015-10-30 05:24:32'),
+(4, 'Happy Birthday songs - Karaoke - Sing along', 'happy-birthday-songs-karaoke-sing-along', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-11-09 10:36:05'),
+(5, 'Numbers songs - Counting for kids - Karaoke - Sing Along', 'numbers-songs-counting-for-kids-karaoke-sing-along', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '/uploads/videos/2015/1.mp4', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-11-09 10:35:21'),
+(6, 'Nursery Rhymes Collection', 'nursery-rhymes-collection', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-29 04:56:45'),
+(7, 'ABCs and Phonics Songs', 'abcs-and-phonics-songs', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-29 04:56:23'),
+(8, 'Animals songs', 'animals-songs', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 05:24:06'),
+(9, 'Lullabies for kids - Karaoke - Sing Along', 'lullabies-for-kids-karaoke-sing-along', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 1, 0, '', '', '0000-00-00 00:00:00', '2015-10-30 05:25:28'),
+(10, 'ABCs and Phonics Songs - Karaoke - Sing Along', 'abcs-and-phonics-songs-karaoke-sing-along', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 0, 0, '', '', '0000-00-00 00:00:00', '2015-11-05 17:24:55'),
+(11, 'Karaoke Songs', 'karaoke-songs', 'http://thewonderingfeetscalling.com/wp-content/uploads/2015/07/image_0_img.jpg', '', '', 1, 0, 0, '', '', '0000-00-00 00:00:00', '2015-11-09 04:57:04');
 
 -- --------------------------------------------------------
 
@@ -372,27 +341,59 @@ CREATE TABLE IF NOT EXISTS `tbl_playlist_xref` (
 --
 
 INSERT INTO `tbl_playlist_xref` (`playlistID`, `videoID`) VALUES
-(9, 63),
-(10, 63),
-(11, 63),
-(8, 63),
-(7, 62),
-(8, 62),
-(9, 62),
-(10, 62),
-(3, 60),
-(4, 60),
-(5, 60),
-(6, 60),
-(7, 60),
-(8, 60),
-(9, 60),
-(10, 60),
+(11, 59),
+(9, 52),
+(4, 37),
+(5, 56),
+(3, 40),
+(11, 50),
+(5, 51),
+(6, 56),
+(11, 44),
+(11, 45),
+(11, 46),
+(11, 47),
+(11, 48),
+(11, 49),
+(11, 53),
+(11, 56),
 (11, 60),
-(8, 57),
+(11, 57),
 (4, 55),
 (4, 54),
-(3, 54);
+(3, 54),
+(9, 56),
+(10, 56),
+(3, 44),
+(4, 44),
+(5, 44),
+(6, 44),
+(7, 44),
+(8, 44),
+(11, 61),
+(9, 44),
+(4, 43),
+(5, 42),
+(11, 41),
+(7, 39),
+(8, 38),
+(7, 56),
+(8, 56),
+(11, 38),
+(7, 40),
+(11, 40),
+(6, 48),
+(10, 44),
+(10, 36),
+(11, 62),
+(11, 58),
+(11, 55),
+(3, 53),
+(10, 46),
+(5, 45),
+(6, 41),
+(4, 56),
+(3, 56);
 
 -- --------------------------------------------------------
 
@@ -495,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `groupID`, `leader`, `mobile`, `home_phone`, `first_name`, `last_name`, `address`, `city`, `province_state`, `zip_code`, `country`, `suppliers`, `cdate`, `mdate`, `template_id`, `status`, `lastvisit`, `activeCode`, `params`) VALUES
-(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', 2, 0, '', '', 'admin', 'admin', '', '', '', '', 0, '', '2015-10-24 00:00:00', '2015-10-24 00:00:00', 0, 1, '2015-11-05 09:05:33', '', '');
+(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', 2, 0, '', '', 'admin', 'admin', '', '', '', '', 0, '', '2015-10-24 00:00:00', '2015-10-24 00:00:00', 0, 1, '2015-11-11 14:31:12', '', '');
 
 -- --------------------------------------------------------
 
@@ -569,41 +570,40 @@ CREATE TABLE IF NOT EXISTS `tbl_videos` (
   `metadesc` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`catID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
 
 --
 -- Dumping data for table `tbl_videos`
 --
 
 INSERT INTO `tbl_videos` (`id`, `title`, `alias`, `image`, `actor`, `info`, `linkyoutube`, `videocode`, `videourl`, `duration`, `viewed`, `like`, `play_id`, `fecth_link`, `catID`, `director`, `rating`, `cdate`, `mdate`, `status`, `feature`, `hotweek`, `type`, `metakey`, `metadesc`) VALUES
-(36, 'Answer for "Get month name from Date using JavaScript"', 'answer-for-get-month-name-from-date-using-javascript', '/uploads/images/26/08/2015/1440302798-1439290851-trang-diem-dv1%5B1%5D.jpg', 'Asian', 'sf 34r34r3r34r34', '', '', '', '3', 3, 0, 0, '', 28, NULL, NULL, '2015-08-26 11:58:29', '2015-08-26 11:58:29', 1, 0, 0, '1', '', ''),
-(37, 'Ke O Mien Xa - Dan Nguyen', 'ke-o-mien-xa-dan-nguyen', '/uploads/images/26/08/2015/1440468146-1440467967-1%5B1%5D.jpg', 'Asian', 'lá jhasj dbahbd hakgdskhadgsasgi đáiátdá', '', '', '', '3', 1, 0, 0, '', 28, NULL, NULL, '2015-08-27 03:43:59', '2015-08-27 03:43:59', 1, 0, 0, '1', '', ''),
-(38, 'Rừng Lá Thấp', 'rung-la-thap', NULL, 'Japan', 'bhagdkahgsdasjdasdasd', '', '', '', '3:55', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-27 04:51:06', '2015-08-27 04:51:06', 1, 0, 0, '1', '', ''),
-(39, 'Hai con nai', 'hai-con-nai', '/uploads/images/27/08/2015/vn.png', 'áldasdas', 'uaosy gauygskygakyudgayusd7o6atd7 62thasd gaygsdkjashd', '', '', '', '3', 8, 0, 0, '', 29, NULL, NULL, '2015-08-27 06:08:22', '2015-08-27 06:08:22', 1, 0, 0, '1', '', ''),
-(40, 'Troubleshooting', 'troubleshooting', '/uploads/images/27/08/2015/Big_Buck_Bunny_Trailer_480x270.png', 'Asian', 'A great all rounder. The net tab can disable cache and allow you to review server response and MIME types easily', '', '', '', '3', NULL, 0, 0, '', 27, NULL, NULL, '2015-08-27 08:52:50', '2015-08-27 08:52:50', 1, 0, 0, '1', '', ''),
-(41, 'Video Hài Hước - Top 10 Pha Bóng Đá Hài Hước Khó Đỡ Nhất', 'video-hai-huoc-top-10-pha-bong-da-hai-huoc-kho-do-nhat', '/uploads/images/28/08/2015/dong0467-1440726511_490x294.jpg', '', 'khonf co mo ta nao', '', '', '', '', 1, 0, 0, '', 32, NULL, NULL, '2015-08-28 05:39:42', '2015-08-28 05:39:42', 1, 1, 0, '2', '', ''),
-(42, '10 pha bóng hài hước nhất thế giới bóng đá', '10-pha-bong-hai-huoc-nhat-the-gioi-bong-da', '', '', '10 pha bóng hài hước nhất thế giới bóng đá', '', '', '', '', 3, 0, 0, '', 29, NULL, NULL, '2015-08-28 04:32:41', '2015-08-28 04:32:41', 1, 0, 0, '1', '', ''),
-(43, 'KĨ THUẬT CỦA HAI SIÊU SAO BÓNG ĐÁ HÀNG ĐẦU THẾ GIỚI', 'ki-thuat-cua-hai-sieu-sao-bong-da-hang-dau-the-gioi', '/uploads/images/28/08/2015/CNbhcx6WIAA3Hrd-5422-1440716111.png', '', 'KĨ THUẬT CỦA HAI SIÊU SAO BÓNG ĐÁ HÀNG ĐẦU THẾ GIỚI', '', '', '', '', 1, 0, 0, '', 32, NULL, NULL, '2015-08-28 05:46:10', '2015-08-28 05:46:10', 1, 1, 0, '2', '', ''),
-(44, 'Messi và những pha đi bóng thần thánh', 'messi-va-nhung-pha-di-bong-than-thanh', '', '', 'Messi và những pha đi bóng thần thánh', '', '', '', '', 10, 0, 0, '', 32, NULL, NULL, '2015-08-28 04:47:49', '2015-08-28 04:47:49', 1, 0, 0, '2', '', ''),
-(45, 'Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD', 'ronaldinho-messi-the-movie-two-legends-one-story-hd', '/uploads/images/28/08/2015/tag-reuters-1-5897-1440697725-7716-8563-1440716111.jpg', '', 'Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD', '', '', '', '', 4, 1, 0, '', 32, NULL, NULL, '2015-08-28 05:48:09', '2015-08-28 05:48:09', 1, 1, 0, '2', '', ''),
-(46, 'Hài miền Bắc: Căn bệnh kỳ lạ, Quang Thắng, Công Lý', 'hai-mien-bac-can-benh-ky-la-quang-thang-cong-ly', '', 'VN', 'asvdhg kaygadskyu gidasid đâs', '', '', '', '14:55', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:38:28', '2015-08-31 03:38:28', 1, 0, 0, '3', '', ''),
-(47, 'Hài miền Bắc: Rắn nổi, Chiến Thắng, Công Lý', 'hai-mien-bac-ran-noi-chien-thang-cong-ly', '', '', 'Hài miền Bắc: Rắn nổi, Chiến Thắng, Công Lý', '', '', '', '14:41', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:40:55', '2015-08-31 03:40:55', 1, 0, 0, '3', '', ''),
-(48, 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', 'hai-mien-bac-doi-doi-cong-ly-anh-tuan-thanh-tu', '', '', 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', '', '', '', '14:55', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:44:43', '2015-08-31 03:44:43', 1, 0, 0, '3', '', ''),
-(49, 'Hài miền Bắc: Đàn bà thời nay', 'hai-mien-bac-dan-ba-thoi-nay', '', 'Japan', 'Hài miền Bắc: Đàn bà thời nay', '', '', '', '9:28', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:49:09', '2015-08-31 03:49:09', 1, 0, 0, '3', '', ''),
-(50, 'Hài miền Bắc: MC làng, Anh Quân, Quốc Trị', 'hai-mien-bac-mc-lang-anh-quan-quoc-tri', '', '', 'Hài miền Bắc: MC làng, Anh Quân, Quốc Trị', '', '', '', '', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 03:50:42', '2015-08-31 03:50:42', 1, 0, 0, '3', '', ''),
-(51, 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', 'hai-mien-bac-doi-doi-cong-ly-anh-tuan-thanh-tu', '', '', 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', '', '', '', '14:55', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:51:26', '2015-08-31 03:51:26', 1, 0, 0, '1', '', ''),
-(52, '[Phim Hài] Bình Luận Bóng Đá | Chiến Thắng , Quang Tèo Mai Thỏ', 'phim-hai-binh-luan-bong-da-chien-thang-quang-teo-mai-tho', '', '', '[Phim Hài] Bình Luận Bóng Đá | Chiến Thắng , Quang Tèo Mai Thỏ', '', '', '', '9:56', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:52:22', '2015-08-31 03:52:22', 1, 0, 0, '3', '', ''),
-(53, 'Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa', 'phim-hai-ngan-hay-nhat-tuyen-dung-gai-mat-xa', '', '', 'Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa', '', '', '', '23:55', 2, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:55:58', '2015-08-31 03:55:58', 1, 0, 0, '3', '', ''),
-(54, '[Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu', 'phim-hai-cac-em-ay-khoe-lam-mai-tho-quang-teo-trung-hieu', '', '', '[Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu', '', '', '', '', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 03:57:39', '2015-10-30 05:29:07', 1, 1, 0, '3', '', ''),
-(55, 'Môn thể thao bựa nhất trong lịch sử =))', 'mon-the-thao-bua-nhat-trong-lich-su', '', '', 'Môn thể thao bựa nhất trong lịch sử =))', '', '', '', '', NULL, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:01:45', '2015-10-30 05:28:45', 1, 1, 0, '2', '', ''),
-(56, '[Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014', 'the-thao-24h-thuy-dien-2-3-bo-dao-nha-tong-2-4-luot-ve-play-off-vong-loai-world-cup-2014', '', '', '[Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014', '', '', '', '2:27', 1, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:03:22', '2015-10-29 07:28:02', 1, 1, 1, '1', '', ''),
-(57, 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', 'tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh', '', '', 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', '', '', '', '1:22', NULL, 0, 0, '', 29, NULL, NULL, '2015-08-31 04:08:12', '2015-10-30 05:27:58', 1, 1, 0, '4', '', ''),
-(58, 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', 'tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach', '', '', 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', '', '', '', '1:40', NULL, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:08:56', '2015-10-29 07:26:38', 1, 1, 1, '4', '', ''),
-(59, 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', 'nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo', '', '', 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', '', '', '', '1:20', NULL, 0, 0, '', 32, NULL, NULL, '2015-08-31 04:09:42', '2015-10-29 05:43:40', 1, 0, 0, '4', '', ''),
-(60, 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', 'thuy-nga-115-paris-by-night-116-hay-nhat-2015', '', '', 'Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015', '', '', '/uploads/videos/05/11/2015/ban-remix-ve-co-giao-cung-bo-cap-chui-hoc-sinh.mp4', '', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 04:10:07', '2015-11-05 03:41:37', 1, 1, 1, '4', '', ''),
-(61, 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', 'asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1', '', '', 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', '', '', '', '1:33:35', 1, 0, 0, '', 27, NULL, NULL, '2015-08-31 04:10:51', '2015-10-29 07:26:27', 1, 1, 1, '4', '', ''),
-(62, 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', 'quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng', '/uploads/images/21/10/2015/duong-ve-nha.jpg', '', 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', '', '<iframe src="https://www.youtube.com/embed/uwwy6-uA1u4" frameborder="0" allowfullscreen></iframe>', 'dád', '3:17', 2, 0, 0, '', 29, NULL, NULL, '2015-08-31 04:12:51', '2015-11-04 10:21:21', 1, 1, 1, '4', 'dád', 'ad'),
-(63, 'Một khi anh đã cứng thì phải cứng như thế này', 'mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay', '', '', 'Một khi anh đã "cứng" thì phải "cứng" như thế này :3', '', '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/EtReC_NDE2U" frameborder="0" allowfullscreen></iframe>', 'http://clip.vietbao.vn/wp-content/uploads/2015/04/20150424-motor-oil-chug-challenge-3988.mp4', '0:24', 14, 5, 0, '', 29, NULL, NULL, '2015-08-31 04:13:36', '2015-10-30 04:59:59', 1, 1, 0, '4', '', '');
+(36, 'Answer for Triệu Tử Long Triệu Tử Long Triệu Tử Long', 'answer-for-trieu-tu-long-trieu-tu-long-trieu-tu-long', '/uploads/images/2015/11/Penguins.jpg', 'Asian', 'sf 34r34r3r34r34', '', '', '/uploads/videos/27/1.mp4', '3', 3, 6, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 28, NULL, NULL, '2015-08-26 11:58:29', '2015-11-11 08:31:39', 1, 0, 1, '1', '', ''),
+(37, 'Ke O Mien Xa - Dan Nguyen Ke O Mien Xa - Dan Nguyen Ke O Mien Xa - Dan Nguyen ', 'ke-o-mien-xa-dan-nguyen-ke-o-mien-xa-dan-nguyen-ke-o-mien-xa-dan-nguyen', '/uploads/images/2015/11/Penguins.jpg', 'Asian', 'lá jhasj dbahbd hakgdskhadgsasgi đáiátdá', '', '', '/uploads/videos/27/1.mp4', '3', 1, 6, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 28, NULL, NULL, '2015-08-27 03:43:59', '2015-11-09 17:57:24', 1, 0, 0, '1', '', ''),
+(38, 'Rừng Lá Thấp Rừng Lá Thấp Rừng Lá Thấp Rừng Lá Thấp', 'rung-la-thap-rung-la-thap-rung-la-thap-rung-la-thap', '/uploads/images/2015/11/Penguins.jpg', 'Japan', 'bhagdkahgsdasjdasdasd', '', '', '/uploads/videos/27/1.mp4', '3:55', NULL, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-27 04:51:06', '2015-11-06 07:53:59', 1, 0, 0, '1', '', ''),
+(39, 'Triệu Tử Long Triệu Tử Long Triệu Tử Long', 'trieu-tu-long-trieu-tu-long-trieu-tu-long', '/uploads/images/2015/11/Penguins.jpg', 'áldasdas', 'uaosy gauygskygakyudgayusd7o6atd7 62thasd gaygsdkjashd', '', '', '/uploads/videos/27/1.mp4', '3', 8, 2, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-27 06:08:22', '2015-11-09 02:36:31', 1, 0, 0, '1', '', ''),
+(40, 'Troubleshooting Troubleshooting Troubleshooting', 'troubleshooting-troubleshooting-troubleshooting', '/uploads/images/2015/11/Penguins.jpg', 'Asian', 'A great all rounder. The net tab can disable cache and allow you to review server response and MIME types easily', '', '', '/uploads/videos/27/1.mp4', '3', NULL, 3, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 27, NULL, NULL, '2015-08-27 08:52:50', '2015-11-09 02:14:40', 1, 0, 0, '1', '', ''),
+(41, 'Video Hài Hước - Top 10 Pha Bóng Đá Hài Hước Khó Đỡ Nhất', 'video-hai-huoc-top-10-pha-bong-da-hai-huoc-kho-do-nhat', '/uploads/images/2015/11/Penguins.jpg', '', 'khonf co mo ta nao', '', '', '/uploads/videos/27/1.mp4', '', 1, 8, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-28 05:39:42', '2015-11-09 03:46:10', 1, 0, 0, '2', '', ''),
+(42, '10 pha bóng hài hước nhất thế giới bóng đá', '10-pha-bong-hai-huoc-nhat-the-gioi-bong-da', '/uploads/images/2015/11/Penguins.jpg', '', '10 pha bóng hài hước nhất thế giới bóng đá', '', '', '/uploads/videos/27/1.mp4', '', 3, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-28 04:32:41', '2015-11-09 02:40:44', 1, 0, 0, '1', '', ''),
+(43, 'KĨ THUẬT CỦA HAI SIÊU SAO BÓNG ĐÁ HÀNG ĐẦU THẾ GIỚI', 'ki-thuat-cua-hai-sieu-sao-bong-da-hang-dau-the-gioi', '/uploads/images/2015/11/Penguins.jpg', '', 'KĨ THUẬT CỦA HAI SIÊU SAO BÓNG ĐÁ HÀNG ĐẦU THẾ GIỚI', '', '', '/uploads/videos/27/1.mp4', '', 1, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-28 05:46:10', '2015-11-09 01:23:38', 1, 0, 0, '2', '', ''),
+(44, 'Messi và những pha đi bóng thần thánh', 'messi-va-nhung-pha-di-bong-than-thanh', '/uploads/images/2015/11/Penguins.jpg', '', 'Messi và những pha đi bóng thần thánh', '', '', '/uploads/videos/27/1.mp4', '', 10, 2, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-28 04:47:49', '2015-11-09 02:37:17', 1, 0, 0, '2', '', ''),
+(45, 'Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD', 'ronaldinho-messi-the-movie-two-legends-one-story-hd', '/uploads/images/2015/11/Penguins.jpg', '', 'Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD', '', '', '/uploads/videos/27/1.mp4', '', 4, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-28 05:48:09', '2015-11-06 05:49:46', 1, 0, 0, '2', '', ''),
+(46, 'Hài miền Bắc: Căn bệnh kỳ lạ, Quang Thắng, Công Lý', 'hai-mien-bac-can-benh-ky-la-quang-thang-cong-ly', '/uploads/images/2015/11/Penguins.jpg', 'VN', 'asvdhg kaygadskyu gidasid đâs', '', '', '/uploads/videos/27/1.mp4', '14:55', NULL, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:38:28', '2015-11-09 02:46:52', 1, 1, 0, '3', '', ''),
+(47, 'Hài miền Bắc: Rắn nổi, Chiến Thắng, Công Lý', 'hai-mien-bac-ran-noi-chien-thang-cong-ly', '/uploads/images/2015/11/Penguins.jpg', '', 'Hài miền Bắc: Rắn nổi, Chiến Thắng, Công Lý', '', '', '/uploads/videos/27/1.mp4', '14:41', NULL, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:40:55', '2015-11-08 20:00:29', 1, 0, 0, '3', '', ''),
+(48, 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', 'hai-mien-bac-doi-doi-cong-ly-anh-tuan-thanh-tu', '/uploads/images/2015/11/Penguins.jpg', '', 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', '', '', '/uploads/videos/27/1.mp4', '14:55', NULL, 0, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:44:43', '2015-11-06 05:50:04', 1, 0, 0, '3', '', ''),
+(49, 'Hài miền Bắc: Đàn bà thời nay', 'hai-mien-bac-dan-ba-thoi-nay', '/uploads/images/2015/11/Penguins.jpg', 'Japan', 'Hài miền Bắc: Đàn bà thời nay', '', '', '/uploads/videos/27/1.mp4', '9:28', NULL, 0, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:49:09', '2015-11-05 19:48:36', 1, 0, 0, '3', '', ''),
+(50, 'Hài miền Bắc: MC làng, Anh Quân, Quốc Trị', 'hai-mien-bac-mc-lang-anh-quan-quoc-tri', '/uploads/images/2015/11/Penguins.jpg', '', 'Hài miền Bắc: MC làng, Anh Quân, Quốc Trị', '', '', '/uploads/videos/27/1.mp4', '', 1, 0, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 27, NULL, NULL, '2015-08-31 03:50:42', '2015-11-08 16:58:18', 1, 0, 0, '3', '', ''),
+(51, 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', 'hai-mien-bac-doi-doi-cong-ly-anh-tuan-thanh-tu', '/uploads/images/2015/11/Penguins.jpg', '', 'Hài miền Bắc: Đổi đời, Công Lý, Anh Tuấn, Thanh Tú', '', '', '/uploads/videos/27/1.mp4', '14:55', NULL, 0, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:51:26', '2015-11-08 16:58:15', 1, 0, 0, '1', '', ''),
+(52, '[Phim Hài] Bình Luận Bóng Đá | Chiến Thắng , Quang Tèo Mai Thỏ', 'phim-hai-binh-luan-bong-da-chien-thang-quang-teo-mai-tho', '/uploads/images/2015/11/Penguins.jpg', '', '[Phim Hài] Bình Luận Bóng Đá | Chiến Thắng , Quang Tèo Mai Thỏ', '', '', '/uploads/videos/27/1.mp4', '9:56', NULL, 6, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:52:22', '2015-11-09 04:13:17', 1, 1, 0, '3', '', ''),
+(53, 'Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa', 'phim-hai-ngan-hay-nhat-tuyen-dung-gai-mat-xa', '/uploads/images/2015/11/Penguins.jpg', '', 'Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa', '', '', '/uploads/videos/27/1.mp4', '23:55', 2, 6, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:55:58', '2015-11-09 02:49:12', 1, 1, 0, '3', '', ''),
+(54, '[Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu', 'phim-hai-cac-em-ay-khoe-lam-mai-tho-quang-teo-trung-hieu', '/uploads/images/2015/11/Penguins.jpg', '', '[Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu', '', '', '/uploads/videos/27/1.mp4', '', NULL, 8, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 03:57:39', '2015-11-09 02:46:19', 1, 1, 1, '3', '', ''),
+(55, 'Môn thể thao bựa nhất trong lịch sử =)) Môn thể thao bựa nhất trong lịch sử =))', 'mon-the-thao-bua-nhat-trong-lich-su-mon-the-thao-bua-nhat-trong-lich-su', '/uploads/images/2015/11/Penguins.jpg', '', 'Môn thể thao bựa nhất trong lịch sử =))', '', '', '/uploads/videos/27/1.mp4', '', NULL, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-31 04:01:45', '2015-11-09 17:57:00', 1, 1, 1, '2', '', ''),
+(56, '[Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014', 'the-thao-24h-thuy-dien-2-3-bo-dao-nha-tong-2-4-luot-ve-play-off-vong-loai-world-cup-2014', '/uploads/images/2015/11/Penguins.jpg', '', '[Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014', '', '', '/uploads/videos/27/1.mp4', '2:27', 1, 2, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-31 04:03:22', '2015-11-09 02:46:15', 1, 1, 1, '1', '', ''),
+(57, 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', 'tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh', '/uploads/images/2015/11/Penguins.jpg', '', 'Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành', '', '', '/uploads/videos/2015/1.mp4', '1:22', NULL, 1, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 04:08:12', '2015-11-09 17:39:42', 1, 1, 0, '4', '', ''),
+(58, 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', 'tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach', '/uploads/images/2015/11/Penguins.jpg', '', 'Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách', '', '', '/uploads/videos/27/1.mp4', '1:40', NULL, 0, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-31 04:08:56', '2015-11-09 02:46:13', 1, 1, 0, '4', '', ''),
+(59, 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', 'nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo', '/uploads/images/2015/11/Penguins.jpg', '', 'Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ', '', '', '/uploads/videos/27/1.mp4', '1:20', NULL, 7, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 32, NULL, NULL, '2015-08-31 04:09:42', '2015-11-08 17:10:01', 1, 1, 0, '4', '', ''),
+(61, 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', 'asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1', '/uploads/images/2015/11/Penguins.jpg', '', 'Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1', '', '', '/uploads/videos/27/1.mp4', '1:33:35', 3, 3, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 27, NULL, NULL, '2015-08-31 04:10:51', '2015-11-08 17:10:00', 1, 1, 0, '4', '', ''),
+(62, 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', 'quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng', '/uploads/images/2015/11/Penguins.jpg', '', 'Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng', '', '', '/uploads/videos/27/1.mp4', '3:17', 2, 3, 0, 'https://www.youtube.com/watch?v=SXg36KMA8Ms', 29, NULL, NULL, '2015-08-31 04:12:51', '2015-11-09 00:56:57', 1, 1, 0, '4', 'dád', 'ad'),
+(63, 'Một khi anh đã cứng thì phải cứng như thế này Một khi anh đã cứng thì phải cứng như thế này', 'mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay-mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay', '/uploads/images/2015/11/Penguins.jpg', '', 'Một khi anh đã "cứng" thì phải "cứng" như thế này :3', '', '', '/uploads/videos/27/1.mp4', '0:24', 16, 6, 0, 'https://www.youtube.com/watch?v=2SOuYktBsDU', 29, NULL, NULL, '2015-08-31 04:13:36', '2015-11-09 17:57:10', 1, 1, 0, '4', '', '');
 
 -- --------------------------------------------------------
 
@@ -646,7 +646,3 @@ INSERT INTO `tbl_videos2` (`id`, `title`, `alias`, `image`, `info`, `fecth_link`
 (44, 'Finger Family Song - Mega Finger Family Collection! Frozen, Minions, Elmo, Nursery Rhymes & More!', 'finger-family-song-mega-finger-family-collection-frozen-minions-elmo-nursery-rhymes-more', 'https://i.ytimg.com/vi/hSQxjB1Jdkw/hqdefault.jpg', 'jaskjdgasjdasd', 'https://www.youtube.com/watch?v=hSQxjB1Jdkw', '', 3, 1, 4, 0, NULL, 1, 'ád', 'ádasda', '2015-09-25 10:12:53', '2015-09-25 10:12:53'),
 (45, 'Thomas and Friends Monster Finger Family Song', 'thomas-and-friends-monster-finger-family-song', 'https://i.ytimg.com/vi/OaFrZmX5wFo/hqdefault.jpg', 'ádasdas', 'https://www.youtube.com/watch?v=OaFrZmX5wFo', '', 5, 0, 4, 0, NULL, 1, 'ádasd', 'ádasdas', '2015-09-25 10:13:19', '2015-09-25 10:13:19'),
 (46, 'SUPER FUN! Thomas and Friends Making Tracks to GREAT Destinations Video & THEME SONG!', 'super-fun-thomas-and-friends-making-tracks-to-great-destinations-video-theme-song', 'https://i.ytimg.com/vi/XWM-6df3KIw/hqdefault.jpg', 'ádasdasd', 'https://www.youtube.com/watch?v=XWM-6df3KIw', '', 6, 0, 4, 0, NULL, 1, 'Pedro, chiến thắng lớn nhất của Chelsea', 'ádasdasdas', '2015-09-25 10:13:45', '2015-09-25 10:13:45');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
