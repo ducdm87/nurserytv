@@ -94,8 +94,10 @@ class buildHtml {
         return $return;
     }
 
-    static function pagination($total, $limitstart = 1, $limit = 10,$q=NULL) {
+    static function pagination($total, $limitstart = 1, $limit = 20,$q=NULL) {
+        if($total<=$limit) {$return ='';}else{
         $pages_total = ceil($total / $limit);
+       // var_dump($pages_total); die;
         $pages_current = intval($limitstart / $limit) + 1;
         ob_start();
         ?>
@@ -151,9 +153,10 @@ class buildHtml {
             </ul>            
         </div>
         <?php
-        echo "<div class='info-pagination-n'>Page $pages_current of $pages_total. Total: $total item</div>";
+       // echo "<div class='info-pagination-n'>Page $pages_current of $pages_total. Total: $total item</div>";
         $return = ob_get_contents();
         ob_end_clean();
+        }
         return $return;
     }
     static function headSort($title, $order, $order_current, $order_dir) {
