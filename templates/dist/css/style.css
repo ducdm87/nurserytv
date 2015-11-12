@@ -126,7 +126,7 @@ h2.vega_title {
     font-size: 16px;    
     line-height: 32px;
     position: relative;
-    padding: 0 50px 0 10px;
+    padding: 0 50px 0 3px;
     padding-top: -15px;
     font-weight: bold;
     text-transform: uppercase;
@@ -201,6 +201,11 @@ padding-left: 4px;
 }
 .no-padding{
     padding: 0px;
+    background: #333 none repeat scroll 0 0;
+}
+.no-padding-artical{
+    padding: 0px;
+    background: #fff none repeat scroll 0 0;
 }
 
 .no-padding-right{
@@ -238,7 +243,7 @@ padding-left: 4px;
 .entry-recomment-item-playlist p,.entry-recomment-item-playlist p a, h4 a{
     margin: 0;
     font-size: 12px;
-    color: #C0C0C0;
+    color: #f945a7;
     font-weight: bold;
     text-decoration: none;
     text-align: justify;
@@ -274,6 +279,7 @@ padding-left: 4px;
 }
 .entry-caption{
     margin-top: 20px;
+    margin-bottom: -18px;
 }
 .entry-caption a,.entry-caption h4{
     font-size: 16px;
@@ -632,7 +638,10 @@ footer{
     margin-left: 26px;
     padding: 0; }
 .can_title_playlist_detail {margin: 0; padding-bottom: 20px; margin-top: 0px;}
-.ds_playlist_detail h4 {margin-top:   -20px; padding: 0;}
+.ds_playlist_detail h4 {
+    font-size: 10px;
+    margin-top: -39px;
+}
 
 .media-heading-title a{color: #f945a7;}
 .media-heading-title-slideshow a{color: #f945a7;}
@@ -670,7 +679,7 @@ footer{
 .content-author-bar-right{
     color: #8b8a8a;
     font-size: 13px;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 .xt-col-md-2{
     float: right;
@@ -795,9 +804,28 @@ footer{
     color: #00cccc;
     margin-top: -23px;
 }
-
-
+.main-view-like{
+    margin-left: 30px
+}
+.menu-name-action-mobile{
+    height: 30px;
+    background: #333;
+    padding: 4px;
+}
+.menu-name-action-mobile span{
+    margin-left: 17px;
+    padding-top: 10px;
+    font-size: 17px;
+    color: #f945a7;
+    font-weight: bold;
+}
     //end playlist mobile
 
-    
+    .show-like-view-right {
+        width: 100px;
+        float: right;
+    }
+        .chuyen-muc {
+        margin-top: 10px;
+    }
 

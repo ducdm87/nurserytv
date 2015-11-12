@@ -28,7 +28,7 @@ $settings = array(
                 'videos/<id:[0-9]+>-<alias:.*>'=> array('playlist/detail/', 'urlSuffix'=>'/'),
                 'video/<id:[0-9]+>-<alias:.*>/<vid:[0-9]+>-<valias:.*>'=> array('playlist/detail', 'urlSuffix'=>'.html'),
                 'video/<id:[0-9]+>-<alias:.*>'=> array('videos/detail','urlSuffix'=>'.html'),
-                'videosc/<id:[0-9]+>-<alias:.*>' => array('videoscat/','urlSuffix'=>'/'),
+                '<id:[0-9]+>-<alias:.*>' => array('videoscat/','urlSuffix'=>'/'),
                 
                 'video/likevideo/<id:.+>.js' => array('videos/likevideo'),
                 'video/setview/<id:.+>.js' => array('videos/likeview'),

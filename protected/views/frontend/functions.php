@@ -62,13 +62,15 @@ function fnVDShowSideBar() {//sitebar-for-playlist-default
                                 <a href="<?php echo $video['link']; ?>"><h4><?php echo $video['title']; ?></h4></a>
                             </div>
                             <a href="#" class="content-author-bar-right">Bởi: Nursery Rhymes TV</a>
-                            <div class="entry-recomment-user">
-                                <span class="entry-viewed">
-                                    <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png" alt="<?php echo $video['title']; ?>"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
-                                </span>
-                                <span class="entry-like">
-                                    <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
-                                </span>
+                            <div class="main-view-like">
+                                <div class="entry-recomment-user">
+                                    <span class="entry-viewed">
+                                        <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png" alt="<?php echo $video['title']; ?>"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
+                                    </span>
+                                    <span class="entry-like">
+                                        <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <?php $index ++; 
@@ -175,13 +177,15 @@ function fnVDShowSideBar_detail_Playlist() {//show-site-bar-for-playlist-detail
                                     <a href="<?php echo $video['link']; ?>"><h4><?php echo $video['title']; ?></h4></a>
                                 </div>
                                 <a href="#" class="content-author-bar-right">Bởi: Nursery Rhymes TV</a>
-                                <div class="entry-recomment-user">
-                                    <span class="entry-viewed">
-                                        <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png" alt="<?php echo $video['title']; ?>"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
-                                    </span>
-                                    <span class="entry-like">
-                                        <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
-                                    </span>
+                                <div class="main-view-like">
+                                    <div class="entry-recomment-user">
+                                        <span class="entry-viewed">
+                                            <span><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/eye.png" alt="<?php echo $video['title']; ?>"><?php echo isset($video['viewed']) ? $video['viewed'] : 0 ?></span>
+                                        </span>
+                                        <span class="entry-like">
+                                            <span><i class="fa fa-heart"></i> <?php echo isset($video['like']) ? $video['like'] : 0 ?></span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <?php $index ++; 

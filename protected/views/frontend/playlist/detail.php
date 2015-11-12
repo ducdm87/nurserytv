@@ -88,9 +88,9 @@ function showVideos($stt = "0", $items = null, $category,$getPlaylist) { //ham h
             <div class="ds_playlist_detail">
                 <div class="entry-user">
                     <div class="fb-social pull-left">
-                        <div class="fb-like" data-href="<?php if(isset($item["videourl"])) {echo $item["videourl"] ;} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                        <div class="fb-like" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                     </div>
-                    <div class="pull-right">
+                    <div class="show-like-view-right">
                         <div class="entry-recomment-user">
                             <span class="entry-viewed">
                                 <img src="/images/app/eye.png">
@@ -105,15 +105,17 @@ function showVideos($stt = "0", $items = null, $category,$getPlaylist) { //ham h
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div><br />
-                <h4>Chuyên mục:</h4>
-                <ol class="breadcrumb">
-                    <?php
-                    foreach ($category as &$list) {
-                        echo "<li><a href='" . $list['link_cat'] . "'><span>" . $list['title'] . "</span></a> " . $list['dem_playlist'] . " Playlist</li>";
-                    }
-                    ?>
-                </ol>
+                <div class=" clearfix"></div>
+                <div class="chuyen-muc">
+                    <ol class="breadcrumb">
+                        <li><b>Chuyên mục: </b></li>
+                        <?php
+                        foreach ($category as &$list) {
+                            echo "<li><a href='" . $list['link_cat'] . "'><span>" . $list['title'] . "</span></a> " . $list['dem_playlist'] . " Playlist</li>";
+                        }
+                        ?>
+                    </ol>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>

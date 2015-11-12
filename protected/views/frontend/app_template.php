@@ -137,6 +137,20 @@
                 </div>
             </div>
         </div>
+        <div class="menu-name-action-mobile hidden-lg ">
+            <span>
+                <?php
+                    $menu_kt= $this->getUniqueId();
+                        switch ($menu_kt){
+                            case 'app': echo 'HOME'; break;
+                            case 'playlist': echo 'PLAYLIST'; break;
+                            case 'videos': echo 'VIDEOS'; break;
+                            case 'about': echo 'ABOUT'; break;
+                            default : echo "HOME";
+                        }
+                 ?>
+            </span>
+        </div>
     </header>
 
     <div class="clearfix"></div>
@@ -146,7 +160,7 @@
                 <div class="row">
                     <?php echo buildHtml::SlideShow(); ?>
                     <div class="google-adwords">
-                        <div class="content-center-pop">
+                        <div class="content-center-pop hidden-md hidden-sm hidden-xs">
                             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/app/addword1.png" alt="Google AdWords" class="img-responsives"/>
                         </div>
                     </div>

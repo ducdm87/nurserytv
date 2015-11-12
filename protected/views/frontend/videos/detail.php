@@ -27,7 +27,7 @@
                 <div class="entry-caption">
                     <div class="entry-user">
                         <div class="fb-social pull-left">
-                            <div class="fb-like" data-href="<?php if(isset($item)) {echo $item->videourl;} ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                            <div class="fb-like" data-href="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                         </div>
                         <div class="pull-right" style="margin-right: 15px;">
                             <div class="entry-recomment-user">

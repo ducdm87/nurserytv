@@ -426,7 +426,7 @@ class buildHtml {
                                 foreach ($items as $item):
                                     $link = fnCreateUrlNewsDetail($item['id'], $item['alias']);
                                     ?>
-                                    <div class="col-md-3 no-padding">
+                                    <div class="col-md-3 no-padding-artical">
                                         
                                          <div class="mobile-img-artical hidden-lg">
                                             <a href="<?php echo $link; ?>">
